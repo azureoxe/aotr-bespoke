@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
@@ -301,6 +303,59 @@ a.photo-link svg{width:12px;height:12px}
   text-align:center;color:var(--text-4);
   padding:60px 24px;grid-column:1/-1;font-size:14px;
 }
+
+/* ===== 视图切换 + 地图 ===== */
+.view-toggle{display:inline-flex;border:1px solid var(--border-2);border-radius:6px;overflow:hidden;margin-right:8px}
+.view-toggle button{
+  border:0;background:var(--surface);color:var(--text-2);
+  padding:0 12px;height:32px;font-size:12px;font-weight:500;cursor:pointer;
+  font-family:inherit;display:inline-flex;align-items:center;gap:5px;
+  transition:all 120ms;
+}
+.view-toggle button:not(:first-child){border-left:1px solid var(--border-2)}
+.view-toggle button.active{background:var(--slate-900);color:#fff}
+.view-toggle button svg{width:13px;height:13px}
+
+#map{
+  height:calc(100vh - 280px);
+  min-height:500px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+  background:#e7eef4;
+}
+#map .leaflet-popup-content-wrapper{border-radius:8px;font-family:inherit}
+#map .leaflet-popup-content{margin:10px 12px;font-size:12px;line-height:1.5}
+#map .pop-condo{font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px}
+#map .pop-addr{color:var(--text-3);font-size:11px;margin-bottom:6px}
+#map .pop-rent{font-weight:700;color:var(--brand);font-size:14px;margin-bottom:4px}
+#map .pop-meta{color:var(--text-3);font-size:11px}
+#map .pop-list{max-height:280px;overflow-y:auto;margin:-4px -8px}
+#map .pop-list-item{padding:6px 8px;border-bottom:1px solid var(--border-soft);cursor:pointer;transition:background 120ms}
+#map .pop-list-item:last-child{border-bottom:0}
+#map .pop-list-item:hover{background:var(--bg)}
+
+/* Pin 标签（用 div 而不是 leaflet 默认 marker，更可控） */
+.pin-marker{
+  background:var(--brand);color:#fff;border-radius:50%;
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;border:2px solid #fff;
+  box-shadow:0 2px 4px rgba(0,0,0,.2);font-family:inherit;
+  cursor:pointer;
+}
+.pin-marker.east{background:#3b82f6}
+.pin-marker.west{background:#10b981}
+.pin-marker.central{background:#f59e0b}
+.pin-marker.north{background:#8b5cf6}
+.pin-marker.cluster{width:36px;height:36px;font-size:13px}
+
+#map-status{
+  position:absolute;top:12px;right:12px;
+  background:rgba(255,255,255,.95);
+  border:1px solid var(--border);border-radius:6px;
+  padding:6px 10px;font-size:11px;color:var(--text-3);
+  z-index:1000;font-weight:500;backdrop-filter:blur(4px);
+}
 .no-results small{display:block;margin-top:6px;color:var(--border-2)}
 
 /* Loading */
@@ -505,26 +560,47 @@ a.photo-link svg{width:12px;height:12px}
   <div id="main-content" style="display:none">
     <div class="results-header">
       <span class="count" id="count"></span>
-      <div class="sort-btns">
-        <span class="label">排序</span>
-        <button class="sort-btn active" onclick="setSort(this,'id')">编号</button>
-        <button class="sort-btn" onclick="setSort(this,'ask_asc')">租金 ↑</button>
-        <button class="sort-btn" onclick="setSort(this,'ask_desc')">租金 ↓</button>
-        <button class="sort-btn" onclick="setSort(this,'mi')">入住日期</button>
-        <button class="sort-btn" onclick="setSort(this,'vd_desc')">空置天数 ↓</button>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="view-toggle">
+          <button id="view-list" class="active" onclick="setView('list')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            列表
+          </button>
+          <button id="view-map" onclick="setView('map')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            地图
+          </button>
+        </div>
+        <div class="sort-btns" id="sort-btns">
+          <span class="label">排序</span>
+          <button class="sort-btn active" onclick="setSort(this,'id')">编号</button>
+          <button class="sort-btn" onclick="setSort(this,'ask_asc')">租金 ↑</button>
+          <button class="sort-btn" onclick="setSort(this,'ask_desc')">租金 ↓</button>
+          <button class="sort-btn" onclick="setSort(this,'mi')">入住日期</button>
+          <button class="sort-btn" onclick="setSort(this,'vd_desc')">空置天数 ↓</button>
+        </div>
       </div>
     </div>
     <div class="grid" id="grid"></div>
+    <div id="map-wrapper" style="display:none;position:relative">
+      <div id="map"></div>
+      <div id="map-status">加载中...</div>
+    </div>
   </div>
 </main>
 
 <script>
 const API_URL = 'https://script.google.com/macros/s/AKfycbxZiDMWyA9fkpVOAaXuCczGeZXmpid9EYgKHyRRdecsdpkw8pZIhRZNesq5kcYTV_cT/exec';
+const GEOCODES_URL = 'geocodes.json';
 let DATA = [];
+let GEOCODES = {};
 let sortMode = 'id';
+let currentView = 'list';
 let currentPage = 1;
 const PAGE_SIZE = 100;
 let lastFiltered = [];
+let mapInstance = null;
+let mapMarkers = [];
 
 async function fetchWithRetry(url, maxRetries = 3) {
   const delays = [0, 1000, 3000]; // 立即 → 1s → 3s
@@ -558,8 +634,13 @@ async function loadData() {
   document.getElementById('total-badge').textContent = '加载中...';
 
   try {
-    const json = await fetchWithRetry(API_URL, 3);
+    // 并行加载房源 + 地理编码缓存
+    const [json, geo] = await Promise.all([
+      fetchWithRetry(API_URL, 3),
+      fetch(GEOCODES_URL, {cache: 'no-store'}).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+    ]);
     DATA = json.data || [];
+    GEOCODES = geo || {};
 
     document.getElementById('total-badge').textContent = '共 ' + DATA.length.toLocaleString() + ' 房源';
 
@@ -657,7 +738,130 @@ function filter() {
 
   lastFiltered = res;
   currentPage = 1;
-  renderPage();
+  if (currentView === 'map') {
+    renderMap();
+    document.getElementById('count').innerHTML =
+      res.length === 0 ? '没有匹配结果' : `共 <em>${res.length.toLocaleString()}</em> 个结果`;
+  } else {
+    renderPage();
+  }
+}
+
+// ========== 视图切换 ==========
+function setView(view) {
+  currentView = view;
+  document.getElementById('view-list').classList.toggle('active', view === 'list');
+  document.getElementById('view-map').classList.toggle('active', view === 'map');
+  document.getElementById('grid').style.display = view === 'list' ? '' : 'none';
+  document.getElementById('map-wrapper').style.display = view === 'map' ? '' : 'none';
+  document.getElementById('sort-btns').style.display = view === 'list' ? '' : 'none';
+
+  // 翻页器仅列表显示
+  const pager = document.getElementById('pager');
+  if (pager) pager.style.display = view === 'list' ? '' : 'none';
+
+  if (view === 'map') {
+    renderMap();
+    document.getElementById('count').innerHTML =
+      lastFiltered.length === 0 ? '没有匹配结果' : `共 <em>${lastFiltered.length.toLocaleString()}</em> 个结果`;
+  } else {
+    renderPage();
+  }
+}
+
+// ========== 地图渲染 ==========
+function ensureMap() {
+  if (mapInstance) return mapInstance;
+  // 默认中心：新加坡几何中心
+  mapInstance = L.map('map', {zoomControl: true}).setView([1.3521, 103.8198], 11);
+  // OneMap 瓦片（新加坡政府官方，免费，无需 API key）
+  L.tileLayer('https://www.onemap.gov.sg/maps/tiles/Default/{z}/{x}/{y}.png', {
+    attribution: '<a href="https://www.onemap.gov.sg/" target="_blank">OneMap</a> &copy; contributors',
+    maxZoom: 18,
+    minZoom: 10
+  }).addTo(mapInstance);
+  return mapInstance;
+}
+
+function regionClass(r) {
+  return ({East:'east',West:'west',Central:'central',North:'north'})[r] || '';
+}
+
+function renderMap() {
+  const map = ensureMap();
+  // 清除旧 markers
+  mapMarkers.forEach(m => map.removeLayer(m));
+  mapMarkers = [];
+
+  // 按地址聚合 — 同地址多套房源用一个 pin（数字显示数量）
+  const buckets = {};
+  let geocoded = 0, missing = 0;
+  for (const u of lastFiltered) {
+    const g = GEOCODES[u.address];
+    if (!g || !g.lat) { missing++; continue; }
+    geocoded++;
+    const key = `${g.lat.toFixed(5)},${g.lng.toFixed(5)}`;
+    if (!buckets[key]) buckets[key] = {lat: g.lat, lng: g.lng, units: []};
+    buckets[key].units.push(u);
+  }
+
+  // 状态条
+  document.getElementById('map-status').innerHTML =
+    `📍 ${geocoded} 套已定位 / ${Object.keys(buckets).length} 个地点` +
+    (missing > 0 ? ` · <span style="color:#c2410c">${missing} 套地址缺失</span>` : '');
+
+  if (geocoded === 0) {
+    return;
+  }
+
+  // 渲染 pins
+  Object.values(buckets).forEach(bucket => {
+    const u0 = bucket.units[0];
+    const count = bucket.units.length;
+    const isCluster = count > 1;
+    const html = `<div class="pin-marker ${regionClass(u0.region)} ${isCluster ? 'cluster' : ''}">${count}</div>`;
+    const icon = L.divIcon({
+      html, className: '', iconSize: isCluster ? [36,36] : [24,24], iconAnchor: isCluster ? [18,18] : [12,12]
+    });
+    const marker = L.marker([bucket.lat, bucket.lng], {icon}).addTo(map);
+
+    // 弹窗内容
+    let popup;
+    if (count === 1) {
+      popup = `
+        <div class="pop-condo">${esc(u0.condo)}</div>
+        <div class="pop-addr">${esc(u0.address)}</div>
+        <div class="pop-rent">$${u0.asking_rent.toLocaleString()}/月</div>
+        <div class="pop-meta">${esc(u0.room)} · ${esc(u0.beds)} · ${esc(u0.region)} · #${u0.no}</div>
+        ${u0.photos ? `<div style="margin-top:6px"><a class="photo-link" href="${esc(u0.photos)}" target="_blank">查看照片 →</a></div>` : ''}
+      `;
+    } else {
+      popup = `
+        <div class="pop-condo">${esc(u0.condo)} 等 ${count} 套</div>
+        <div class="pop-addr">${esc(u0.address)}</div>
+        <div class="pop-list">
+          ${bucket.units.slice(0, 12).map(u => `
+            <div class="pop-list-item">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span style="font-weight:600">${esc(u.room)} · ${esc(u.beds)}</span>
+                <span style="color:var(--brand);font-weight:700">$${u.asking_rent.toLocaleString()}</span>
+              </div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px">${esc(u.unit)} · #${u.no}</div>
+            </div>
+          `).join('')}
+          ${count > 12 ? `<div style="text-align:center;padding:6px;color:var(--text-4);font-size:11px">还有 ${count - 12} 套...</div>` : ''}
+        </div>
+      `;
+    }
+    marker.bindPopup(popup, {maxWidth: 280});
+    mapMarkers.push(marker);
+  });
+
+  // 自动 fit 到所有 pin 的范围
+  if (mapMarkers.length > 0) {
+    const group = L.featureGroup(mapMarkers);
+    map.fitBounds(group.getBounds().pad(0.15), {maxZoom: 14});
+  }
 }
 
 function renderPage() {
