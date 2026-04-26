@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AOTR 房源筛选</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#F8FAFC;
+  --surface:#FFFFFF;
+  --text:#020617;
+  --text-2:#334155;
+  --text-3:#64748B;
+  --text-4:#94A3B8;
+  --border:#E2E8F0;
+  --border-2:#CBD5E1;
+  --border-soft:#F1F5F9;
+  --brand:#0369A1;
+  --brand-hover:#075985;
+  --brand-soft:#F0F9FF;
+  --brand-soft-2:#E0F2FE;
+  --brand-border:#BAE6FD;
+  --brand-text:#075985;
+  --slate-900:#0F172A;
+}
+
+body{
+  font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:13px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===== Topbar ===== */
+.topbar{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:12px 24px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{
+  width:26px;height:26px;border-radius:6px;
+  background:linear-gradient(135deg,#0F172A 0%,#0369A1 100%);
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:13px;letter-spacing:-.3px;
+}
+.brand h1{font-size:14px;font-weight:700;letter-spacing:-.2px;color:var(--text)}
+.topbar-divider{width:1px;height:18px;background:var(--border);margin:0 4px}
+.badge{
+  background:var(--border-soft);
+  color:var(--text-2);
+  border-radius:5px;
+  padding:3px 9px;
+  font-size:12px;
+  font-weight:500;
+}
+.badge-live{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#DCFCE7;color:#166534;
+}
+.badge-live::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:#22C55E;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.update-time{font-size:12px;color:var(--text-3);font-variant-numeric:tabular-nums}
+.refresh-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  border:1px solid var(--border-2);border-radius:6px;
+  padding:5px 11px;font-size:12px;font-weight:500;
+  background:var(--surface);cursor:pointer;color:var(--text-2);
+  transition:all 150ms;font-family:inherit;
+}
+.refresh-btn:hover{background:var(--bg);border-color:var(--text-4)}
+.refresh-btn svg{width:13px;height:13px}
+
+/* ===== Filter container ===== */
+.filter-container{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:16px 24px;
+  display:flex;flex-direction:column;gap:12px;
+}
+
+/* Date section (priority) */
+.date-section{
+  background:var(--brand-soft);
+  border:1px solid var(--brand-border);
+  border-radius:8px;
+  padding:14px 16px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.section-header{
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;
+  color:var(--brand-text);
+  letter-spacing:.4px;text-transform:uppercase;
+}
+.section-header svg{width:14px;height:14px}
+.date-row{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.date-arrow{
+  align-self:center;margin-bottom:7px;
+  color:var(--brand);font-weight:600;font-size:13px;
+}
+
+/* Filter row (other filters) */
+.filter-row{display:flex;align-items:flex-end;flex-wrap:wrap;row-gap:12px}
+.filter-group-block{
+  display:flex;align-items:flex-end;gap:8px;
+  padding:0 16px;position:relative;
+}
+.filter-group-block:first-child{padding-left:0}
+.filter-group-block:not(.actions):not(:last-child)::after{
+  content:'';position:absolute;right:0;top:8px;bottom:8px;
+  width:1px;background:var(--border);
+}
+.filter-group-block.actions{margin-left:auto;padding-right:0}
+
+.filter-group{display:flex;flex-direction:column;gap:5px}
+.filter-group label{
+  font-size:11px;color:var(--text-3);font-weight:500;letter-spacing:.1px;
+}
+
+/* Inputs */
+select,input[type=text],input[type=number],input[type=date]{
+  border:1px solid var(--border-2);
+  border-radius:6px;
+  padding:0 10px;
+  height:32px;
+  font-size:13px;
+  background:var(--surface);
+  color:var(--text);
+  outline:none;
+  font-family:inherit;
+  transition:border-color 150ms,box-shadow 150ms;
+}
+select{padding-right:28px;cursor:pointer}
+select:hover,input:hover{border-color:var(--text-4)}
+select:focus,input:focus{
+  border-color:var(--brand);
+  box-shadow:0 0 0 3px rgba(3,105,161,.12);
+}
+input::placeholder{color:var(--text-4)}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  border:1px solid var(--border-2);border-radius:6px;
+  padding:0 14px;height:32px;font-size:13px;font-weight:500;
+  background:var(--surface);color:var(--text-2);cursor:pointer;
+  font-family:inherit;transition:all 150ms;white-space:nowrap;
+}
+.btn:hover{background:var(--bg);border-color:var(--text-4)}
+.btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn.primary:hover{background:var(--brand-hover);border-color:var(--brand-hover)}
+.btn svg{width:13px;height:13px}
+
+/* Quick dates */
+.quick-dates{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  padding-top:12px;border-top:1px dashed var(--brand-border);
+}
+.quick-dates .label{
+  font-size:11px;font-weight:600;color:var(--brand-text);margin-right:4px;
+  letter-spacing:.2px;
+}
+.qd-btn{
+  border:1px solid var(--brand-border);background:var(--surface);
+  color:var(--brand-text);border-radius:5px;
+  padding:4px 11px;font-size:12px;font-weight:500;cursor:pointer;
+  font-family:inherit;transition:all 120ms;
+}
+.qd-btn:hover{background:var(--brand-soft-2)}
+.qd-btn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+/* ===== Content ===== */
+.content{padding:20px 24px}
+
+.results-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:14px;flex-wrap:wrap;gap:12px;
+}
+.results-header .count{font-size:13px;color:var(--text-2);font-weight:600;font-variant-numeric:tabular-nums}
+.results-header .count em{font-style:normal;color:var(--brand);font-weight:700}
+
+.sort-btns{display:flex;gap:4px;align-items:center}
+.sort-btns .label{font-size:12px;color:var(--text-4);margin-right:6px}
+.sort-btn{
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--text-2);border-radius:5px;
+  padding:4px 10px;font-size:12px;font-weight:500;cursor:pointer;
+  font-family:inherit;transition:all 120ms;
+}
+.sort-btn:hover{background:var(--bg);border-color:var(--border-2)}
+.sort-btn.active{background:var(--slate-900);color:#fff;border-color:var(--slate-900)}
+
+/* Cards */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:10px;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px;
+  transition:border-color 200ms,box-shadow 200ms,transform 200ms;
+  cursor:pointer;
+}
+.card:hover{
+  border-color:var(--border-2);
+  box-shadow:0 1px 3px rgba(15,23,42,.04),0 1px 2px rgba(15,23,42,.04);
+  transform:translateY(-1px);
+}
+.card-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:8px;gap:8px;
+}
+.condo{
+  font-size:13px;font-weight:600;color:var(--text);
+  line-height:1.35;flex:1;
+}
+.rt-badge{
+  font-size:11px;font-weight:700;border-radius:4px;
+  padding:2px 7px;white-space:nowrap;letter-spacing:.2px;
+}
+.rt-CR{background:#DBEAFE;color:#1D4ED8}
+.rt-MB{background:#EDE9FE;color:#6D28D9}
+.rt-EC{background:#DCFCE7;color:#166534}
+.rt-PR{background:#FEF3C7;color:#B45309}
+.rt-ST{background:#FCE7F3;color:#9D174D}
+.rt-other{background:#F1F5F9;color:#475569}
+
+.addr{
+  font-size:12px;color:var(--text-3);margin-bottom:3px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.unit{font-size:11px;color:var(--text-4);margin-bottom:10px}
+
+.rent-row{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.rent{
+  font-size:20px;font-weight:700;color:var(--text);
+  letter-spacing:-.4px;font-variant-numeric:tabular-nums;
+}
+.rent .unit-label{
+  font-size:12px;font-weight:400;color:var(--text-3);margin-left:2px;
+}
+.closing{
+  font-size:12px;color:var(--text-3);font-variant-numeric:tabular-nums;
+}
+
+.info-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.tag{
+  font-size:11px;background:var(--border-soft);color:var(--text-2);
+  border-radius:4px;padding:2px 7px;font-weight:500;
+}
+.tag.green{background:#DCFCE7;color:#166534}
+.tag.red{background:#FEE2E2;color:#B91C1C}
+.tag.orange{background:#FFEDD5;color:#C2410C}
+.tag.blue{background:#DBEAFE;color:#1D4ED8}
+.tag.mi-highlight{
+  background:var(--brand-soft);color:var(--brand-text);
+  border:1px solid var(--brand-border);font-weight:600;
+}
+
+.card-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:10px;padding-top:10px;border-top:1px solid var(--border-soft);
+}
+.region-info{
+  font-size:12px;color:var(--text-3);
+  display:inline-flex;align-items:center;gap:5px;font-weight:500;
+}
+.region-dot{
+  width:6px;height:6px;border-radius:50%;display:inline-block;
+}
+a.photo-link{
+  font-size:12px;color:var(--brand);text-decoration:none;font-weight:500;
+  display:inline-flex;align-items:center;gap:3px;transition:color 150ms;
+}
+a.photo-link:hover{color:var(--brand-hover);text-decoration:underline}
+a.photo-link svg{width:12px;height:12px}
+.no-photo{font-size:12px;color:var(--border-2)}
+
+.no-results{
+  text-align:center;color:var(--text-4);
+  padding:60px 24px;grid-column:1/-1;font-size:14px;
+}
+.no-results small{display:block;margin-top:6px;color:var(--border-2)}
+
+/* Loading */
+.loading-state{text-align:center;padding:80px 20px;color:var(--text-4)}
+.spinner{
+  display:inline-block;width:28px;height:28px;
+  border:3px solid var(--border);border-top-color:var(--brand);
+  border-radius:50%;animation:spin 700ms linear infinite;
+  margin-bottom:14px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.error-state{
+  text-align:center;padding:48px 24px;color:#B91C1C;
+  background:#FEE2E2;border:1px solid #FECACA;
+  border-radius:8px;margin:20px;
+}
+
+/* Pagination */
+#pager{
+  display:flex;gap:4px;justify-content:center;align-items:center;
+  padding:28px 0 8px;flex-wrap:wrap;
+}
+#pager .pg-btn{
+  min-width:32px;height:32px;padding:0 11px;
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--text-2);font-size:12px;font-weight:500;
+  border-radius:5px;cursor:pointer;font-family:inherit;
+  transition:all 120ms;
+}
+#pager .pg-btn:hover:not(:disabled){background:var(--bg);border-color:var(--border-2)}
+#pager .pg-btn.active{
+  background:var(--slate-900);color:#fff;border-color:var(--slate-900);
+}
+#pager .pg-btn:disabled{opacity:.4;cursor:not-allowed}
+#pager .pg-ellipsis{color:var(--text-4);padding:0 4px;font-size:12px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Topbar ===== -->
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">A</span>
+    <h1>AOTR · Bespoke 房源筛选</h1>
+  </div>
+  <span class="topbar-divider"></span>
+  <span class="badge" id="total-badge">加载中...</span>
+  <span class="badge badge-live">实时数据</span>
+
+  <div class="topbar-right">
+    <span class="update-time" id="update-time"></span>
+    <button class="refresh-btn" onclick="loadData()" aria-label="刷新数据">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+      刷新
+    </button>
+  </div>
+</header>
+
+<!-- ===== Filters ===== -->
+<section class="filter-container">
+
+  <!-- 客户入住时间（高亮） -->
+  <div class="date-section">
+    <div class="section-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      客户入住时间
+    </div>
+    <div class="date-row">
+      <div class="filter-group">
+        <label for="mi_from">最早</label>
+        <input type="date" id="mi_from" value="2026-06-01">
+      </div>
+      <span class="date-arrow">→</span>
+      <div class="filter-group">
+        <label for="mi_to">最晚</label>
+        <input type="date" id="mi_to" value="2026-07-31">
+      </div>
+      <div class="filter-group" style="margin-left:8px">
+        <label for="include_vacant">已空置房源</label>
+        <select id="include_vacant" style="width:84px">
+          <option value="1">包含</option>
+          <option value="0">不含</option>
+        </select>
+      </div>
+    </div>
+    <div class="quick-dates">
+      <span class="label">快速选择</span>
+      <button class="qd-btn" onclick="setQuickDate('2026-05-01','2026-05-31',this)">5月</button>
+      <button class="qd-btn active" onclick="setQuickDate('2026-06-01','2026-06-30',this)">6月</button>
+      <button class="qd-btn" onclick="setQuickDate('2026-07-01','2026-07-31',this)">7月</button>
+      <button class="qd-btn" onclick="setQuickDate('2026-06-01','2026-07-31',this)">6–7月</button>
+      <button class="qd-btn" onclick="setQuickDate('2026-08-01','2026-08-31',this)">8月</button>
+      <button class="qd-btn" onclick="clearDateFilter()">不限日期</button>
+    </div>
+  </div>
+
+  <!-- 其他筛选条件 -->
+  <div class="filter-row">
+
+    <!-- 组1：位置 -->
+    <div class="filter-group-block">
+      <div class="filter-group">
+        <label for="region">地区</label>
+        <select id="region" style="width:110px">
+          <option value="">全部</option>
+          <option>East</option>
+          <option>West</option>
+          <option>Central</option>
+          <option>North</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="search">关键词</label>
+        <input type="text" id="search" placeholder="公寓名 / 地址" style="width:200px">
+      </div>
+    </div>
+
+    <!-- 组2：房型 -->
+    <div class="filter-group-block">
+      <div class="filter-group">
+        <label for="rtype">房型大类</label>
+        <select id="rtype" style="width:135px">
+          <option value="">全部</option>
+          <option value="CR">CR · 普通</option>
+          <option value="MB">MBR · 主卧</option>
+          <option value="EC">ECON · 经济</option>
+          <option value="PR">PR · 高级</option>
+          <option value="ST">Studio</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="rt_specific">具体房型</label>
+        <select id="rt_specific" style="width:108px"><option value="">全部</option></select>
+      </div>
+      <div class="filter-group">
+        <label for="beds">卧室数</label>
+        <select id="beds" style="width:84px">
+          <option value="">全部</option>
+          <option value="4">4 室</option>
+          <option value="5">5 室</option>
+          <option value="6">6 室</option>
+          <option value="7">7 室</option>
+          <option value="8">8 室</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 组3：价格 + 其他 -->
+    <div class="filter-group-block">
+      <div class="filter-group">
+        <label for="min_rent">租金最低</label>
+        <input type="number" id="min_rent" placeholder="$ 不限" style="width:100px" step="100">
+      </div>
+      <div class="filter-group">
+        <label for="max_rent">租金最高</label>
+        <input type="number" id="max_rent" placeholder="$ 不限" style="width:100px" step="100">
+      </div>
+      <div class="filter-group">
+        <label for="autoclose">Auto Close</label>
+        <select id="autoclose" style="width:80px">
+          <option value="">全部</option>
+          <option value="Y">是</option>
+          <option value="N">否</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="female_only">仅限女性</label>
+        <select id="female_only" style="width:80px">
+          <option value="">全部</option>
+          <option value="Y">是</option>
+          <option value="N">否</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 重置 -->
+    <div class="filter-group-block actions">
+      <button class="btn" onclick="resetFilters()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        重置全部
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Content ===== -->
+<main class="content">
+  <div id="loading-state" class="loading-state">
+    <div class="spinner"></div>
+    <div>正在从 Google Sheet 加载数据...</div>
+  </div>
+  <div id="error-state" class="error-state" style="display:none"></div>
+  <div id="main-content" style="display:none">
+    <div class="results-header">
+      <span class="count" id="count"></span>
+      <div class="sort-btns">
+        <span class="label">排序</span>
+        <button class="sort-btn active" onclick="setSort(this,'id')">编号</button>
+        <button class="sort-btn" onclick="setSort(this,'ask_asc')">租金 ↑</button>
+        <button class="sort-btn" onclick="setSort(this,'ask_desc')">租金 ↓</button>
+        <button class="sort-btn" onclick="setSort(this,'mi')">入住日期</button>
+        <button class="sort-btn" onclick="setSort(this,'vd_desc')">空置天数 ↓</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</main>
+
+<script>
+const API_URL = 'https://script.google.com/macros/s/AKfycbxZiDMWyA9fkpVOAaXuCczGeZXmpid9EYgKHyRRdecsdpkw8pZIhRZNesq5kcYTV_cT/exec';
+let DATA = [];
+let sortMode = 'id';
+let currentPage = 1;
+const PAGE_SIZE = 100;
+let lastFiltered = [];
+
+async function loadData() {
+  document.getElementById('loading-state').style.display = 'block';
+  document.getElementById('error-state').style.display = 'none';
+  document.getElementById('main-content').style.display = 'none';
+  document.getElementById('total-badge').textContent = '加载中...';
+
+  try {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const json = await res.json();
+    DATA = json.data || [];
+
+    document.getElementById('total-badge').textContent = '共 ' + DATA.length.toLocaleString() + ' 房源';
+
+    const updated = new Date(json.updated);
+    document.getElementById('update-time').textContent =
+      '更新 ' + updated.toLocaleString('zh-CN', {month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+
+    const rtSel = document.getElementById('rt_specific');
+    rtSel.innerHTML = '<option value="">全部</option>';
+    [...new Set(DATA.map(u => u.room))].sort().forEach(rt => {
+      const o = document.createElement('option');
+      o.value = rt; o.text = rt;
+      rtSel.appendChild(o);
+    });
+
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    filter();
+  } catch (err) {
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('error-state').style.display = 'block';
+    document.getElementById('error-state').textContent = '加载失败，请点击右上角「刷新」重试。错误: ' + err.message;
+  }
+}
+
+function filter() {
+  if (!DATA.length) return;
+  const search       = document.getElementById('search').value.trim().toLowerCase();
+  const region       = document.getElementById('region').value;
+  const rtype        = document.getElementById('rtype').value;
+  const rtspec       = document.getElementById('rt_specific').value;
+  const beds         = document.getElementById('beds').value;
+  const maxRent      = parseFloat(document.getElementById('max_rent').value) || Infinity;
+  const minRent      = parseFloat(document.getElementById('min_rent').value) || 0;
+  const autoclose    = document.getElementById('autoclose').value;
+  const femaleOnly   = document.getElementById('female_only').value;
+  const includeVacant= document.getElementById('include_vacant').value === '1';
+  const miFrom       = document.getElementById('mi_from').value;
+  const miTo         = document.getElementById('mi_to').value;
+  const fromDate     = miFrom ? new Date(miFrom) : null;
+  const toDate       = miTo   ? new Date(miTo)   : null;
+
+  let res = DATA.filter(u => {
+    if (search && !(
+      u.condo.toLowerCase().includes(search) ||
+      u.address.toLowerCase().includes(search) ||
+      u.unit.toLowerCase().includes(search)
+    )) return false;
+    if (region  && u.region !== region)            return false;
+    if (rtype   && !u.room.startsWith(rtype))      return false;
+    if (rtspec  && u.room !== rtspec)              return false;
+    if (beds    && parseInt(u.beds) !== parseInt(beds)) return false;
+    if (u.asking_rent <= 0) return false;
+    if (u.asking_rent > maxRent || u.asking_rent < minRent) return false;
+    if (autoclose && u.auto_close !== autoclose)   return false;
+    if (femaleOnly) {
+      const isFemale = u.notes.includes('FEMALE');
+      if (femaleOnly === 'Y' && !isFemale) return false;
+      if (femaleOnly === 'N' && isFemale)  return false;
+    }
+
+    if (fromDate || toDate) {
+      const mi = parseMoveIn(u.move_in);
+      if (!mi) {
+        // 已空置房源：可协调起租到 今天+30天 内
+        if (!includeVacant || u.vacant_days <= 0) return false;
+        if (fromDate) {
+          const today = new Date(); today.setHours(0,0,0,0);
+          const vacantLimit = new Date(today.getTime() + 30 * 86400000);
+          if (fromDate > vacantLimit) return false;
+        }
+        return true;
+      }
+      // 有 earliest_move_in：下限往前推14天，可协调到 mi_from
+      const adjustedFrom = fromDate ? new Date(fromDate.getTime() - 14 * 86400000) : null;
+      if (adjustedFrom && mi < adjustedFrom) return false;
+      if (toDate && mi > toDate) return false;
+    }
+    return true;
+  });
+
+  res.sort((a, b) => {
+    if (sortMode === 'id')       return a.no - b.no;
+    if (sortMode === 'ask_asc')  return a.asking_rent - b.asking_rent;
+    if (sortMode === 'ask_desc') return b.asking_rent - a.asking_rent;
+    if (sortMode === 'vd_desc')  return b.vacant_days - a.vacant_days;
+    if (sortMode === 'mi') {
+      const da = parseMoveIn(a.move_in) || new Date('9999-12-31');
+      const db = parseMoveIn(b.move_in) || new Date('9999-12-31');
+      return da - db;
+    }
+    return 0;
+  });
+
+  lastFiltered = res;
+  currentPage = 1;
+  renderPage();
+}
+
+function renderPage() {
+  const total = lastFiltered.length;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  currentPage = Math.min(currentPage, totalPages);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const slice = lastFiltered.slice(start, start + PAGE_SIZE);
+
+  const countEl = document.getElementById('count');
+  if (total === 0) {
+    countEl.textContent = '没有匹配结果';
+  } else if (totalPages === 1) {
+    countEl.innerHTML = `共 <em>${total.toLocaleString()}</em> 个结果`;
+  } else {
+    countEl.innerHTML = `共 <em>${total.toLocaleString()}</em> 个结果 · 第 ${currentPage} / ${totalPages} 页`;
+  }
+
+  renderCards(slice);
+
+  // Pagination
+  let pager = document.getElementById('pager');
+  if (!pager) {
+    pager = document.createElement('div');
+    pager.id = 'pager';
+    document.getElementById('grid').after(pager);
+  }
+  if (totalPages <= 1) { pager.innerHTML = ''; return; }
+
+  const pages = [];
+  for (let p = 1; p <= totalPages; p++) {
+    if (p === 1 || p === totalPages || Math.abs(p - currentPage) <= 2) {
+      pages.push(p);
+    } else if (pages[pages.length - 1] !== '…') {
+      pages.push('…');
+    }
+  }
+
+  pager.innerHTML =
+    `<button class="pg-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>← 上页</button>` +
+    pages.map(p => p === '…'
+      ? `<span class="pg-ellipsis">…</span>`
+      : `<button class="pg-btn ${p===currentPage?'active':''}" onclick="goPage(${p})">${p}</button>`
+    ).join('') +
+    `<button class="pg-btn" onclick="goPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''}>下页 →</button>`;
+}
+
+function goPage(p) {
+  const totalPages = Math.ceil(lastFiltered.length / PAGE_SIZE);
+  if (p < 1 || p > totalPages) return;
+  currentPage = p;
+  renderPage();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function renderCards(list) {
+  const grid = document.getElementById('grid');
+  if (!list.length) {
+    grid.innerHTML = '<div class="no-results">没有找到匹配的房源<small>试试放宽日期范围或其他条件</small></div>';
+    return;
+  }
+  const isDateFiltered = document.getElementById('mi_from').value || document.getElementById('mi_to').value;
+
+  grid.innerHTML = list.map(u => {
+    const miParsed = parseMoveIn(u.move_in);
+    const miDate = miParsed
+      ? miParsed.toLocaleDateString('zh-CN', {year:'numeric',month:'short',day:'numeric'})
+      : null;
+    const vdClass     = u.vacant_days > 60 ? 'red' : u.vacant_days > 30 ? 'orange' : 'green';
+    const isPartner   = u.notes.includes('Partner');
+    const femaleOnly  = u.notes.includes('FEMALE');
+    const miHighlight = isDateFiltered && miDate ? ' mi-highlight' : '';
+
+    return '<div class="card">' +
+      '<div class="card-top">' +
+        '<div class="condo">' + esc(u.condo) + '</div>' +
+        '<span class="rt-badge ' + rtClass(u.room) + '">' + esc(u.room) + '</span>' +
+      '</div>' +
+      '<div class="addr">' + esc(u.address) + '</div>' +
+      '<div class="unit">' + esc(u.unit) + '</div>' +
+      '<div class="rent-row">' +
+        '<div class="rent">$' + u.asking_rent.toLocaleString() + '<span class="unit-label">/月</span></div>' +
+        (u.closing_rent && u.closing_rent !== u.asking_rent
+          ? '<div class="closing">议价 $' + u.closing_rent.toLocaleString() + '</div>' : '') +
+      '</div>' +
+      '<div class="info-row">' +
+        '<span class="tag">' + esc(u.beds) + '</span>' +
+        (miDate ? '<span class="tag' + miHighlight + '">入住 ' + miDate + '</span>' : '') +
+        (u.vacant_days > 0 ? '<span class="tag ' + vdClass + '">空置 ' + u.vacant_days + ' 天</span>' : '') +
+        (u.auto_close === 'Y' ? '<span class="tag green">Auto Close</span>' : '') +
+        (isPartner   ? '<span class="tag blue">Partner</span>' : '') +
+        (femaleOnly  ? '<span class="tag red">仅限女性</span>' : '') +
+      '</div>' +
+      '<div class="card-foot">' +
+        '<span class="region-info">' +
+          '<span class="region-dot" style="background:' + regionColor(u.region) + '"></span>' +
+          esc(u.region) + ' · #' + u.no +
+        '</span>' +
+        (u.photos
+          ? '<a class="photo-link" href="' + esc(u.photos) + '" target="_blank" rel="noopener">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>' +
+              '查看照片</a>'
+          : '<span class="no-photo">暂无照片</span>') +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// 鲁棒日期解析：支持 ISO "2026-05-10" 和 JS toString "Sun May 10 2026..."（含截断的 "GM"）
+const MONTHS = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+function parseMoveIn(s) {
+  if (!s) return null;
+  if (/^\d{4}-\d{2}-\d{2}/.test(s)) {
+    const d = new Date(s);
+    return isNaN(d) ? null : d;
+  }
+  const m = s.match(/(\w{3})\s+(\d{1,2})\s+(\d{4})/);
+  if (m && MONTHS[m[1]] !== undefined) {
+    return new Date(parseInt(m[3]), MONTHS[m[1]], parseInt(m[2]));
+  }
+  return null;
+}
+
+function rtClass(rt) {
+  if (rt.startsWith('CR')) return 'rt-CR';
+  if (rt.startsWith('MB')) return 'rt-MB';
+  if (rt.startsWith('EC')) return 'rt-EC';
+  if (rt.startsWith('PR')) return 'rt-PR';
+  if (rt.includes('STUDIO') || rt.startsWith('ST')) return 'rt-ST';
+  return 'rt-other';
+}
+
+function regionColor(r) {
+  return {East:'#3b82f6',West:'#10b981',Central:'#f59e0b',North:'#8b5cf6'}[r] || '#94a3b8';
+}
+
+function setQuickDate(from, to, btn) {
+  document.getElementById('mi_from').value = from;
+  document.getElementById('mi_to').value   = to;
+  document.querySelectorAll('.qd-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  filter();
+}
+
+function clearDateFilter() {
+  document.getElementById('mi_from').value = '';
+  document.getElementById('mi_to').value   = '';
+  document.querySelectorAll('.qd-btn').forEach(b => b.classList.remove('active'));
+  filter();
+}
+
+function setSort(btn, mode) {
+  sortMode = mode;
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filter();
+}
+
+function resetFilters() {
+  document.getElementById('search').value = '';
+  document.getElementById('min_rent').value = '';
+  document.getElementById('max_rent').value = '';
+  ['region','rtype','rt_specific','beds','autoclose','female_only'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('include_vacant').value = '1';
+  document.getElementById('mi_from').value = '';
+  document.getElementById('mi_to').value   = '';
+  document.querySelectorAll('.qd-btn').forEach(b => b.classList.remove('active'));
+  sortMode = 'id';
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.sort-btn').classList.add('active');
+  filter();
+}
+
+['search','region','rtype','rt_specific','beds','min_rent','max_rent','autoclose','female_only','include_vacant'].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', filter);
+});
+['mi_from','mi_to'].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('change', filter);
+  el.addEventListener('input', filter);
+});
+
+loadData();
+</script>
+</body>
+</html>
