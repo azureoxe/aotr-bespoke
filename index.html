@@ -94,36 +94,29 @@ body{
 .filter-container{
   background:var(--surface);
   border-bottom:1px solid var(--border);
-  padding:16px 24px;
-  display:flex;flex-direction:column;gap:12px;
+  padding:10px 24px 12px;
+  display:flex;flex-direction:column;gap:8px;
 }
 
-/* Date section (priority) */
-.date-section{
+/* 日期组 — 紧凑、淡蓝高亮 */
+.date-inline{
+  display:inline-flex;align-items:flex-end;gap:8px;
   background:var(--brand-soft);
   border:1px solid var(--brand-border);
-  border-radius:8px;
-  padding:14px 16px;
-  display:flex;flex-direction:column;gap:12px;
+  border-radius:7px;
+  padding:5px 10px 6px;
 }
-.section-header{
-  display:flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;
-  color:var(--brand-text);
-  letter-spacing:.4px;text-transform:uppercase;
-}
-.section-header svg{width:14px;height:14px}
-.date-row{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
-.date-arrow{
-  align-self:center;margin-bottom:7px;
-  color:var(--brand);font-weight:600;font-size:13px;
+.date-inline .filter-group label{color:var(--brand-text);font-weight:600}
+.date-inline .date-arrow{
+  align-self:center;color:var(--brand);font-weight:600;
+  font-size:13px;margin-bottom:6px;
 }
 
-/* Filter row (other filters) */
-.filter-row{display:flex;align-items:flex-end;flex-wrap:wrap;row-gap:12px}
+/* Filter row */
+.filter-row{display:flex;align-items:flex-end;flex-wrap:wrap;row-gap:10px;column-gap:0}
 .filter-group-block{
   display:flex;align-items:flex-end;gap:8px;
-  padding:0 16px;position:relative;
+  padding:0 14px;position:relative;
 }
 .filter-group-block:first-child{padding-left:0}
 .filter-group-block:not(.actions):not(:last-child)::after{
@@ -171,14 +164,12 @@ input::placeholder{color:var(--text-4)}
 .btn.primary:hover{background:var(--brand-hover);border-color:var(--brand-hover)}
 .btn svg{width:13px;height:13px}
 
-/* Quick dates */
+/* Quick dates — 紧贴日期组下方 */
 .quick-dates{
   display:flex;align-items:center;gap:6px;flex-wrap:wrap;
-  padding-top:12px;border-top:1px dashed var(--brand-border);
 }
 .quick-dates .label{
-  font-size:11px;font-weight:600;color:var(--brand-text);margin-right:4px;
-  letter-spacing:.2px;
+  font-size:11px;font-weight:500;color:var(--text-3);margin-right:2px;
 }
 .qd-btn{
   border:1px solid var(--brand-border);background:var(--surface);
@@ -304,16 +295,20 @@ a.photo-link svg{width:12px;height:12px}
   padding:60px 24px;grid-column:1/-1;font-size:14px;
 }
 
-/* ===== 视图切换 + 地图 ===== */
-.view-toggle{display:inline-flex;border:1px solid var(--border-2);border-radius:6px;overflow:hidden;margin-right:8px}
+/* ===== 视图切换（在顶栏，暗底） ===== */
+.view-toggle{
+  display:inline-flex;border:1px solid #374151;border-radius:6px;
+  overflow:hidden;
+}
 .view-toggle button{
-  border:0;background:var(--surface);color:var(--text-2);
-  padding:0 12px;height:32px;font-size:12px;font-weight:500;cursor:pointer;
+  border:0;background:transparent;color:#d1d5db;
+  padding:0 11px;height:28px;font-size:12px;font-weight:500;cursor:pointer;
   font-family:inherit;display:inline-flex;align-items:center;gap:5px;
   transition:all 120ms;
 }
-.view-toggle button:not(:first-child){border-left:1px solid var(--border-2)}
-.view-toggle button.active{background:var(--slate-900);color:#fff}
+.view-toggle button:not(:first-child){border-left:1px solid #374151}
+.view-toggle button:hover:not(.active){background:#1f2937;color:#fff}
+.view-toggle button.active{background:#fff;color:var(--slate-900)}
 .view-toggle button svg{width:13px;height:13px}
 
 #map{
@@ -414,6 +409,16 @@ a.photo-link svg{width:12px;height:12px}
   <span class="badge badge-live">实时数据</span>
 
   <div class="topbar-right">
+    <div class="view-toggle">
+      <button id="view-list" class="active" onclick="setView('list')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        列表
+      </button>
+      <button id="view-map" onclick="setView('map')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        地图
+      </button>
+    </div>
     <span class="update-time" id="update-time"></span>
     <button class="refresh-btn" onclick="loadData()" aria-label="刷新数据">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
@@ -425,15 +430,13 @@ a.photo-link svg{width:12px;height:12px}
 <!-- ===== Filters ===== -->
 <section class="filter-container">
 
-  <!-- 客户入住时间（高亮） -->
-  <div class="date-section">
-    <div class="section-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      客户入住时间
-    </div>
-    <div class="date-row">
+  <!-- 主筛选行：日期组 + 位置 + 房型 + 价格 + 重置 -->
+  <div class="filter-row">
+
+    <!-- 日期组（高亮淡蓝） -->
+    <div class="date-inline">
       <div class="filter-group">
-        <label for="mi_from">最早</label>
+        <label for="mi_from">入住 · 最早</label>
         <input type="date" id="mi_from" value="2026-06-01">
       </div>
       <span class="date-arrow">→</span>
@@ -441,33 +444,20 @@ a.photo-link svg{width:12px;height:12px}
         <label for="mi_to">最晚</label>
         <input type="date" id="mi_to" value="2026-07-31">
       </div>
-      <div class="filter-group" style="margin-left:8px">
-        <label for="include_vacant">已空置房源</label>
-        <select id="include_vacant" style="width:84px">
+      <div class="filter-group">
+        <label for="include_vacant">已空置</label>
+        <select id="include_vacant" style="width:74px">
           <option value="1">包含</option>
           <option value="0">不含</option>
         </select>
       </div>
     </div>
-    <div class="quick-dates">
-      <span class="label">快速选择</span>
-      <button class="qd-btn" onclick="setQuickDate('2026-05-01','2026-05-31',this)">5月</button>
-      <button class="qd-btn active" onclick="setQuickDate('2026-06-01','2026-06-30',this)">6月</button>
-      <button class="qd-btn" onclick="setQuickDate('2026-07-01','2026-07-31',this)">7月</button>
-      <button class="qd-btn" onclick="setQuickDate('2026-06-01','2026-07-31',this)">6–7月</button>
-      <button class="qd-btn" onclick="setQuickDate('2026-08-01','2026-08-31',this)">8月</button>
-      <button class="qd-btn" onclick="clearDateFilter()">不限日期</button>
-    </div>
-  </div>
-
-  <!-- 其他筛选条件 -->
-  <div class="filter-row">
 
     <!-- 组1：位置 -->
     <div class="filter-group-block">
       <div class="filter-group">
         <label for="region">地区</label>
-        <select id="region" style="width:110px">
+        <select id="region" style="width:100px">
           <option value="">全部</option>
           <option>East</option>
           <option>West</option>
@@ -477,7 +467,7 @@ a.photo-link svg{width:12px;height:12px}
       </div>
       <div class="filter-group">
         <label for="search">关键词</label>
-        <input type="text" id="search" placeholder="公寓名 / 地址" style="width:200px">
+        <input type="text" id="search" placeholder="公寓名 / 地址" style="width:170px">
       </div>
     </div>
 
@@ -548,6 +538,17 @@ a.photo-link svg{width:12px;height:12px}
     </div>
 
   </div>
+
+  <!-- 快速日期 -->
+  <div class="quick-dates">
+    <span class="label">快速日期</span>
+    <button class="qd-btn" onclick="setQuickDate('2026-05-01','2026-05-31',this)">5月</button>
+    <button class="qd-btn active" onclick="setQuickDate('2026-06-01','2026-06-30',this)">6月</button>
+    <button class="qd-btn" onclick="setQuickDate('2026-07-01','2026-07-31',this)">7月</button>
+    <button class="qd-btn" onclick="setQuickDate('2026-06-01','2026-07-31',this)">6–7月</button>
+    <button class="qd-btn" onclick="setQuickDate('2026-08-01','2026-08-31',this)">8月</button>
+    <button class="qd-btn" onclick="clearDateFilter()">不限日期</button>
+  </div>
 </section>
 
 <!-- ===== Content ===== -->
@@ -560,25 +561,13 @@ a.photo-link svg{width:12px;height:12px}
   <div id="main-content" style="display:none">
     <div class="results-header">
       <span class="count" id="count"></span>
-      <div style="display:flex;align-items:center;gap:8px">
-        <div class="view-toggle">
-          <button id="view-list" class="active" onclick="setView('list')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-            列表
-          </button>
-          <button id="view-map" onclick="setView('map')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-            地图
-          </button>
-        </div>
-        <div class="sort-btns" id="sort-btns">
-          <span class="label">排序</span>
-          <button class="sort-btn active" onclick="setSort(this,'id')">编号</button>
-          <button class="sort-btn" onclick="setSort(this,'ask_asc')">租金 ↑</button>
-          <button class="sort-btn" onclick="setSort(this,'ask_desc')">租金 ↓</button>
-          <button class="sort-btn" onclick="setSort(this,'mi')">入住日期</button>
-          <button class="sort-btn" onclick="setSort(this,'vd_desc')">空置天数 ↓</button>
-        </div>
+      <div class="sort-btns" id="sort-btns">
+        <span class="label">排序</span>
+        <button class="sort-btn active" onclick="setSort(this,'id')">编号</button>
+        <button class="sort-btn" onclick="setSort(this,'ask_asc')">租金 ↑</button>
+        <button class="sort-btn" onclick="setSort(this,'ask_desc')">租金 ↓</button>
+        <button class="sort-btn" onclick="setSort(this,'mi')">入住日期</button>
+        <button class="sort-btn" onclick="setSort(this,'vd_desc')">空置天数 ↓</button>
       </div>
     </div>
     <div class="grid" id="grid"></div>
