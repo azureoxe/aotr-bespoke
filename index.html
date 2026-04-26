@@ -300,6 +300,33 @@ a.photo-link svg{width:12px;height:12px}
   padding:60px 24px;grid-column:1/-1;font-size:14px;
 }
 
+/* ===== 学校选择器（顶栏） ===== */
+.school-picker{display:inline-flex;align-items:center;gap:8px;margin-right:4px}
+.school-picker select{
+  background:#1f2937;color:#fff;border:1px solid #374151;border-radius:6px;
+  height:28px;padding:0 28px 0 10px;font-size:12px;font-weight:500;
+  font-family:inherit;cursor:pointer;outline:none;
+}
+.school-picker select:hover{border-color:#4b5563;background:#111827}
+.school-picker select:focus{border-color:#0ea5e9}
+
+/* 通勤标签（卡片上） */
+.tag.commute{
+  background:#0c4a6e;color:#bae6fd;font-weight:600;
+}
+.tag.commute.fast{background:#14532d;color:#86efac}
+.tag.commute.med{background:#78350f;color:#fcd34d}
+.tag.commute.slow{background:#7f1d1d;color:#fca5a5}
+
+/* 通勤筛选条（在筛选行里） */
+.commute-filter{
+  display:none;align-items:flex-end;gap:6px;
+  background:#f0f9ff;border:1px solid #bae6fd;
+  border-radius:6px;padding:4px 8px 5px;
+}
+.commute-filter.active{display:inline-flex}
+.commute-filter label{color:#075985;font-weight:600;font-size:11px}
+
 /* ===== 视图切换（在顶栏，暗底） ===== */
 .view-toggle{
   display:inline-flex;border:1px solid #374151;border-radius:6px;
@@ -414,6 +441,12 @@ a.photo-link svg{width:12px;height:12px}
   <span class="badge badge-live">实时数据</span>
 
   <div class="topbar-right">
+    <div class="school-picker">
+      <label for="school" style="color:#9ca3af;font-size:12px;font-weight:500">🎓 目标学校</label>
+      <select id="school">
+        <option value="">未选</option>
+      </select>
+    </div>
     <div class="view-toggle">
       <button id="view-list" class="active" onclick="setView('list')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
@@ -495,6 +528,20 @@ a.photo-link svg{width:12px;height:12px}
       </div>
     </div>
 
+    <!-- 通勤上限（仅当选了学校时出现） -->
+    <div id="commute-filter" class="commute-filter">
+      <div class="filter-group">
+        <label for="max_commute">通勤 ≤</label>
+        <select id="max_commute" style="width:96px">
+          <option value="0">不限</option>
+          <option value="30">30 分钟</option>
+          <option value="45">45 分钟</option>
+          <option value="60">60 分钟</option>
+          <option value="75">75 分钟</option>
+        </select>
+      </div>
+    </div>
+
     <!-- 更多筛选 + 重置 -->
     <div class="filter-group-block actions">
       <div class="more-wrapper">
@@ -573,6 +620,7 @@ a.photo-link svg{width:12px;height:12px}
         <button class="sort-btn" onclick="setSort(this,'ask_desc')">租金 ↓</button>
         <button class="sort-btn" onclick="setSort(this,'mi')">入住日期</button>
         <button class="sort-btn" onclick="setSort(this,'vd_desc')">空置天数 ↓</button>
+        <button class="sort-btn" id="sort-commute" onclick="setSort(this,'commute')" style="display:none">通勤 ↑</button>
       </div>
     </div>
     <div class="grid" id="grid"></div>
@@ -586,8 +634,12 @@ a.photo-link svg{width:12px;height:12px}
 <script>
 const API_URL = 'https://script.google.com/macros/s/AKfycbxZiDMWyA9fkpVOAaXuCczGeZXmpid9EYgKHyRRdecsdpkw8pZIhRZNesq5kcYTV_cT/exec';
 const GEOCODES_URL = 'geocodes.json';
+const COMMUTE_URL = 'commute.json';
 let DATA = [];
 let GEOCODES = {};
+let COMMUTE = {schools: [], matrix: {}};
+let SCHOOL_KEY = '';     // 当前选中学校
+let MAX_COMMUTE = 0;     // 通勤上限筛选（分钟，0=不限）
 let sortMode = 'id';
 let currentView = 'list';
 let currentPage = 1;
@@ -595,6 +647,7 @@ const PAGE_SIZE = 100;
 let lastFiltered = [];
 let mapInstance = null;
 let mapMarkers = [];
+let schoolMarker = null;
 
 async function fetchWithRetry(url, maxRetries = 3) {
   const delays = [0, 1000, 3000]; // 立即 → 1s → 3s
@@ -628,13 +681,25 @@ async function loadData() {
   document.getElementById('total-badge').textContent = '加载中...';
 
   try {
-    // 并行加载房源 + 地理编码缓存
-    const [json, geo] = await Promise.all([
+    // 并行加载房源 + 地理编码 + 通勤矩阵
+    const [json, geo, commute] = await Promise.all([
       fetchWithRetry(API_URL, 3),
-      fetch(GEOCODES_URL, {cache: 'no-store'}).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+      fetch(GEOCODES_URL, {cache: 'no-store'}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+      fetch(COMMUTE_URL,  {cache: 'no-store'}).then(r => r.ok ? r.json() : {schools:[],matrix:{}}).catch(() => ({schools:[],matrix:{}}))
     ]);
     DATA = json.data || [];
     GEOCODES = geo || {};
+    COMMUTE = commute || {schools:[], matrix:{}};
+
+    // 填充学校下拉
+    const schoolSel = document.getElementById('school');
+    schoolSel.innerHTML = '<option value="">未选</option>';
+    (COMMUTE.schools || []).forEach(s => {
+      const o = document.createElement('option');
+      o.value = s.key;
+      o.text = s.name_cn + ' (' + s.key + ')';
+      schoolSel.appendChild(o);
+    });
 
     document.getElementById('total-badge').textContent = '共 ' + DATA.length.toLocaleString() + ' 房源';
 
@@ -697,6 +762,12 @@ function filter() {
       if (femaleOnly === 'N' && isFemale)  return false;
     }
 
+    // 通勤上限筛选（仅当选了学校 + 设了上限）
+    if (SCHOOL_KEY && MAX_COMMUTE > 0) {
+      const c = (COMMUTE.matrix[u.address] || {})[SCHOOL_KEY];
+      if (!c || c.min > MAX_COMMUTE) return false;
+    }
+
     if (fromDate || toDate) {
       const mi = parseMoveIn(u.move_in);
       if (!mi) {
@@ -727,6 +798,11 @@ function filter() {
       const db = parseMoveIn(b.move_in) || new Date('9999-12-31');
       return da - db;
     }
+    if (sortMode === 'commute' && SCHOOL_KEY) {
+      const ca = (COMMUTE.matrix[a.address] || {})[SCHOOL_KEY];
+      const cb = (COMMUTE.matrix[b.address] || {})[SCHOOL_KEY];
+      return (ca?.min ?? 999) - (cb?.min ?? 999);
+    }
     return 0;
   });
 
@@ -756,6 +832,19 @@ function setView(view) {
 
   if (view === 'map') {
     renderMap();
+    // 切换到地图时手动触发学校 pin 渲染
+    if (SCHOOL_KEY) {
+      const ev = new Event('change');
+      // 触发 school select 的逻辑画 school pin
+      const sch = COMMUTE.schools.find(s => s.key === SCHOOL_KEY);
+      if (sch && mapInstance) {
+        if (schoolMarker) { mapInstance.removeLayer(schoolMarker); }
+        const html = '<div style="background:#0369a1;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)">🎓</div>';
+        const icon = L.divIcon({html, className:'', iconSize:[32,32], iconAnchor:[16,16]});
+        schoolMarker = L.marker([sch.lat, sch.lng], {icon, zIndexOffset: 1000}).addTo(mapInstance);
+        schoolMarker.bindPopup('<b>' + sch.name_cn + '</b><br>' + sch.name_en, {maxWidth:200});
+      }
+    }
     document.getElementById('count').innerHTML =
       lastFiltered.length === 0 ? '没有匹配结果' : `共 <em>${lastFiltered.length.toLocaleString()}</em> 个结果`;
   } else {
@@ -813,7 +902,16 @@ function renderMap() {
     const u0 = bucket.units[0];
     const count = bucket.units.length;
     const isCluster = count > 1;
-    const html = `<div class="pin-marker ${regionClass(u0.region)} ${isCluster ? 'cluster' : ''}">${count}</div>`;
+    // 选了学校 → 按通勤时间染色；否则按地区
+    let pinStyle = '';
+    let extraClass = '';
+    if (SCHOOL_KEY) {
+      const color = commuteColor(u0.address);
+      pinStyle = `style="background:${color}"`;
+    } else {
+      extraClass = regionClass(u0.region);
+    }
+    const html = `<div class="pin-marker ${extraClass} ${isCluster ? 'cluster' : ''}" ${pinStyle}>${count}</div>`;
     const icon = L.divIcon({
       html, className: '', iconSize: isCluster ? [36,36] : [24,24], iconAnchor: isCluster ? [18,18] : [12,12]
     });
@@ -943,6 +1041,7 @@ function renderCards(list) {
       '</div>' +
       '<div class="info-row">' +
         '<span class="tag">' + esc(u.beds) + '</span>' +
+        commuteTag(u) +
         (miDate ? '<span class="tag' + miHighlight + '">入住 ' + miDate + '</span>' : '') +
         (u.vacant_days > 0 ? '<span class="tag ' + vdClass + '">空置 ' + u.vacant_days + ' 天</span>' : '') +
         (u.auto_close === 'Y' ? '<span class="tag green">Auto Close</span>' : '') +
@@ -966,6 +1065,26 @@ function renderCards(list) {
 
 function esc(s) {
   return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// 通勤标签（卡片用） — 仅在选了学校时显示
+function commuteTag(u) {
+  if (!SCHOOL_KEY) return '';
+  const c = (COMMUTE.matrix[u.address] || {})[SCHOOL_KEY];
+  if (!c) return '';
+  const cls = c.min <= 30 ? 'fast' : c.min <= 45 ? 'med' : c.min <= 60 ? '' : 'slow';
+  return '<span class="tag commute ' + cls + '">🚇 ' + c.min + ' min → ' + esc(SCHOOL_KEY) + '</span>';
+}
+
+// 通勤颜色 — 地图 pin 用
+function commuteColor(addr) {
+  if (!SCHOOL_KEY) return null;
+  const c = (COMMUTE.matrix[addr] || {})[SCHOOL_KEY];
+  if (!c) return '#9ca3af';
+  if (c.min <= 30) return '#10b981';
+  if (c.min <= 45) return '#f59e0b';
+  if (c.min <= 60) return '#f97316';
+  return '#ef4444';
 }
 
 // 鲁棒日期解析：支持 ISO "2026-05-10" 和 JS toString "Sun May 10 2026..."（含截断的 "GM"）
@@ -1023,6 +1142,12 @@ function resetFilters() {
   document.getElementById('min_rent').value = '';
   document.getElementById('max_rent').value = '';
   ['region','rtype','rt_specific','beds','autoclose','female_only'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('school').value = '';
+  document.getElementById('max_commute').value = '0';
+  SCHOOL_KEY = '';
+  MAX_COMMUTE = 0;
+  document.getElementById('commute-filter').classList.remove('active');
+  document.getElementById('sort-commute').style.display = 'none';
   document.getElementById('include_vacant').value = '1';
   document.getElementById('mi_from').value = '';
   document.getElementById('mi_to').value   = '';
@@ -1039,6 +1164,40 @@ function resetFilters() {
     filter();
     updateMoreBtnBadge();
   });
+});
+
+// 学校选择
+document.getElementById('school').addEventListener('change', e => {
+  SCHOOL_KEY = e.target.value;
+  // 通勤筛选 / 排序按钮显隐
+  document.getElementById('commute-filter').classList.toggle('active', !!SCHOOL_KEY);
+  document.getElementById('sort-commute').style.display = SCHOOL_KEY ? '' : 'none';
+  // 切换学校时如果当前是 commute 排序但没学校，回退到 id
+  if (!SCHOOL_KEY && sortMode === 'commute') {
+    sortMode = 'id';
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.sort-btn').classList.add('active');
+  }
+  // 地图模式：刷新学校 pin
+  if (currentView === 'map' && mapInstance) {
+    if (schoolMarker) { mapInstance.removeLayer(schoolMarker); schoolMarker = null; }
+    if (SCHOOL_KEY) {
+      const sch = COMMUTE.schools.find(s => s.key === SCHOOL_KEY);
+      if (sch) {
+        const html = '<div style="background:#0369a1;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)">🎓</div>';
+        const icon = L.divIcon({html, className:'', iconSize:[32,32], iconAnchor:[16,16]});
+        schoolMarker = L.marker([sch.lat, sch.lng], {icon, zIndexOffset: 1000}).addTo(mapInstance);
+        schoolMarker.bindPopup('<b>' + sch.name_cn + '</b><br>' + sch.name_en, {maxWidth:200});
+      }
+    }
+  }
+  filter();
+});
+
+// 通勤上限
+document.getElementById('max_commute').addEventListener('change', e => {
+  MAX_COMMUTE = parseInt(e.target.value) || 0;
+  filter();
 });
 
 // 更多筛选面板：点击切换
