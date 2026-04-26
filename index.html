@@ -526,16 +526,39 @@ let currentPage = 1;
 const PAGE_SIZE = 100;
 let lastFiltered = [];
 
+async function fetchWithRetry(url, maxRetries = 3) {
+  const delays = [0, 1000, 3000]; // 立即 → 1s → 3s
+  let lastErr;
+  for (let i = 0; i < maxRetries; i++) {
+    if (delays[i] > 0) {
+      document.getElementById('loading-state').querySelector('div:last-child').textContent =
+        `第 ${i + 1}/${maxRetries} 次重试中...`;
+      await new Promise(r => setTimeout(r, delays[i]));
+    }
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const json = await res.json();
+      if (!json || !Array.isArray(json.data)) throw new Error('返回格式异常');
+      return json;
+    } catch (err) {
+      lastErr = err;
+      console.warn(`[loadData] 第 ${i + 1} 次失败:`, err.message);
+    }
+  }
+  throw lastErr;
+}
+
 async function loadData() {
   document.getElementById('loading-state').style.display = 'block';
+  document.getElementById('loading-state').querySelector('div:last-child').textContent =
+    '正在从 Google Sheet 加载数据...';
   document.getElementById('error-state').style.display = 'none';
   document.getElementById('main-content').style.display = 'none';
   document.getElementById('total-badge').textContent = '加载中...';
 
   try {
-    const res = await fetch(API_URL);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const json = await res.json();
+    const json = await fetchWithRetry(API_URL, 3);
     DATA = json.data || [];
 
     document.getElementById('total-badge').textContent = '共 ' + DATA.length.toLocaleString() + ' 房源';
@@ -558,7 +581,8 @@ async function loadData() {
   } catch (err) {
     document.getElementById('loading-state').style.display = 'none';
     document.getElementById('error-state').style.display = 'block';
-    document.getElementById('error-state').textContent = '加载失败，请点击右上角「刷新」重试。错误: ' + err.message;
+    document.getElementById('error-state').textContent =
+      '加载失败（已自动重试 3 次）。请点击右上角「刷新」按钮再试一次。\n错误: ' + err.message;
   }
 }
 
