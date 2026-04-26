@@ -112,18 +112,23 @@ body{
   font-size:13px;margin-bottom:6px;
 }
 
-/* Filter row */
-.filter-row{display:flex;align-items:flex-end;flex-wrap:wrap;row-gap:10px;column-gap:0}
-.filter-group-block{
-  display:flex;align-items:flex-end;gap:8px;
-  padding:0 14px;position:relative;
+/* Filter row — 紧凑横向 */
+.filter-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:10px}
+.filter-group-block{display:flex;align-items:flex-end;gap:8px}
+.filter-group-block.actions{margin-left:auto}
+
+/* 更多筛选下拉面板 */
+.more-wrapper{position:relative}
+.more-panel{
+  position:absolute;top:calc(100% + 6px);right:0;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px;padding:14px;
+  box-shadow:0 8px 24px rgba(15,23,42,.08),0 2px 6px rgba(15,23,42,.05);
+  z-index:30;display:none;
+  min-width:380px;
 }
-.filter-group-block:first-child{padding-left:0}
-.filter-group-block:not(.actions):not(:last-child)::after{
-  content:'';position:absolute;right:0;top:8px;bottom:8px;
-  width:1px;background:var(--border);
-}
-.filter-group-block.actions{margin-left:auto;padding-right:0}
+.more-panel.open{display:flex;gap:10px;flex-wrap:wrap}
+.more-btn.open{background:var(--brand-soft);border-color:var(--brand-border);color:var(--brand-text)}
 
 .filter-group{display:flex;flex-direction:column;gap:5px}
 .filter-group label{
@@ -453,11 +458,11 @@ a.photo-link svg{width:12px;height:12px}
       </div>
     </div>
 
-    <!-- 组1：位置 -->
+    <!-- 主筛选（高频） -->
     <div class="filter-group-block">
       <div class="filter-group">
         <label for="region">地区</label>
-        <select id="region" style="width:100px">
+        <select id="region" style="width:96px">
           <option value="">全部</option>
           <option>East</option>
           <option>West</option>
@@ -466,16 +471,8 @@ a.photo-link svg{width:12px;height:12px}
         </select>
       </div>
       <div class="filter-group">
-        <label for="search">关键词</label>
-        <input type="text" id="search" placeholder="公寓名 / 地址" style="width:170px">
-      </div>
-    </div>
-
-    <!-- 组2：房型 -->
-    <div class="filter-group-block">
-      <div class="filter-group">
         <label for="rtype">房型大类</label>
-        <select id="rtype" style="width:135px">
+        <select id="rtype" style="width:130px">
           <option value="">全部</option>
           <option value="CR">CR · 普通</option>
           <option value="MB">MBR · 主卧</option>
@@ -485,55 +482,63 @@ a.photo-link svg{width:12px;height:12px}
         </select>
       </div>
       <div class="filter-group">
-        <label for="rt_specific">具体房型</label>
-        <select id="rt_specific" style="width:108px"><option value="">全部</option></select>
+        <label for="min_rent">租金</label>
+        <div style="display:flex;gap:4px;align-items:center">
+          <input type="number" id="min_rent" placeholder="最低" style="width:78px" step="100">
+          <span style="color:var(--text-4);font-size:12px">~</span>
+          <input type="number" id="max_rent" placeholder="最高" style="width:78px" step="100">
+        </div>
       </div>
       <div class="filter-group">
-        <label for="beds">卧室数</label>
-        <select id="beds" style="width:84px">
-          <option value="">全部</option>
-          <option value="4">4 室</option>
-          <option value="5">5 室</option>
-          <option value="6">6 室</option>
-          <option value="7">7 室</option>
-          <option value="8">8 室</option>
-        </select>
+        <label for="search">搜索</label>
+        <input type="text" id="search" placeholder="公寓名 / 地址" style="width:160px">
       </div>
     </div>
 
-    <!-- 组3：价格 + 其他 -->
-    <div class="filter-group-block">
-      <div class="filter-group">
-        <label for="min_rent">租金最低</label>
-        <input type="number" id="min_rent" placeholder="$ 不限" style="width:100px" step="100">
-      </div>
-      <div class="filter-group">
-        <label for="max_rent">租金最高</label>
-        <input type="number" id="max_rent" placeholder="$ 不限" style="width:100px" step="100">
-      </div>
-      <div class="filter-group">
-        <label for="autoclose">Auto Close</label>
-        <select id="autoclose" style="width:80px">
-          <option value="">全部</option>
-          <option value="Y">是</option>
-          <option value="N">否</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <label for="female_only">仅限女性</label>
-        <select id="female_only" style="width:80px">
-          <option value="">全部</option>
-          <option value="Y">是</option>
-          <option value="N">否</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- 重置 -->
+    <!-- 更多筛选 + 重置 -->
     <div class="filter-group-block actions">
+      <div class="more-wrapper">
+        <button id="more-btn" class="btn more-btn" onclick="toggleMore()">
+          更多筛选
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="more-panel" class="more-panel">
+          <div class="filter-group">
+            <label for="rt_specific">具体房型</label>
+            <select id="rt_specific" style="width:110px"><option value="">全部</option></select>
+          </div>
+          <div class="filter-group">
+            <label for="beds">卧室数</label>
+            <select id="beds" style="width:84px">
+              <option value="">全部</option>
+              <option value="4">4 室</option>
+              <option value="5">5 室</option>
+              <option value="6">6 室</option>
+              <option value="7">7 室</option>
+              <option value="8">8 室</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="autoclose">Auto Close</label>
+            <select id="autoclose" style="width:80px">
+              <option value="">全部</option>
+              <option value="Y">是</option>
+              <option value="N">否</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="female_only">仅限女性</label>
+            <select id="female_only" style="width:80px">
+              <option value="">全部</option>
+              <option value="Y">是</option>
+              <option value="N">否</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <button class="btn" onclick="resetFilters()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
-        重置全部
+        重置
       </button>
     </div>
 
@@ -1030,8 +1035,46 @@ function resetFilters() {
 
 ['search','region','rtype','rt_specific','beds','min_rent','max_rent','autoclose','female_only','include_vacant'].forEach(id => {
   const el = document.getElementById(id);
-  el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', filter);
+  el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => {
+    filter();
+    updateMoreBtnBadge();
+  });
 });
+
+// 更多筛选面板：点击切换
+function toggleMore() {
+  const panel = document.getElementById('more-panel');
+  const btn = document.getElementById('more-btn');
+  const isOpen = panel.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+}
+// 点击外部自动关闭
+document.addEventListener('click', (e) => {
+  const panel = document.getElementById('more-panel');
+  const btn = document.getElementById('more-btn');
+  if (panel && panel.classList.contains('open') && !panel.contains(e.target) && !btn.contains(e.target)) {
+    panel.classList.remove('open');
+    btn.classList.remove('open');
+  }
+});
+// 在按钮上显示已激活的高级筛选数（红色小圆点）
+function updateMoreBtnBadge() {
+  const advanced = ['rt_specific','beds','autoclose','female_only'];
+  const count = advanced.filter(id => document.getElementById(id).value).length;
+  const btn = document.getElementById('more-btn');
+  let badge = btn.querySelector('.more-badge');
+  if (count > 0) {
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'more-badge';
+      badge.style.cssText = 'background:var(--brand);color:#fff;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:700;margin-right:2px';
+      btn.insertBefore(badge, btn.firstChild);
+    }
+    badge.textContent = count;
+  } else if (badge) {
+    badge.remove();
+  }
+}
 ['mi_from','mi_to'].forEach(id => {
   const el = document.getElementById(id);
   el.addEventListener('change', filter);
