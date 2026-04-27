@@ -1136,10 +1136,10 @@ function renderCards(list) {
       '<div class="card-foot">' +
         '<span class="region-info">' +
           '<span class="region-dot" style="background:' + regionColor(u.region) + '"></span>' +
-          esc(u.region) + ' · #' + u.no +
+          esc(u.region) + ' #' + u.no +
         '</span>' +
         '<div class="card-actions">' +
-          '<button class="intro-btn" onclick="genIntro(' + u.no + ')">' +
+          '<button class="intro-btn" onclick="genIntro(\'' + esc(u.region) + '\',' + u.no + ')">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"/><line x1="3" y1="22" x2="21" y2="22"/></svg>' +
             '生成介绍</button>' +
           (u.photos
@@ -1160,8 +1160,8 @@ function esc(s) {
 // ========== 生成介绍（调 Apps Script → Gemini） ==========
 let lastIntroText = '';
 
-async function genIntro(no) {
-  const u = DATA.find(x => x.no === no);
+async function genIntro(region, no) {
+  const u = DATA.find(x => x.region === region && x.no === no);
   if (!u) return;
 
   // 打开弹窗 + 显示加载
