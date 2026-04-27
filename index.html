@@ -720,9 +720,11 @@ a.photo-link svg{width:12px;height:12px}
 const API_URL = 'https://script.google.com/macros/s/AKfycbxZiDMWyA9fkpVOAaXuCczGeZXmpid9EYgKHyRRdecsdpkw8pZIhRZNesq5kcYTV_cT/exec';
 const GEOCODES_URL = 'geocodes.json';
 const COMMUTE_URL = 'commute.json';
+const MRT_WALK_URL = 'mrt_walk.json';
 let DATA = [];
 let GEOCODES = {};
 let COMMUTE = {schools: [], matrix: {}};
+let MRT_WALK = {};
 let SCHOOL_KEY = '';     // 当前选中学校
 let MAX_COMMUTE = 0;     // 通勤上限筛选（分钟，0=不限）
 let sortMode = 'id';
@@ -766,15 +768,17 @@ async function loadData() {
   document.getElementById('total-badge').textContent = '加载中...';
 
   try {
-    // 并行加载房源 + 地理编码 + 通勤矩阵
-    const [json, geo, commute] = await Promise.all([
+    // 并行加载房源 + 地理编码 + 通勤矩阵 + MRT 步行数据
+    const [json, geo, commute, mrtWalk] = await Promise.all([
       fetchWithRetry(API_URL, 3),
       fetch(GEOCODES_URL, {cache: 'no-store'}).then(r => r.ok ? r.json() : {}).catch(() => ({})),
-      fetch(COMMUTE_URL,  {cache: 'no-store'}).then(r => r.ok ? r.json() : {schools:[],matrix:{}}).catch(() => ({schools:[],matrix:{}}))
+      fetch(COMMUTE_URL,  {cache: 'no-store'}).then(r => r.ok ? r.json() : {schools:[],matrix:{}}).catch(() => ({schools:[],matrix:{}})),
+      fetch(MRT_WALK_URL, {cache: 'no-store'}).then(r => r.ok ? r.json() : {}).catch(() => ({}))
     ]);
     DATA = json.data || [];
     GEOCODES = geo || {};
     COMMUTE = commute || {schools:[], matrix:{}};
+    MRT_WALK = mrtWalk || {};
 
     // 填充学校下拉
     const schoolSel = document.getElementById('school');
@@ -1179,6 +1183,9 @@ async function genIntro(region, no) {
   const cm = COMMUTE.matrix[u.address] || {};
   Object.keys(cm).forEach(k => { if (cm[k]) commutes.push({key: k, min: cm[k].min}); });
 
+  // MRT 步行数据
+  const mrt = MRT_WALK[u.address] || null;
+
   // 构造 URL
   const params = new URLSearchParams({
     action: 'intro',
@@ -1191,7 +1198,8 @@ async function genIntro(region, no) {
     asking_rent: String(u.asking_rent || ''),
     move_in: u.move_in || '',
     female_only: (u.notes && u.notes.includes('FEMALE')) ? '1' : '0',
-    commutes: JSON.stringify(commutes)
+    commutes: JSON.stringify(commutes),
+    mrt: mrt ? JSON.stringify(mrt) : ''
   });
 
   try {

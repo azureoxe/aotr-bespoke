@@ -1,0 +1,1598 @@
+{
+ "1 Alexandra View, Singapore 158748": {
+  "station": "REDHILL MRT STATION",
+  "lines": "EW18",
+  "min": 5,
+  "dist_m": 330
+ },
+ "1 Jalan Kembangan, Singapore 419154": {
+  "station": "KEMBANGAN MRT STATION",
+  "lines": "EW6",
+  "min": 4,
+  "dist_m": 230
+ },
+ "1 Jurong East Street 32, Singapore 609477": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 15,
+  "dist_m": 1006
+ },
+ "1 Kim Seng Walk , Singapore 239403": {
+  "station": "GREAT WORLD MRT STATION",
+  "lines": "TE15",
+  "min": 7,
+  "dist_m": 533
+ },
+ "1 Kim Seng Walk, Singapore 239403": {
+  "station": "GREAT WORLD MRT STATION",
+  "lines": "TE15",
+  "min": 7,
+  "dist_m": 533
+ },
+ "10 Dover Rise, Singapore 138680": {
+  "station": "BUONA VISTA MRT STATION",
+  "lines": "CC22",
+  "min": 13,
+  "dist_m": 1008
+ },
+ "10 Lakepoint Drive, Singapore 648927": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 15,
+  "dist_m": 1154
+ },
+ "10 Prinsep Link, Singapore 187948": {
+  "station": "BENCOOLEN MRT STATION",
+  "lines": "DT21",
+  "min": 3,
+  "dist_m": 218
+ },
+ "10 Slim Barracks Rise, Singapore 138493": {
+  "station": "BUONA VISTA MRT STATION",
+  "lines": "CC22",
+  "min": 7,
+  "dist_m": 489
+ },
+ "10 Stirling Road, Singapore 148954": {
+  "station": "QUEENSTOWN MRT STATION",
+  "lines": "EW19",
+  "min": 7,
+  "dist_m": 505
+ },
+ "1001 Bukit Timah Road, Singapore 596288": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 2,
+  "dist_m": 160
+ },
+ "101 Prince Charles Crescent, Singapore 159017": {
+  "station": "REDHILL MRT STATION",
+  "lines": "EW18",
+  "min": 12,
+  "dist_m": 842
+ },
+ "103 Cashew Road, Singapore 679674": {
+  "station": "CASHEW MRT STATION",
+  "lines": "DT2",
+  "min": 10,
+  "dist_m": 764
+ },
+ "105 Prince Charles Crescent, Singapore159019": {
+  "station": "REDHILL MRT STATION",
+  "lines": "EW18",
+  "min": 10,
+  "dist_m": 689
+ },
+ "106 Wishart Road, Singapore 098751": {
+  "station": "TELOK BLANGAH MRT STATION",
+  "lines": "CC28",
+  "min": 11,
+  "dist_m": 773
+ },
+ "10A Mount Sophia, Singapore 228462": {
+  "station": "DHOBY GHAUT MRT STATION",
+  "lines": "CC1",
+  "min": 8,
+  "dist_m": 505
+ },
+ "10G Braddell Hill, Singapore 579726": {
+  "station": "CALDECOTT MRT STATION",
+  "lines": "TE9",
+  "min": 10,
+  "dist_m": 685
+ },
+ "117 Jurong East St 13, Singapore 600117": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 14,
+  "dist_m": 974
+ },
+ "117 Jurong East Street 13, Singapore 600117": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 14,
+  "dist_m": 974
+ },
+ "118 Jurong East St 13, Singapore 600118": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 15,
+  "dist_m": 1078
+ },
+ "12 Stirling Road, Singapore 148955": {
+  "station": "QUEENSTOWN MRT STATION",
+  "lines": "EW19",
+  "min": 2,
+  "dist_m": 132
+ },
+ "12 West Coast Road, Singapore 126821": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 31,
+  "dist_m": 2213
+ },
+ "120 Jurong East Street 13, Singapore 600120": {
+  "station": "TOH GUAN MRT STATION",
+  "lines": "",
+  "min": 15,
+  "dist_m": 1013
+ },
+ "121 Tanjong Rhu Road, Singapore 436914": {
+  "station": "TANJONG RHU MRT STATION",
+  "lines": "TE23",
+  "min": 2,
+  "dist_m": 139
+ },
+ "122 Jurong East St 13, Singapore 600122": {
+  "station": "TOH GUAN MRT STATION",
+  "lines": "",
+  "min": 14,
+  "dist_m": 903
+ },
+ "122 Jurong East Street 13, Singapore 600122": {
+  "station": "TOH GUAN MRT STATION",
+  "lines": "",
+  "min": 14,
+  "dist_m": 903
+ },
+ "124 Jurong East St 13, Singapore 600124": {
+  "station": "TOH GUAN MRT STATION",
+  "lines": "",
+  "min": 14,
+  "dist_m": 883
+ },
+ "124 Jurong East St. 13, Singapore 600124": {
+  "station": "TOH GUAN MRT STATION",
+  "lines": "",
+  "min": 14,
+  "dist_m": 883
+ },
+ "124 Jurong East Street 13, Singapore 600124": {
+  "station": "TOH GUAN MRT STATION",
+  "lines": "",
+  "min": 14,
+  "dist_m": 883
+ },
+ "139 Holland Road, Singapore 278573": {
+  "station": "HOLLAND VILLAGE MRT STATION",
+  "lines": "CC21",
+  "min": 4,
+  "dist_m": 247
+ },
+ "144 Upper Bukit Timah Road, Singapore 588177": {
+  "station": "BEAUTY WORLD MRT STATION",
+  "lines": "DT5",
+  "min": 3,
+  "dist_m": 196
+ },
+ "15 Kovan Road, Singapore 548189": {
+  "station": "KOVAN MRT STATION",
+  "lines": "NE13",
+  "min": 5,
+  "dist_m": 382
+ },
+ "15 Mount Sinai Rise, Singapore 276906": {
+  "station": "DOVER MRT STATION",
+  "lines": "EW22",
+  "min": 15,
+  "dist_m": 1094
+ },
+ "150 Prince Charles Crescent, Singapore 159012": {
+  "station": "REDHILL MRT STATION",
+  "lines": "EW18",
+  "min": 8,
+  "dist_m": 550
+ },
+ "150 Thomson Road, Singapore 307605": {
+  "station": "NOVENA MRT STATION",
+  "lines": "NS20",
+  "min": 9,
+  "dist_m": 610
+ },
+ "152 Prince Charles Cres, Singapore 159013": {
+  "station": "REDHILL MRT STATION",
+  "lines": "EW18",
+  "min": 10,
+  "dist_m": 707
+ },
+ "152 Prince Charles Crescent, Singapore 159013": {
+  "station": "REDHILL MRT STATION",
+  "lines": "EW18",
+  "min": 10,
+  "dist_m": 707
+ },
+ "156 Prince Charles Crescent, Singapore 159015": {
+  "station": "REDHILL MRT STATION",
+  "lines": "EW18",
+  "min": 10,
+  "dist_m": 693
+ },
+ "16A West Coast Road, Singapore 127303": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 31,
+  "dist_m": 2233
+ },
+ "173 Tanjong Rhu Road, Singapore 436932": {
+  "station": "TANJONG RHU MRT STATION",
+  "lines": "TE23",
+  "min": 1,
+  "dist_m": 79
+ },
+ "179 Tanjong Rhu Road A3, Singapore 436608": {
+  "station": "TANJONG RHU MRT STATION",
+  "lines": "TE23",
+  "min": 4,
+  "dist_m": 274
+ },
+ "19 Simei Street 4, Singapore 528716": {
+  "station": "SIMEI MRT STATION",
+  "lines": "EW3",
+  "min": 12,
+  "dist_m": 919
+ },
+ "190 Moulmein Road, Singapore 308095": {
+  "station": "NOVENA MRT STATION",
+  "lines": "NS20",
+  "min": 7,
+  "dist_m": 461
+ },
+ "19A Hillview Avenue, Singapore 669554": {
+  "station": "HILLVIEW MRT STATION",
+  "lines": "DT3",
+  "min": 9,
+  "dist_m": 629
+ },
+ "1F Pine Grove, Singapore 595001": {
+  "station": "DOVER MRT STATION",
+  "lines": "EW22",
+  "min": 20,
+  "dist_m": 1400
+ },
+ "1K Pine Grove, Singapore 599001": {
+  "station": "DOVER MRT STATION",
+  "lines": "EW22",
+  "min": 22,
+  "dist_m": 1602
+ },
+ "2 Boon Lay Drive, Singapore 649925": {
+  "station": "JURONG WEST MRT STATION",
+  "lines": "JS6",
+  "min": 14,
+  "dist_m": 1040
+ },
+ "2 Gateway Drive, Singapore 608533": {
+  "station": "JURONG EAST MRT STATION",
+  "lines": "EW24 / NS1",
+  "min": 8,
+  "dist_m": 562
+ },
+ "2 Lakepoint Drive, Singapore 648923": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 13,
+  "dist_m": 950
+ },
+ "2 Petir Rd, Singapore 678265": {
+  "station": "BUKIT PANJANG MRT STATION",
+  "lines": "DT1",
+  "min": 9,
+  "dist_m": 602
+ },
+ "20 Bedok North Drive, Singapore 465496": {
+  "station": "BEDOK MRT STATION",
+  "lines": "EW5",
+  "min": 5,
+  "dist_m": 409
+ },
+ "20 Brooke Road, Singapore 429984": {
+  "station": "MARINE PARADE MRT STATION",
+  "lines": "TE26",
+  "min": 4,
+  "dist_m": 278
+ },
+ "20 Bukit Batok Street 52, Singapore 659244": {
+  "station": "BUKIT GOMBAK MRT STATION",
+  "lines": "NS3",
+  "min": 6,
+  "dist_m": 465
+ },
+ "20 Sin Ming Walk, Singapore 575570": {
+  "station": "BRIGHT HILL MRT STATION",
+  "lines": "TE7",
+  "min": 5,
+  "dist_m": 359
+ },
+ "20 West Coast Road, Singapore 127308": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 31,
+  "dist_m": 2255
+ },
+ "202 Pasir Panjang, Singapore 118572": {
+  "station": "PASIR PANJANG MRT STATION",
+  "lines": "CC26",
+  "min": 11,
+  "dist_m": 811
+ },
+ "21 Jalan Raja Udang, Singapore 329215": {
+  "station": "NOVENA MRT STATION",
+  "lines": "NS20",
+  "min": 19,
+  "dist_m": 1295
+ },
+ "21 Springwood Ave, Singapore 118115": {
+  "station": "PASIR PANJANG MRT STATION",
+  "lines": "CC26",
+  "min": 5,
+  "dist_m": 335
+ },
+ "21 Tampines St 34, Singapore 529232": {
+  "station": "TAMPINES EAST MRT STATION",
+  "lines": "DT33",
+  "min": 10,
+  "dist_m": 665
+ },
+ "21 Tampines Street 34, Singapore 529232": {
+  "station": "TAMPINES EAST MRT STATION",
+  "lines": "DT33",
+  "min": 10,
+  "dist_m": 665
+ },
+ "218 Westwood Avenue, Singapore 648351": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 8,
+  "dist_m": 550
+ },
+ "21D Simei Street 4, Singapore 528721": {
+  "station": "SIMEI MRT STATION",
+  "lines": "EW3",
+  "min": 11,
+  "dist_m": 786
+ },
+ "22 Bayshore Rd, Singapore 469970": {
+  "station": "BAYSHORE MRT STATION",
+  "lines": "TE29",
+  "min": 8,
+  "dist_m": 472
+ },
+ "22 Bayshore Road, Singapore 469970": {
+  "station": "BAYSHORE MRT STATION",
+  "lines": "TE29",
+  "min": 8,
+  "dist_m": 472
+ },
+ "22 Bedok North Drive, Singapore 465497": {
+  "station": "BEDOK MRT STATION",
+  "lines": "EW5",
+  "min": 4,
+  "dist_m": 296
+ },
+ "22 Bukit Batok St 52, Singapore 659245": {
+  "station": "BUKIT GOMBAK MRT STATION",
+  "lines": "NS3",
+  "min": 7,
+  "dist_m": 510
+ },
+ "22 Willby Road, Singapore 276306": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 11,
+  "dist_m": 808
+ },
+ "220 Westwood Ave, Singapore 648352": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 9,
+  "dist_m": 603
+ },
+ "220 Westwood Avenue, Singapore 648532": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 10,
+  "dist_m": 762
+ },
+ "222 Westwood Ave, Singapore 648355": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 10,
+  "dist_m": 653
+ },
+ "222 Westwood Avenue, Singapore 648355": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 10,
+  "dist_m": 653
+ },
+ "226 Westwood Avenue, Singapore 648357": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 10,
+  "dist_m": 685
+ },
+ "23 Choa Chu Kang North 6, Singapore 689579": {
+  "station": "YEW TEE MRT STATION",
+  "lines": "NS5",
+  "min": 5,
+  "dist_m": 390
+ },
+ "23 Keppel Bay View, Singapore 098414": {
+  "station": "TELOK BLANGAH MRT STATION",
+  "lines": "CC28",
+  "min": 12,
+  "dist_m": 900
+ },
+ "23 Lorong Liew Lian, Singapore 536468": {
+  "station": "SERANGOON MRT STATION",
+  "lines": "CC13",
+  "min": 12,
+  "dist_m": 790
+ },
+ "23 West Coast Crescent, Singapore 128046": {
+  "station": "CLEMENTI MRT STATION",
+  "lines": "EW23",
+  "min": 41,
+  "dist_m": 2902
+ },
+ "230 Westwood Avenue, Singapore 648359": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 8,
+  "dist_m": 596
+ },
+ "232 Westwood Ave, Singapore 648360": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 8,
+  "dist_m": 535
+ },
+ "233 Paya Lebar Road, Singapore 409044": {
+  "station": "MACPHERSON MRT STATION",
+  "lines": "CC10",
+  "min": 9,
+  "dist_m": 692
+ },
+ "234 Westwood Avenue, Singapore 648361": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 7,
+  "dist_m": 503
+ },
+ "236 Westwood Ave, Singapore 648362": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 6,
+  "dist_m": 459
+ },
+ "240 Westwood Ave, Singapore 648364": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 6,
+  "dist_m": 399
+ },
+ "248 Westwood Avenue, Singapore 648353": {
+  "station": "GEK POH MRT STATION",
+  "lines": "",
+  "min": 7,
+  "dist_m": 495
+ },
+ "25 Hazel Park, Singapore 678948": {
+  "station": "CASHEW MRT STATION",
+  "lines": "DT2",
+  "min": 8,
+  "dist_m": 615
+ },
+ "25 Moonstone Lane, Singapore 328465": {
+  "station": "GEYLANG BAHRU MRT STATION",
+  "lines": "DT24",
+  "min": 18,
+  "dist_m": 1228
+ },
+ "25 West Coast Crescent, Singapore 128047": {
+  "station": "CLEMENTI MRT STATION",
+  "lines": "EW23",
+  "min": 40,
+  "dist_m": 2803
+ },
+ "252 Pasir Panjang Road, Singapore 118617": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 7,
+  "dist_m": 440
+ },
+ "26 Fernwood Terrace, Singapore 458555": {
+  "station": "SIGLAP MRT STATION",
+  "lines": "TE28",
+  "min": 12,
+  "dist_m": 781
+ },
+ "26 Jalan Datoh, Singapore 329425": {
+  "station": "NOVENA MRT STATION",
+  "lines": "NS20",
+  "min": 20,
+  "dist_m": 1348
+ },
+ "263 River Valley Road, Singapore 238309": {
+  "station": "FORT CANNING MRT STATION",
+  "lines": "DT20",
+  "min": 10,
+  "dist_m": 791
+ },
+ "28 Flora Drive, Singapore 506951": {
+  "station": "TAMPINES EAST MRT STATION",
+  "lines": "DT33",
+  "min": 24,
+  "dist_m": 1641
+ },
+ "28 Simei Street 1, Singapore 529948": {
+  "station": "UPPER CHANGI MRT STATION",
+  "lines": "DT34",
+  "min": 14,
+  "dist_m": 1014
+ },
+ "28 Tomlinson Rd, Singapore 247854": {
+  "station": "ORCHARD BOULEVARD MRT STATION",
+  "lines": "TE13",
+  "min": 6,
+  "dist_m": 430
+ },
+ "29 Jurong West St 41, Singapore 649411": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 8,
+  "dist_m": 506
+ },
+ "29 Jurong West Street 41, Singapore 649411": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 8,
+  "dist_m": 506
+ },
+ "29 West Coast Crescent, Singapore 128049": {
+  "station": "CLEMENTI MRT STATION",
+  "lines": "EW23",
+  "min": 38,
+  "dist_m": 2658
+ },
+ "29A Hillview Ave, Singapore 669562": {
+  "station": "HILLVIEW MRT STATION",
+  "lines": "DT3",
+  "min": 9,
+  "dist_m": 649
+ },
+ "2C Hong San Walk, Singapore 689049": {
+  "station": "CHOA CHU KANG WEST MRT STATION",
+  "lines": "JS2",
+  "min": 19,
+  "dist_m": 1379
+ },
+ "2D Hong San Walk, Singapore 689050": {
+  "station": "CHOA CHU KANG WEST MRT STATION",
+  "lines": "JS2",
+  "min": 18,
+  "dist_m": 1324
+ },
+ "2E Hong San Walk, Singapore 689051": {
+  "station": "CHOA CHU KANG WEST MRT STATION",
+  "lines": "JS2",
+  "min": 15,
+  "dist_m": 1178
+ },
+ "3 Geylang East Avenue, Singapore 389779": {
+  "station": "ALJUNIED MRT STATION",
+  "lines": "EW9",
+  "min": 6,
+  "dist_m": 411
+ },
+ "3 Jalan Anak Bukit, Singapore 588998": {
+  "station": "BEAUTY WORLD MRT STATION",
+  "lines": "DT5",
+  "min": 14,
+  "dist_m": 950
+ },
+ "3 Simei St 4, Singapore 529862": {
+  "station": "UPPER CHANGI MRT STATION",
+  "lines": "DT34",
+  "min": 11,
+  "dist_m": 759
+ },
+ "30 Dover Rise, Singapore 138687": {
+  "station": "BUONA VISTA MRT STATION",
+  "lines": "CC22",
+  "min": 12,
+  "dist_m": 917
+ },
+ "30 Keppel Bay Drive, Singapore 098650": {
+  "station": "LABRADOR PARK MRT STATION",
+  "lines": "CC27",
+  "min": 30,
+  "dist_m": 2216
+ },
+ "30 Tanah Merah Kechil Rd, Singapore 465558": {
+  "station": "TANAH MERAH MRT STATION",
+  "lines": "EW4",
+  "min": 11,
+  "dist_m": 726
+ },
+ "30 Tanah Merah Kechil Road, Singapore 465558": {
+  "station": "TANAH MERAH MRT STATION",
+  "lines": "EW4",
+  "min": 11,
+  "dist_m": 726
+ },
+ "301 Jalan Bukit Ho Swee, Singapore 169568": {
+  "station": "TIONG BAHRU MRT STATION",
+  "lines": "EW17",
+  "min": 5,
+  "dist_m": 346
+ },
+ "301 Jln Bukit Ho Swee, Singapore 169568": {
+  "station": "TIONG BAHRU MRT STATION",
+  "lines": "EW17",
+  "min": 5,
+  "dist_m": 346
+ },
+ "31 Chun Tin Road, Singapore 599717": {
+  "station": "BEAUTY WORLD MRT STATION",
+  "lines": "DT5",
+  "min": 4,
+  "dist_m": 345
+ },
+ "31 Jurong West St 41, Singapore 649412": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 5,
+  "dist_m": 310
+ },
+ "31 Jurong West Str 41, Singapore 649412": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 5,
+  "dist_m": 310
+ },
+ "31 Jurong West Street 41, Singapore 649412": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 5,
+  "dist_m": 310
+ },
+ "31 Pasir Panjang Hill, Singapore 118853": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 15,
+  "dist_m": 1067
+ },
+ "31 Simei Street 4, Singapore 529877": {
+  "station": "SIMEI MRT STATION",
+  "lines": "EW3",
+  "min": 8,
+  "dist_m": 564
+ },
+ "313 Pasir Panjang Road, Singapore 117482": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 11,
+  "dist_m": 806
+ },
+ "32 Dover Rise, Singapore 138686": {
+  "station": "BUONA VISTA MRT STATION",
+  "lines": "CC22",
+  "min": 16,
+  "dist_m": 1174
+ },
+ "33 Club Street, Singapore 069415": {
+  "station": "MAXWELL MRT STATION",
+  "lines": "TE18",
+  "min": 5,
+  "dist_m": 391
+ },
+ "33 Jurong West Street 41, Singapore 649412": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 5,
+  "dist_m": 310
+ },
+ "33 Jurong West Street 41, Singapore 649413": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 11,
+  "dist_m": 729
+ },
+ "33 Rochester Drive, Singapore 138638": {
+  "station": "BUONA VISTA MRT STATION",
+  "lines": "CC22",
+  "min": 5,
+  "dist_m": 373
+ },
+ "338 Pasir Panjang Rd, Singapore 118669": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 17,
+  "dist_m": 1293
+ },
+ "34 Lor Mydin, Singapore 416827": {
+  "station": "KEMBANGAN MRT STATION",
+  "lines": "EW6",
+  "min": 8,
+  "dist_m": 567
+ },
+ "34 Tanah Merah Kechil Rd, Singapore 465560": {
+  "station": "TANAH MERAH MRT STATION",
+  "lines": "EW4",
+  "min": 13,
+  "dist_m": 903
+ },
+ "345 Pasir Panjang Road, Singapore 118684": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 13,
+  "dist_m": 948
+ },
+ "346 Balestier Road, Singapore 329776": {
+  "station": "NOVENA MRT STATION",
+  "lines": "NS20",
+  "min": 22,
+  "dist_m": 1568
+ },
+ "349 Pasir Panjang Rd, Singapore 118691": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 16,
+  "dist_m": 1165
+ },
+ "35 Jurong East Ave 1, Singapore 609774": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 8,
+  "dist_m": 561
+ },
+ "35 Jurong East Avenue 1, Singapore 609774": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 8,
+  "dist_m": 561
+ },
+ "35 Simei Street 4, Singapore 529869": {
+  "station": "SIMEI MRT STATION",
+  "lines": "EW3",
+  "min": 5,
+  "dist_m": 358
+ },
+ "352 Balestier Road, Singapore 329780": {
+  "station": "NOVENA MRT STATION",
+  "lines": "NS20",
+  "min": 22,
+  "dist_m": 1555
+ },
+ "36 Dover Rise, Singapore 138685": {
+  "station": "BUONA VISTA MRT STATION",
+  "lines": "CC22",
+  "min": 15,
+  "dist_m": 1101
+ },
+ "36 Jervois Road, Singapore 249018": {
+  "station": "REDHILL MRT STATION",
+  "lines": "EW18",
+  "min": 19,
+  "dist_m": 1356
+ },
+ "37 Jalan Mat Jambol, Singapore 119518": {
+  "station": "PASIR PANJANG MRT STATION",
+  "lines": "CC26",
+  "min": 5,
+  "dist_m": 347
+ },
+ "37 Jurong East Ave 1, Singapore 609775": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 9,
+  "dist_m": 596
+ },
+ "37 Jurong East Avenue 1, Singapore 609775": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 9,
+  "dist_m": 596
+ },
+ "370 Pasir Panjang Road, Singapore 118707": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 20,
+  "dist_m": 1435
+ },
+ "370D Alexandra Road, Singapore 159957": {
+  "station": "QUEENSTOWN MRT STATION",
+  "lines": "EW19",
+  "min": 9,
+  "dist_m": 700
+ },
+ "370G Alexandra Road,  Singapore 159960": {
+  "station": "QUEENSTOWN MRT STATION",
+  "lines": "EW19",
+  "min": 15,
+  "dist_m": 1114
+ },
+ "38 Dover Rise, Singapore 138684": {
+  "station": "BUONA VISTA MRT STATION",
+  "lines": "CC22",
+  "min": 13,
+  "dist_m": 973
+ },
+ "38 West Coast Road, Singapore 127452": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 32,
+  "dist_m": 2291
+ },
+ "383 Tanglin Rd, Singapore 247966": {
+  "station": "REDHILL MRT STATION",
+  "lines": "EW18",
+  "min": 9,
+  "dist_m": 617
+ },
+ "385 Pasir Panjang Road, Singapore 118719": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 22,
+  "dist_m": 1594
+ },
+ "39 Jurong East Ave 1, Singapore 609776": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 9,
+  "dist_m": 572
+ },
+ "39B West Coast Park, Singapore 127713": {
+  "station": "PANDAN RESERVOIR MRT STATION",
+  "lines": "",
+  "min": 22,
+  "dist_m": 1634
+ },
+ "4 Shan Road, Singapore 328106": {
+  "station": "NOVENA MRT STATION",
+  "lines": "NS20",
+  "min": 11,
+  "dist_m": 744
+ },
+ "406E Pasir Panjang Road, Singapore 117453": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 26,
+  "dist_m": 1917
+ },
+ "41 Choa Chu Kang Loop, Singapore 689677": {
+  "station": "CHOA CHU KANG MRT STATION",
+  "lines": "JS1",
+  "min": 7,
+  "dist_m": 551
+ },
+ "41 Jurong East Ave 1, Singapore 609777": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 8,
+  "dist_m": 535
+ },
+ "41 Jurong East Avenue 1, Singapore 609777": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 8,
+  "dist_m": 535
+ },
+ "41 Pasir Panjang Hill, Singapore 118862": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 17,
+  "dist_m": 1266
+ },
+ "41 Simei Rise, Singapore 528784": {
+  "station": "UPPER CHANGI MRT STATION",
+  "lines": "DT34",
+  "min": 22,
+  "dist_m": 1672
+ },
+ "42 Choa Chu Kang Street 64, Singapore 689104": {
+  "station": "YEW TEE MRT STATION",
+  "lines": "NS5",
+  "min": 11,
+  "dist_m": 741
+ },
+ "42 Kim Yam Road, Singapore 239347": {
+  "station": "FORT CANNING MRT STATION",
+  "lines": "DT20",
+  "min": 11,
+  "dist_m": 813
+ },
+ "42 Lakeside Drive, Singapore 648322": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 5,
+  "dist_m": 343
+ },
+ "42 Pasir Panjang Hill, Singapore 118894": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 17,
+  "dist_m": 1247
+ },
+ "42 Pasir Panjang Hill, Singapore 118894,": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 17,
+  "dist_m": 1247
+ },
+ "42 South Buona Vista Rd, Singapore 118166": {
+  "station": "PASIR PANJANG MRT STATION",
+  "lines": "CC26",
+  "min": 14,
+  "dist_m": 1026
+ },
+ "43 Jurong East Ave 1, Singapore 609778": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 8,
+  "dist_m": 565
+ },
+ "43 Jurong East Avenue 1, Singapore 609778": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 8,
+  "dist_m": 565
+ },
+ "44 Keppel Bay Drive, Singapore 098657": {
+  "station": "LABRADOR PARK MRT STATION",
+  "lines": "CC27",
+  "min": 28,
+  "dist_m": 2075
+ },
+ "44 Pasir Panjang Hill, Singapore 118895": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 17,
+  "dist_m": 1284
+ },
+ "45 Hindhede Walk, Singapore 587978": {
+  "station": "BEAUTY WORLD MRT STATION",
+  "lines": "DT5",
+  "min": 15,
+  "dist_m": 1092
+ },
+ "45 Oxley Garden, Singapore 238776": {
+  "station": "SOMERSET MRT STATION",
+  "lines": "NS23",
+  "min": 9,
+  "dist_m": 726
+ },
+ "450 Corporation Road, Singapore 649810": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 22,
+  "dist_m": 1610
+ },
+ "452 Corporation Rd, Singapore 649811": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 23,
+  "dist_m": 1657
+ },
+ "452 Corporation Road, Singapore 649811": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 23,
+  "dist_m": 1657
+ },
+ "454 Corporation Road, Singapore 649812": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 22,
+  "dist_m": 1592
+ },
+ "458 Corporation Rd, Singapore 649814": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 20,
+  "dist_m": 1461
+ },
+ "46 Lakeside Drive, Singapore 648324": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 4,
+  "dist_m": 310
+ },
+ "46 Pasir Panjang Hill, Singapore 118896": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 18,
+  "dist_m": 1348
+ },
+ "47 Jurong East Ave 1, Singapore 609780": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 8,
+  "dist_m": 545
+ },
+ "47 Jurong East Avenue 1, Singapore 609780": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 8,
+  "dist_m": 545
+ },
+ "48 Lakeside Drive, Singapore 648305": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 6,
+  "dist_m": 443
+ },
+ "49 Jurong East Ave 1, Singapore 609781": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 10,
+  "dist_m": 683
+ },
+ "49 Jurong East Avenue 1, Singapore 609781": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 10,
+  "dist_m": 683
+ },
+ "5 Jurong East Street 32, Singapore 609479": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 17,
+  "dist_m": 1178
+ },
+ "5 Tanah Merah Kechil Rd, Singapore 466665": {
+  "station": "TANAH MERAH MRT STATION",
+  "lines": "EW4",
+  "min": 11,
+  "dist_m": 715
+ },
+ "5 Tanah Merah Kechil, Singapore 466665": {
+  "station": "TANAH MERAH MRT STATION",
+  "lines": "EW4",
+  "min": 11,
+  "dist_m": 715
+ },
+ "50 Bukit Batok St 31, Singapore 659442": {
+  "station": "BUKIT GOMBAK MRT STATION",
+  "lines": "NS3",
+  "min": 8,
+  "dist_m": 559
+ },
+ "50 Bukit Batok Street 31, Singapore 659442": {
+  "station": "BUKIT GOMBAK MRT STATION",
+  "lines": "NS3",
+  "min": 8,
+  "dist_m": 559
+ },
+ "50 Choa Chu Kang North 7, Singapore 689527": {
+  "station": "YEW TEE MRT STATION",
+  "lines": "NS5",
+  "min": 10,
+  "dist_m": 697
+ },
+ "50 Lakeside Drive, Singapore 648315": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 17,
+  "dist_m": 1298
+ },
+ "50 Lorong 40 Geylang, Singapore 398074": {
+  "station": "DAKOTA MRT STATION",
+  "lines": "CC8",
+  "min": 8,
+  "dist_m": 594
+ },
+ "5000K Marine Parade Road, Singapore 449292": {
+  "station": "SIGLAP MRT STATION",
+  "lines": "TE28",
+  "min": 15,
+  "dist_m": 1065
+ },
+ "5000M Marine Parade Road, Singapore 449294": {
+  "station": "SIGLAP MRT STATION",
+  "lines": "TE28",
+  "min": 15,
+  "dist_m": 1110
+ },
+ "501 Dunman Road, Singapore 439193": {
+  "station": "DAKOTA MRT STATION",
+  "lines": "CC8",
+  "min": 10,
+  "dist_m": 750
+ },
+ "515 Dunman Road, Singapore 439204": {
+  "station": "DAKOTA MRT STATION",
+  "lines": "CC8",
+  "min": 11,
+  "dist_m": 803
+ },
+ "52 Bukit Batok St 31, Singapore 659443": {
+  "station": "BUKIT GOMBAK MRT STATION",
+  "lines": "NS3",
+  "min": 3,
+  "dist_m": 244
+ },
+ "52 Bukit Batok Street 31, Singapore 659443": {
+  "station": "BUKIT GOMBAK MRT STATION",
+  "lines": "NS3",
+  "min": 3,
+  "dist_m": 244
+ },
+ "52 Hume Ave, Singapore 596230": {
+  "station": "HUME MRT STATION",
+  "lines": "DT4",
+  "min": 10,
+  "dist_m": 713
+ },
+ "52 Lakeside Drive, Singapore 648316": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 13,
+  "dist_m": 977
+ },
+ "53 Choa Chu Kang Loop, Singapore 689683": {
+  "station": "CHOA CHU KANG MRT STATION",
+  "lines": "JS1",
+  "min": 9,
+  "dist_m": 687
+ },
+ "53 Jurong East Ave 1, Singapore 609783": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 9,
+  "dist_m": 627
+ },
+ "53 Jurong East Avenue 1, Singapore 609783": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 9,
+  "dist_m": 627
+ },
+ "53 Jurong East Avenue1, Singapore 609783": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 9,
+  "dist_m": 627
+ },
+ "54 Sengkang Square, Singapore 544832": {
+  "station": "SENGKANG MRT STATION",
+  "lines": "NE16",
+  "min": 8,
+  "dist_m": 586
+ },
+ "56 Choa Chu Kang North 6, Singapore 689577": {
+  "station": "YEW TEE MRT STATION",
+  "lines": "NS5",
+  "min": 13,
+  "dist_m": 903
+ },
+ "56 Lakeside Drive, Singapore 648318": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 6,
+  "dist_m": 451
+ },
+ "57 Choa Chu Kang Loop, Singapore 689685": {
+  "station": "CHOA CHU KANG MRT STATION",
+  "lines": "JS1",
+  "min": 6,
+  "dist_m": 471
+ },
+ "58 Lakeside Drive, Singapore 648319": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 6,
+  "dist_m": 451
+ },
+ "59 Ang Mo Kio Ave 8, Singapore 567752": {
+  "station": "ANG MO KIO MRT STATION",
+  "lines": "NS16",
+  "min": 15,
+  "dist_m": 1042
+ },
+ "6 Ang Mo Kio Central 3, Singapore 567743": {
+  "station": "YIO CHU KANG MRT STATION",
+  "lines": "NS15",
+  "min": 13,
+  "dist_m": 942
+ },
+ "6 Bedok Reservoir View, Singapore 479234": {
+  "station": "BEDOK RESERVOIR MRT STATION",
+  "lines": "DT30",
+  "min": 10,
+  "dist_m": 723
+ },
+ "6 Boon Lay Drive, Singapore 649927": {
+  "station": "JURONG WEST MRT STATION",
+  "lines": "JS6",
+  "min": 16,
+  "dist_m": 1164
+ },
+ "6 Dover Rise, Singapore 138678": {
+  "station": "BUONA VISTA MRT STATION",
+  "lines": "CC22",
+  "min": 14,
+  "dist_m": 1073
+ },
+ "6 Flora Road, Singapore 509727": {
+  "station": "TAMPINES EAST MRT STATION",
+  "lines": "DT33",
+  "min": 22,
+  "dist_m": 1447
+ },
+ "6 Geylang East Ave 2, Singapore 389756": {
+  "station": "PAYA LEBAR MRT STATION",
+  "lines": "CC9",
+  "min": 8,
+  "dist_m": 580
+ },
+ "6 Petir Road, Singapore 678267": {
+  "station": "BUKIT PANJANG MRT STATION",
+  "lines": "DT1",
+  "min": 12,
+  "dist_m": 778
+ },
+ "60 Lakeside Dr, Singapore 648320": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 6,
+  "dist_m": 451
+ },
+ "60 Lakeside Drive, Singapore 648320": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 6,
+  "dist_m": 451
+ },
+ "60 Punggol Walk, Singapore 828780": {
+  "station": "PUNGGOL MRT STATION",
+  "lines": "NE17",
+  "min": 8,
+  "dist_m": 620
+ },
+ "61 Mount Sinai Dr, Singapore 277113": {
+  "station": "DOVER MRT STATION",
+  "lines": "EW22",
+  "min": 21,
+  "dist_m": 1560
+ },
+ "63 Choa Chu Kang Loop, Singapore 689669": {
+  "station": "CHOA CHU KANG MRT STATION",
+  "lines": "JS1",
+  "min": 8,
+  "dist_m": 548
+ },
+ "65 Jurong West Central 3, Singapore 648332": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 2,
+  "dist_m": 158
+ },
+ "67 Jurong West Central 3, Singapore 648333": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 2,
+  "dist_m": 158
+ },
+ "67 Jurong West Central 3, Singapore 648333,": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 2,
+  "dist_m": 158
+ },
+ "68 Telok Blangah Rd, Singapore 098865": {
+  "station": "HARBOURFRONT MRT STATION",
+  "lines": "NE1 / CC29",
+  "min": 6,
+  "dist_m": 457
+ },
+ "68 Telok Blangah Road, Singapore 098865": {
+  "station": "HARBOURFRONT MRT STATION",
+  "lines": "NE1 / CC29",
+  "min": 6,
+  "dist_m": 457
+ },
+ "69 Choa Chu Kang Loop, Singapore 689672": {
+  "station": "CHOA CHU KANG MRT STATION",
+  "lines": "JS1",
+  "min": 11,
+  "dist_m": 822
+ },
+ "69 Jurong West Central 3, Singapore 648334": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 2,
+  "dist_m": 141
+ },
+ "7 One North Gateway, Singapore 138642": {
+  "station": "ONE-NORTH MRT STATION",
+  "lines": "CC23",
+  "min": 6,
+  "dist_m": 485
+ },
+ "7 One-North Gateway, Singapore 138642": {
+  "station": "ONE-NORTH MRT STATION",
+  "lines": "CC23",
+  "min": 6,
+  "dist_m": 485
+ },
+ "7 Serangoon Avenue 2, Singapore 556133": {
+  "station": "SERANGOON MRT STATION",
+  "lines": "CC13",
+  "min": 11,
+  "dist_m": 755
+ },
+ "7 St Michael's Rd, Singapore 327950": {
+  "station": "BOON KENG MRT STATION",
+  "lines": "NE9",
+  "min": 12,
+  "dist_m": 880
+ },
+ "7 Upper Bukit Timah View, Singapore 588135": {
+  "station": "BEAUTY WORLD MRT STATION",
+  "lines": "DT5",
+  "min": 16,
+  "dist_m": 1193
+ },
+ "7 West Coast Walk, Singapore 127159": {
+  "station": "CLEMENTI MRT STATION",
+  "lines": "EW23",
+  "min": 22,
+  "dist_m": 1604
+ },
+ "70 Punggol Walk, Singapore 828785": {
+  "station": "PUNGGOL MRT STATION",
+  "lines": "NE17",
+  "min": 7,
+  "dist_m": 481
+ },
+ "700 Upper Changi Rd East, Singapore 486830": {
+  "station": "UPPER CHANGI MRT STATION",
+  "lines": "DT34",
+  "min": 9,
+  "dist_m": 654
+ },
+ "700 Upper Changi Road East, Singapore 486830": {
+  "station": "UPPER CHANGI MRT STATION",
+  "lines": "DT34",
+  "min": 9,
+  "dist_m": 654
+ },
+ "702 Upper Changi Road East, Singapore 486832": {
+  "station": "UPPER CHANGI MRT STATION",
+  "lines": "DT34",
+  "min": 5,
+  "dist_m": 372
+ },
+ "708 Upper Changi Road East, Singapore 486838": {
+  "station": "UPPER CHANGI MRT STATION",
+  "lines": "DT34",
+  "min": 4,
+  "dist_m": 265
+ },
+ "71 Jurong West Central 3, Singapore 648335": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 2,
+  "dist_m": 113
+ },
+ "712A Upper Changi Road East, Singapore 486843": {
+  "station": "UPPER CHANGI MRT STATION",
+  "lines": "DT34",
+  "min": 8,
+  "dist_m": 617
+ },
+ "716 Upper Changi Road East, Singapore 486847": {
+  "station": "UPPER CHANGI MRT STATION",
+  "lines": "DT34",
+  "min": 8,
+  "dist_m": 544
+ },
+ "73 Choa Chu Kang Loop, Singapore 689674": {
+  "station": "CHOA CHU KANG MRT STATION",
+  "lines": "JS1",
+  "min": 7,
+  "dist_m": 514
+ },
+ "73 Jurong West Central 3, Singapore 648336": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 2,
+  "dist_m": 114
+ },
+ "77 Jurong East Street 13, Singapore 609653": {
+  "station": "CHINESE GARDEN MRT STATION",
+  "lines": "EW25",
+  "min": 14,
+  "dist_m": 1019
+ },
+ "77 Jurong West Central 3, Singapore 648338": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 5,
+  "dist_m": 383
+ },
+ "78 Tanah Merah Kechil Avenue, Singapore 465538": {
+  "station": "TANAH MERAH MRT STATION",
+  "lines": "EW4",
+  "min": 11,
+  "dist_m": 768
+ },
+ "79 Jurong West Central 3, Singapore 648339": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 6,
+  "dist_m": 433
+ },
+ "8 Boon Lay Drive, Singapore 649928": {
+  "station": "JURONG WEST MRT STATION",
+  "lines": "JS6",
+  "min": 16,
+  "dist_m": 1142
+ },
+ "8 Dover Rise, Singapore 138679": {
+  "station": "ONE-NORTH MRT STATION",
+  "lines": "CC23",
+  "min": 16,
+  "dist_m": 1186
+ },
+ "8 Geylang East Ave 2, Singapore 389757": {
+  "station": "PAYA LEBAR MRT STATION",
+  "lines": "CC9",
+  "min": 6,
+  "dist_m": 419
+ },
+ "8 Oxley Garden, Singapore 238739": {
+  "station": "SOMERSET MRT STATION",
+  "lines": "NS23",
+  "min": 8,
+  "dist_m": 618
+ },
+ "8 West Coast Road, Singapore 126823": {
+  "station": "HAW PAR VILLA MRT STATION",
+  "lines": "CC25",
+  "min": 31,
+  "dist_m": 2279
+ },
+ "80 Flora Road, Singapore 506999": {
+  "station": "TAMPINES EAST MRT STATION",
+  "lines": "DT33",
+  "min": 31,
+  "dist_m": 2074
+ },
+ "83 Jurong Central West 3,  Singapore 648342": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 7,
+  "dist_m": 528
+ },
+ "83 Jurong West Central 3, Singapore 648341": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 7,
+  "dist_m": 500
+ },
+ "84 Corporation Road, Singapore 649821": {
+  "station": "LAKESIDE MRT STATION",
+  "lines": "EW26",
+  "min": 13,
+  "dist_m": 933
+ },
+ "87 Jurong West Central 3, Singapore 648343": {
+  "station": "BOON LAY MRT STATION",
+  "lines": "EW27",
+  "min": 8,
+  "dist_m": 558
+ },
+ "88 Tanah Merah Kechil Ave, Singapore 465518": {
+  "station": "TANAH MERAH MRT STATION",
+  "lines": "EW4",
+  "min": 12,
+  "dist_m": 824
+ },
+ "894 Upper Bukit Timah Road, Singapore 678188": {
+  "station": "BUKIT PANJANG MRT STATION",
+  "lines": "DT1",
+  "min": 9,
+  "dist_m": 625
+ },
+ "9 Bukit Batok Central Link, Singapore 658074": {
+  "station": "BUKIT BATOK MRT STATION",
+  "lines": "NS2",
+  "min": 4,
+  "dist_m": 331
+ },
+ "9 Jalan Membina, Singapore 169483": {
+  "station": "TIONG BAHRU MRT STATION",
+  "lines": "EW17",
+  "min": 4,
+  "dist_m": 280
+ },
+ "9 Sengkang Square, Singapore 545075": {
+  "station": "SENGKANG MRT STATION",
+  "lines": "NE16",
+  "min": 4,
+  "dist_m": 284
+ },
+ "900 Dunearn Rd, Singapore 589473": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 3,
+  "dist_m": 150
+ },
+ "900 Dunearn Road, Singapore 589473": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 3,
+  "dist_m": 150
+ },
+ "958 Dunearn Road, Singapore 589485": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 13,
+  "dist_m": 978
+ },
+ "960 Dunearn Road, Singapore 589486": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 14,
+  "dist_m": 1014
+ },
+ "985 Bukit Timah Rd, Singapore 589627": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 4,
+  "dist_m": 296
+ },
+ "985 Bukit Timah Road, Singapore 589627": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 4,
+  "dist_m": 296
+ },
+ "989 Bukit Timah Road, Singapore 589629": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 5,
+  "dist_m": 395
+ },
+ "991 Bukit Timah Road, Singapore 589630": {
+  "station": "KING ALBERT PARK MRT STATION",
+  "lines": "DT6",
+  "min": 3,
+  "dist_m": 226
+ },
+ "Singapore 219745": {
+  "station": "FARRER PARK MRT STATION",
+  "lines": "NE8",
+  "min": 13,
+  "dist_m": 915
+ },
+ "Tower 1B, 28 Bukit Batok Ave 2, Singapore 659921": {
+  "station": "BUKIT GOMBAK MRT STATION",
+  "lines": "NS3",
+  "min": 16,
+  "dist_m": 1205
+ }
+}
