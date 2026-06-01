@@ -1330,5 +1330,290 @@
   "lng": 103.7573721661523,
   "matched": "28 BUKIT BATOK EAST AVENUE 2 HILLVIEW REGENCY SINGAPORE 659921"
  },
- "_8 PAX URA until 31 Dec 2028": null
+ "_8 PAX URA until 31 Dec 2028": null,
+ "01 Jalan Membina, Singapore 169479": {
+  "lat": 1.28519576156367,
+  "lng": 103.827677219577,
+  "matched": "1 JALAN MEMBINA CENTRAL GREEN CONDOMINIUM SINGAPORE 169479"
+ },
+ "11 Balmeg Hill, Singapore 119916": {
+  "lat": 1.28309986005628,
+  "lng": 103.784292382245,
+  "matched": "11 BALMEG HILL THE PEAK@BALMEG SINGAPORE 119916"
+ },
+ "11 Seng Kang Square, Singapore 545076": {
+  "lat": 1.39202430708237,
+  "lng": 103.896214703952,
+  "matched": "11 SENGKANG SQUARE COMPASS HEIGHTS SINGAPORE 545076"
+ },
+ "11 Simei Street 4, Singapore 529866": {
+  "lat": 1.34075078640584,
+  "lng": 103.957634141173,
+  "matched": "11 SIMEI STREET 4 SIMEI GREEN CONDOMINIUM SINGAPORE 529866"
+ },
+ "115 Pasir Ris Grove, Singapore 518172": {
+  "lat": 1.36972155350826,
+  "lng": 103.944973963535,
+  "matched": "115 PASIR RIS GROVE THE PALETTE SINGAPORE 518172"
+ },
+ "119 Jurong East St 13, Singapore 600119": {
+  "lat": 1.3360836768334,
+  "lng": 103.735570271389,
+  "matched": "119 JURONG EAST STREET 13 IVORY HEIGHTS SINGAPORE 600119"
+ },
+ "123 Jurong East Street 13, Singapore 600123": {
+  "lat": 1.33456603399473,
+  "lng": 103.736990741299,
+  "matched": "123 JURONG EAST STREET 13 IVORY HEIGHTS SINGAPORE 600123"
+ },
+ "125 Arthur Rd, Singapore 439829": {
+  "lat": 1.29890153862647,
+  "lng": 103.887151599437,
+  "matched": "125 ARTHUR ROAD ARTHUR MANSIONS SINGAPORE 439829"
+ },
+ "14 Flora Road, Singapore 509731": {
+  "lat": 1.36024858909181,
+  "lng": 103.963296618871,
+  "matched": "14 FLORA ROAD AZALEA PARK CONDOMINIUM SINGAPORE 509731"
+ },
+ "14 Jln Pasir Ria, Singapore 119460": {
+  "lat": 1.27689713502405,
+  "lng": 103.792957976136,
+  "matched": "14 JALAN PASIR RIA SINGAPORE 119460"
+ },
+ "15 Bedok Reservoir View, Singapore 478933": {
+  "lat": 1.33761522296568,
+  "lng": 103.936850188729,
+  "matched": "15 BEDOK RESERVOIR VIEW AQUARIUS BY THE PARK SINGAPORE 478933"
+ },
+ "16 Stirling Road, Singapore 148957": {
+  "lat": 1.29267425406171,
+  "lng": 103.806663243377,
+  "matched": "16 STIRLING ROAD QUEENS SINGAPORE 148957"
+ },
+ "17 Balmeg Hill, Singapore 119919": {
+  "lat": 1.28245747065024,
+  "lng": 103.783835611376,
+  "matched": "17 BALMEG HILL THE PEAK@BALMEG SINGAPORE 119919"
+ },
+ "18 Taman Serasi, Singapore 257722": {
+  "lat": 1.30816131561974,
+  "lng": 103.820189431467,
+  "matched": "18 TAMAN SERASI BOTANIC GARDENS MANSION SINGAPORE 257722"
+ },
+ "187 Tanjong Rhu, Singapore 436925": {
+  "lat": 1.29599148822782,
+  "lng": 103.870659351612,
+  "matched": "187 TANJONG RHU ROAD SANCTUARY GREEN SINGAPORE 436925"
+ },
+ "19C Simei Street 4, Singapore 528715": {
+  "lat": 1.34052918054906,
+  "lng": 103.9567769669,
+  "matched": "19C SIMEI STREET 4 DOUBLE BAY RESIDENCES SINGAPORE 528715"
+ },
+ "20 Upper Circular Road, Singapore 058416": {
+  "lat": 1.28897209658289,
+  "lng": 103.848459830887,
+  "matched": "20 UPPER CIRCULAR ROAD THE RIVERWALK SINGAPORE 058416"
+ },
+ "22 Bukit Batok Street 52, Singapore 659245": {
+  "lat": 1.35573491876364,
+  "lng": 103.752512524441,
+  "matched": "22 BUKIT BATOK STREET 52 GUILIN VIEW SINGAPORE 659245"
+ },
+ "224 Westwood Avenue, Singapore 648356": {
+  "lat": 1.35106923126398,
+  "lng": 103.696526412174,
+  "matched": "224 WESTWOOD AVENUE THE FLORAVALE SINGAPORE 648356"
+ },
+ "228 Westwood Avenue, Singapore 648358": {
+  "lat": 1.3514142686536,
+  "lng": 103.69585677257,
+  "matched": "228 WESTWOOD AVENUE THE FLORAVALE SINGAPORE 648358"
+ },
+ "238 Westwood Ave, Singapore 648363": {
+  "lat": 1.3505057846007,
+  "lng": 103.696781386822,
+  "matched": "238 WESTWOOD AVENUE THE FLORAVALE SINGAPORE 648363"
+ },
+ "242 Westwood Ave, Singapore 648365": {
+  "lat": 1.350500418105,
+  "lng": 103.697198825701,
+  "matched": "242 WESTWOOD AVENUE THE FLORAVALE SINGAPORE 648365"
+ },
+ "242E Pasir Panjang Road, Singapore 117494": {
+  "lat": 1.28051514672186,
+  "lng": 103.785443383155,
+  "matched": "242E PASIR PANJANG ROAD THE MAYLEA SINGAPORE 117494"
+ },
+ "27 Tampines Street 34, Singapore 529235": {
+  "lat": 1.3550697954453,
+  "lng": 103.960404580411,
+  "matched": "27 TAMPINES STREET 34 THE EDEN AT TAMPINES SINGAPORE 529235"
+ },
+ "3 Alexandra View, Singapore 158749": {
+  "lat": 1.29095103716645,
+  "lng": 103.817000265618,
+  "matched": "3 ALEXANDRA VIEW ASCENTIA SKY SINGAPORE 158749"
+ },
+ "3 Moulmein Rise, Singapore 308144": {
+  "lat": 1.31911757962448,
+  "lng": 103.846655980088,
+  "matched": "3 MOULMEIN RISE THE SPRINGS SINGAPORE 308144"
+ },
+ "3 Tanah Merah Kechil Road, Singapore 466664": {
+  "lat": 1.32645360666448,
+  "lng": 103.942524576662,
+  "matched": "3 TANAH MERAH KECHIL ROAD THE TANAMERA SINGAPORE 466664"
+ },
+ "31 Bishan Street 11, Singapore 579819": {
+  "lat": 1.34752183684458,
+  "lng": 103.852047817533,
+  "matched": "31 BISHAN STREET 11 BISHAN LOFT SINGAPORE 579819"
+ },
+ "320 Guilemard Rd, Singapore 399746": {
+  "lat": 1.31103276112231,
+  "lng": 103.886630140814,
+  "matched": "320 GUILLEMARD ROAD CASSIA VIEW SINGAPORE 399746"
+ },
+ "34 Tanah Merah Kechil Road, Singapore 465560": {
+  "lat": 1.32863494842527,
+  "lng": 103.944681051515,
+  "matched": "34 TANAH MERAH KECHIL ROAD EAST MEADOWS SINGAPORE 465560"
+ },
+ "353 Pasir Panjang Road, Singapore 118695": {
+  "lat": 1.28943349070879,
+  "lng": 103.775385797395,
+  "matched": "353 PASIR PANJANG ROAD JUBILEE RESIDENCE SINGAPORE 118695"
+ },
+ "36 West Coast Rd, Singapore 127343": {
+  "lat": 1.29410147307251,
+  "lng": 103.768630345941,
+  "matched": "36 WEST COAST ROAD VARSITY PARK CONDOMINIUM SINGAPORE 127343"
+ },
+ "39 Jurong East Avenue 1, Singapore 609776": {
+  "lat": 1.34314435806193,
+  "lng": 103.734088857043,
+  "matched": "39 JURONG EAST AVENUE 1 PARC OASIS SINGAPORE 609776"
+ },
+ "406C Pasir Panjang Road, Singapore 117453": {
+  "lat": 1.29207778445903,
+  "lng": 103.769995863407,
+  "matched": "406C PASIR PANJANG ROAD SINGAPORE 117453"
+ },
+ "406G Pasir Panjang Road, Singapore 117453": {
+  "lat": 1.29207778445903,
+  "lng": 103.769995863407,
+  "matched": "406C PASIR PANJANG ROAD SINGAPORE 117453"
+ },
+ "41 Yunnan Drive 2, Singapore 637941": {
+  "lat": 1.3377504649623,
+  "lng": 103.691832084153,
+  "matched": "41 YUNNAN DRIVE 2 SINGAPORE 637941"
+ },
+ "458 Corporation Road T5, Singapore 649814": {
+  "lat": 1.34397478538951,
+  "lng": 103.716886229568,
+  "matched": "458 CORPORATION ROAD PARC VISTA SINGAPORE 649814"
+ },
+ "462 Corporation Road, Singapore 649816": {
+  "lat": 1.34477710083075,
+  "lng": 103.717005534795,
+  "matched": "462 CORPORATION ROAD PARC VISTA SINGAPORE 649816"
+ },
+ "47 Normanton Park, Singapore 119028": {
+  "lat": 1.28646428984999,
+  "lng": 103.793182490893,
+  "matched": "47 NORMANTON PARK NORMANTON PARK SINGAPORE 119028"
+ },
+ "5 Tanah Merah Kechil Road, Singapore 466665": {
+  "lat": 1.32708709920795,
+  "lng": 103.942749087605,
+  "matched": "5 TANAH MERAH KECHIL ROAD THE TANAMERA SINGAPORE 466665"
+ },
+ "503 Pasir Panjang Rd, Singapore 117505": {
+  "lat": 1.29181010019039,
+  "lng": 103.76847138231,
+  "matched": "503 PASIR PANJANG ROAD THE SPECTRUM SINGAPORE 117505"
+ },
+ "503 Pasir Panjang Road, Singapore 117505": {
+  "lat": 1.29181010019039,
+  "lng": 103.76847138231,
+  "matched": "503 PASIR PANJANG ROAD THE SPECTRUM SINGAPORE 117505"
+ },
+ "50A Lakeside Drive, Singapore 648315": {
+  "lat": 1.34265740158581,
+  "lng": 103.718174762722,
+  "matched": "50 LAKESIDE DRIVE CASPIAN SINGAPORE 648315"
+ },
+ "52 Choa Chu Kang North 7, Singapore 689528": {
+  "lat": 1.39931151944023,
+  "lng": 103.748806666149,
+  "matched": "52 CHOA CHU KANG NORTH 7 REGENT GROVE SINGAPORE 689528"
+ },
+ "54 Lakeside Drive, Singapore 648317": {
+  "lat": 1.34309259667018,
+  "lng": 103.717865129148,
+  "matched": "54 LAKESIDE DRIVE CASPIAN SINGAPORE 648317"
+ },
+ "55 Normanton Park, Singapore 117283": {
+  "lat": 1.28629143122643,
+  "lng": 103.791268407311,
+  "matched": "55 NORMANTON PARK NORMANTON PARK SINGAPORE 117283"
+ },
+ "62B Jalan Jurong Kechil Singapore 598584": {
+  "lat": 1.34056479101274,
+  "lng": 103.774013020471,
+  "matched": "62 JALAN JURONG KECHIL JK BUILDING SINGAPORE 598584"
+ },
+ "66 Tanah Merah Kechil Avenue, Singapore 465532": {
+  "lat": 1.32907226475414,
+  "lng": 103.946213682301,
+  "matched": "66 TANAH MERAH KECHIL AVENUE CASA MERAH SINGAPORE 465532"
+ },
+ "7 Simei Street 4, Singapore 529864": {
+  "lat": 1.34045561413094,
+  "lng": 103.958167772107,
+  "matched": "7 SIMEI STREET 4 SIMEI GREEN CONDOMINIUM SINGAPORE 529864"
+ },
+ "71 Jurong East Street 13, Singapore 609650": {
+  "lat": 1.33758505557106,
+  "lng": 103.736682684179,
+  "matched": "71 JURONG EAST STREET 13 WESTMERE SINGAPORE 609650"
+ },
+ "75 Jurong West Central 3, Singapore 648337": {
+  "lat": 1.33885384719555,
+  "lng": 103.704726233719,
+  "matched": "75 JURONG WEST CENTRAL 3 THE CENTRIS SINGAPORE 648337"
+ },
+ "8 Geylang East Avenue 2, Singapore 389754": {
+  "lat": 1.31703114737635,
+  "lng": 103.890499582849,
+  "matched": "2 GEYLANG EAST AVENUE 2 SIMSVILLE SINGAPORE 389754"
+ },
+ "8 Lor 29 Geylang, Singapore 388064": {
+  "lat": 1.31448170168624,
+  "lng": 103.885985749034,
+  "matched": "8 LORONG 29 GEYLANG TORIEVIEW MANSIONS SINGAPORE 388064"
+ },
+ "85 Jurong West Central 3, Singapore 648342": {
+  "lat": 1.33997168505203,
+  "lng": 103.70549712726,
+  "matched": "85 JURONG WEST CENTRAL 3 THE CENTRIS SINGAPORE 648342"
+ },
+ "9 Everitt Rd N, Singapore 428522": {
+  "lat": 1.31620464984195,
+  "lng": 103.901861658977,
+  "matched": "9 EVERITT ROAD NORTH EVERITT GREEN SINGAPORE 428522"
+ },
+ "968 Dunearn Road, Singapore 589489": {
+  "lat": 1.337684398384,
+  "lng": 103.780147954617,
+  "matched": "968 DUNEARN ROAD JARDIN SINGAPORE 589489"
+ },
+ "993 Upper Bukit Timah Road, Singapore 589631": {
+  "lat": 1.33470265733548,
+  "lng": 103.784414163245,
+  "matched": "993 BUKIT TIMAH ROAD MAPLE WOODS SINGAPORE 589631"
+ }
 }

@@ -11243,7 +11243,2401 @@
     "min": 53,
     "km": 15.2
    }
+  },
+  "01 Jalan Membina, Singapore 169479": {
+   "NUS": {
+    "min": 39,
+    "km": 8.6
+   },
+   "NTU": {
+    "min": 58,
+    "km": 21.3
+   },
+   "SMU": {
+    "min": 25,
+    "km": 5.5
+   },
+   "JCU": {
+    "min": 40,
+    "km": 10.5
+   },
+   "Curtin": {
+    "min": 43,
+    "km": 9.3
+   },
+   "SIM": {
+    "min": 38,
+    "km": 11.2
+   },
+   "MDIS": {
+    "min": 24,
+    "km": 3.7
+   },
+   "PSB": {
+    "min": 30,
+    "km": 5.8
+   },
+   "Kaplan": {
+    "min": 34,
+    "km": 7.0
+   },
+   "LASALLE": {
+    "min": 30,
+    "km": 6.7
+   }
+  },
+  "11 Balmeg Hill, Singapore 119916": {
+   "NUS": {
+    "min": 43,
+    "km": 3.7
+   },
+   "NTU": {
+    "min": 77,
+    "km": 20.4
+   },
+   "SMU": {
+    "min": 70,
+    "km": 13.4
+   },
+   "JCU": {
+    "min": 91,
+    "km": 17.0
+   },
+   "Curtin": {
+    "min": 24,
+    "km": 2.2
+   },
+   "SIM": {
+    "min": 53,
+    "km": 8.8
+   },
+   "MDIS": {
+    "min": 45,
+    "km": 7.0
+   },
+   "PSB": {
+    "min": 60,
+    "km": 10.8
+   },
+   "Kaplan": {
+    "min": 60,
+    "km": 12.9
+   },
+   "LASALLE": {
+    "min": 60,
+    "km": 12.6
+   }
+  },
+  "11 Seng Kang Square, Singapore 545076": {
+   "NUS": {
+    "min": 68,
+    "km": 21.3
+   },
+   "NTU": {
+    "min": 100,
+    "km": 37.8
+   },
+   "SMU": {
+    "min": 43,
+    "km": 13.2
+   },
+   "JCU": {
+    "min": 60,
+    "km": 14.4
+   },
+   "Curtin": {
+    "min": 70,
+    "km": 22.5
+   },
+   "SIM": {
+    "min": 75,
+    "km": 22.6
+   },
+   "MDIS": {
+    "min": 66,
+    "km": 20.2
+   },
+   "PSB": {
+    "min": 50,
+    "km": 14.2
+   },
+   "Kaplan": {
+    "min": 39,
+    "km": 12.0
+   },
+   "LASALLE": {
+    "min": 39,
+    "km": 12.0
+   }
+  },
+  "11 Simei Street 4, Singapore 529866": {
+   "NUS": {
+    "min": 79,
+    "km": 28.2
+   },
+   "NTU": {
+    "min": 98,
+    "km": 40.9
+   },
+   "SMU": {
+    "min": 51,
+    "km": 18.9
+   },
+   "JCU": {
+    "min": 48,
+    "km": 11.6
+   },
+   "Curtin": {
+    "min": 90,
+    "km": 32.7
+   },
+   "SIM": {
+    "min": 78,
+    "km": 30.8
+   },
+   "MDIS": {
+    "min": 65,
+    "km": 23.3
+   },
+   "PSB": {
+    "min": 52,
+    "km": 15.8
+   },
+   "Kaplan": {
+    "min": 53,
+    "km": 19.0
+   },
+   "LASALLE": {
+    "min": 47,
+    "km": 14.8
+   }
+  },
+  "115 Pasir Ris Grove, Singapore 518172": {
+   "NUS": {
+    "min": 88,
+    "km": 32.3
+   },
+   "NTU": {
+    "min": 107,
+    "km": 45.0
+   },
+   "SMU": {
+    "min": 58,
+    "km": 19.7
+   },
+   "JCU": {
+    "min": 57,
+    "km": 15.6
+   },
+   "Curtin": {
+    "min": 99,
+    "km": 36.8
+   },
+   "SIM": {
+    "min": 88,
+    "km": 34.9
+   },
+   "MDIS": {
+    "min": 74,
+    "km": 27.4
+   },
+   "PSB": {
+    "min": 61,
+    "km": 19.9
+   },
+   "Kaplan": {
+    "min": 60,
+    "km": 19.1
+   },
+   "LASALLE": {
+    "min": 57,
+    "km": 18.8
+   }
+  },
+  "119 Jurong East St 13, Singapore 600119": {
+   "NUS": {
+    "min": 43,
+    "km": 8.1
+   },
+   "NTU": {
+    "min": 51,
+    "km": 10.6
+   },
+   "SMU": {
+    "min": 52,
+    "km": 18.2
+   },
+   "JCU": {
+    "min": 68,
+    "km": 23.2
+   },
+   "Curtin": {
+    "min": 53,
+    "km": 8.6
+   },
+   "SIM": {
+    "min": 50,
+    "km": 8.6
+   },
+   "MDIS": {
+    "min": 51,
+    "km": 12.0
+   },
+   "PSB": {
+    "min": 57,
+    "km": 18.5
+   },
+   "Kaplan": {
+    "min": 61,
+    "km": 19.6
+   },
+   "LASALLE": {
+    "min": 58,
+    "km": 19.4
+   }
+  },
+  "123 Jurong East Street 13, Singapore 600123": {
+   "NUS": {
+    "min": 43,
+    "km": 7.3
+   },
+   "NTU": {
+    "min": 50,
+    "km": 10.5
+   },
+   "SMU": {
+    "min": 51,
+    "km": 18.1
+   },
+   "JCU": {
+    "min": 67,
+    "km": 23.1
+   },
+   "Curtin": {
+    "min": 50,
+    "km": 8.4
+   },
+   "SIM": {
+    "min": 50,
+    "km": 8.6
+   },
+   "MDIS": {
+    "min": 49,
+    "km": 11.2
+   },
+   "PSB": {
+    "min": 56,
+    "km": 18.4
+   },
+   "Kaplan": {
+    "min": 60,
+    "km": 19.6
+   },
+   "LASALLE": {
+    "min": 57,
+    "km": 19.3
+   }
+  },
+  "125 Arthur Rd, Singapore 439829": {
+   "NUS": {
+    "min": 58,
+    "km": 18.3
+   },
+   "NTU": {
+    "min": 78,
+    "km": 31.0
+   },
+   "SMU": {
+    "min": 34,
+    "km": 6.1
+   },
+   "JCU": {
+    "min": 37,
+    "km": 3.5
+   },
+   "Curtin": {
+    "min": 48,
+    "km": 16.3
+   },
+   "SIM": {
+    "min": 61,
+    "km": 20.3
+   },
+   "MDIS": {
+    "min": 43,
+    "km": 13.4
+   },
+   "PSB": {
+    "min": 32,
+    "km": 5.6
+   },
+   "Kaplan": {
+    "min": 41,
+    "km": 6.8
+   },
+   "LASALLE": {
+    "min": 40,
+    "km": 5.7
+   }
+  },
+  "14 Flora Road, Singapore 509731": {
+   "NUS": {
+    "min": 97,
+    "km": 31.1
+   },
+   "NTU": {
+    "min": 116,
+    "km": 43.8
+   },
+   "SMU": {
+    "min": 58,
+    "km": 17.0
+   },
+   "JCU": {
+    "min": 65,
+    "km": 14.2
+   },
+   "Curtin": {
+    "min": 103,
+    "km": 28.8
+   },
+   "SIM": {
+    "min": 96,
+    "km": 33.7
+   },
+   "MDIS": {
+    "min": 82,
+    "km": 26.2
+   },
+   "PSB": {
+    "min": 72,
+    "km": 22.5
+   },
+   "Kaplan": {
+    "min": 60,
+    "km": 17.2
+   },
+   "LASALLE": {
+    "min": 62,
+    "km": 17.3
+   }
+  },
+  "14 Jln Pasir Ria, Singapore 119460": {
+   "NUS": {
+    "min": 31,
+    "km": 4.1
+   },
+   "NTU": {
+    "min": 65,
+    "km": 20.8
+   },
+   "SMU": {
+    "min": 43,
+    "km": 10.0
+   },
+   "JCU": {
+    "min": 63,
+    "km": 20.0
+   },
+   "Curtin": {
+    "min": 24,
+    "km": 2.7
+   },
+   "SIM": {
+    "min": 50,
+    "km": 10.6
+   },
+   "MDIS": {
+    "min": 38,
+    "km": 5.6
+   },
+   "PSB": {
+    "min": 52,
+    "km": 9.3
+   },
+   "Kaplan": {
+    "min": 44,
+    "km": 10.6
+   },
+   "LASALLE": {
+    "min": 44,
+    "km": 10.6
+   }
+  },
+  "15 Bedok Reservoir View, Singapore 478933": {
+   "NUS": {
+    "min": 85,
+    "km": 24.9
+   },
+   "NTU": {
+    "min": 106,
+    "km": 38.8
+   },
+   "SMU": {
+    "min": 41,
+    "km": 12.0
+   },
+   "JCU": {
+    "min": 48,
+    "km": 9.2
+   },
+   "Curtin": {
+    "min": 85,
+    "km": 23.8
+   },
+   "SIM": {
+    "min": 82,
+    "km": 22.2
+   },
+   "MDIS": {
+    "min": 73,
+    "km": 21.2
+   },
+   "PSB": {
+    "min": 55,
+    "km": 17.5
+   },
+   "Kaplan": {
+    "min": 43,
+    "km": 12.2
+   },
+   "LASALLE": {
+    "min": 45,
+    "km": 12.3
+   }
+  },
+  "16 Stirling Road, Singapore 148957": {
+   "NUS": {
+    "min": 40,
+    "km": 6.8
+   },
+   "NTU": {
+    "min": 57,
+    "km": 19.0
+   },
+   "SMU": {
+    "min": 33,
+    "km": 8.4
+   },
+   "JCU": {
+    "min": 48,
+    "km": 13.4
+   },
+   "Curtin": {
+    "min": 46,
+    "km": 8.4
+   },
+   "SIM": {
+    "min": 38,
+    "km": 8.9
+   },
+   "MDIS": {
+    "min": 17,
+    "km": 1.3
+   },
+   "PSB": {
+    "min": 38,
+    "km": 8.7
+   },
+   "Kaplan": {
+    "min": 46,
+    "km": 7.3
+   },
+   "LASALLE": {
+    "min": 38,
+    "km": 9.6
+   }
+  },
+  "17 Balmeg Hill, Singapore 119919": {
+   "NUS": {
+    "min": 42,
+    "km": 3.6
+   },
+   "NTU": {
+    "min": 75,
+    "km": 20.3
+   },
+   "SMU": {
+    "min": 69,
+    "km": 13.2
+   },
+   "JCU": {
+    "min": 90,
+    "km": 16.9
+   },
+   "Curtin": {
+    "min": 23,
+    "km": 2.1
+   },
+   "SIM": {
+    "min": 52,
+    "km": 8.7
+   },
+   "MDIS": {
+    "min": 44,
+    "km": 6.9
+   },
+   "PSB": {
+    "min": 59,
+    "km": 10.6
+   },
+   "Kaplan": {
+    "min": 59,
+    "km": 12.8
+   },
+   "LASALLE": {
+    "min": 59,
+    "km": 12.5
+   }
+  },
+  "18 Taman Serasi, Singapore 257722": {
+   "NUS": {
+    "min": 48,
+    "km": 7.7
+   },
+   "NTU": {
+    "min": 74,
+    "km": 27.6
+   },
+   "SMU": {
+    "min": 31,
+    "km": 4.6
+   },
+   "JCU": {
+    "min": 52,
+    "km": 13.8
+   },
+   "Curtin": {
+    "min": 58,
+    "km": 16.7
+   },
+   "SIM": {
+    "min": 37,
+    "km": 7.9
+   },
+   "MDIS": {
+    "min": 31,
+    "km": 4.0
+   },
+   "PSB": {
+    "min": 41,
+    "km": 5.6
+   },
+   "Kaplan": {
+    "min": 34,
+    "km": 4.6
+   },
+   "LASALLE": {
+    "min": 34,
+    "km": 6.4
+   }
+  },
+  "187 Tanjong Rhu, Singapore 436925": {
+   "NUS": {
+    "min": 59,
+    "km": 17.1
+   },
+   "NTU": {
+    "min": 80,
+    "km": 29.7
+   },
+   "SMU": {
+    "min": 31,
+    "km": 5.1
+   },
+   "JCU": {
+    "min": 38,
+    "km": 5.1
+   },
+   "Curtin": {
+    "min": 61,
+    "km": 15.5
+   },
+   "SIM": {
+    "min": 62,
+    "km": 19.0
+   },
+   "MDIS": {
+    "min": 44,
+    "km": 12.1
+   },
+   "PSB": {
+    "min": 33,
+    "km": 4.7
+   },
+   "Kaplan": {
+    "min": 40,
+    "km": 5.7
+   },
+   "LASALLE": {
+    "min": 42,
+    "km": 5.8
+   }
+  },
+  "19C Simei Street 4, Singapore 528715": {
+   "NUS": {
+    "min": 81,
+    "km": 28.4
+   },
+   "NTU": {
+    "min": 99,
+    "km": 41.0
+   },
+   "SMU": {
+    "min": 50,
+    "km": 15.8
+   },
+   "JCU": {
+    "min": 49,
+    "km": 11.7
+   },
+   "Curtin": {
+    "min": 91,
+    "km": 32.8
+   },
+   "SIM": {
+    "min": 80,
+    "km": 31.0
+   },
+   "MDIS": {
+    "min": 66,
+    "km": 23.5
+   },
+   "PSB": {
+    "min": 54,
+    "km": 15.9
+   },
+   "Kaplan": {
+    "min": 52,
+    "km": 15.2
+   },
+   "LASALLE": {
+    "min": 49,
+    "km": 14.9
+   }
+  },
+  "20 Upper Circular Road, Singapore 058416": {
+   "NUS": {
+    "min": 52,
+    "km": 10.4
+   },
+   "NTU": {
+    "min": 69,
+    "km": 25.5
+   },
+   "SMU": {
+    "min": 13,
+    "km": 1.4
+   },
+   "JCU": {
+    "min": 40,
+    "km": 5.3
+   },
+   "Curtin": {
+    "min": 54,
+    "km": 10.7
+   },
+   "SIM": {
+    "min": 63,
+    "km": 17.0
+   },
+   "MDIS": {
+    "min": 36,
+    "km": 7.9
+   },
+   "PSB": {
+    "min": 23,
+    "km": 1.6
+   },
+   "Kaplan": {
+    "min": 20,
+    "km": 2.0
+   },
+   "LASALLE": {
+    "min": 22,
+    "km": 3.1
+   }
+  },
+  "22 Bukit Batok Street 52, Singapore 659245": {
+   "NUS": {
+    "min": 48,
+    "km": 13.9
+   },
+   "NTU": {
+    "min": 59,
+    "km": 13.8
+   },
+   "SMU": {
+    "min": 49,
+    "km": 20.7
+   },
+   "JCU": {
+    "min": 64,
+    "km": 25.7
+   },
+   "Curtin": {
+    "min": 50,
+    "km": 12.2
+   },
+   "SIM": {
+    "min": 39,
+    "km": 10.3
+   },
+   "MDIS": {
+    "min": 40,
+    "km": 12.4
+   },
+   "PSB": {
+    "min": 54,
+    "km": 20.9
+   },
+   "Kaplan": {
+    "min": 58,
+    "km": 22.1
+   },
+   "LASALLE": {
+    "min": 55,
+    "km": 21.9
+   }
+  },
+  "224 Westwood Avenue, Singapore 648356": {
+   "NUS": {
+    "min": 79,
+    "km": 14.1
+   },
+   "NTU": {
+    "min": 40,
+    "km": 5.3
+   },
+   "SMU": {
+    "min": 74,
+    "km": 24.2
+   },
+   "JCU": {
+    "min": 90,
+    "km": 29.2
+   },
+   "Curtin": {
+    "min": 84,
+    "km": 17.1
+   },
+   "SIM": {
+    "min": 73,
+    "km": 15.5
+   },
+   "MDIS": {
+    "min": 65,
+    "km": 15.9
+   },
+   "PSB": {
+    "min": 79,
+    "km": 24.4
+   },
+   "Kaplan": {
+    "min": 105,
+    "km": 24.5
+   },
+   "LASALLE": {
+    "min": 80,
+    "km": 25.4
+   }
+  },
+  "228 Westwood Avenue, Singapore 648358": {
+   "NUS": {
+    "min": 78,
+    "km": 14.1
+   },
+   "NTU": {
+    "min": 42,
+    "km": 5.4
+   },
+   "SMU": {
+    "min": 74,
+    "km": 24.2
+   },
+   "JCU": {
+    "min": 89,
+    "km": 29.2
+   },
+   "Curtin": {
+    "min": 83,
+    "km": 17.1
+   },
+   "SIM": {
+    "min": 73,
+    "km": 15.5
+   },
+   "MDIS": {
+    "min": 64,
+    "km": 15.9
+   },
+   "PSB": {
+    "min": 79,
+    "km": 24.4
+   },
+   "Kaplan": {
+    "min": 104,
+    "km": 24.5
+   },
+   "LASALLE": {
+    "min": 79,
+    "km": 25.4
+   }
+  },
+  "238 Westwood Ave, Singapore 648363": {
+   "NUS": {
+    "min": 75,
+    "km": 13.9
+   },
+   "NTU": {
+    "min": 41,
+    "km": 5.3
+   },
+   "SMU": {
+    "min": 70,
+    "km": 23.9
+   },
+   "JCU": {
+    "min": 86,
+    "km": 28.9
+   },
+   "Curtin": {
+    "min": 80,
+    "km": 16.8
+   },
+   "SIM": {
+    "min": 69,
+    "km": 15.3
+   },
+   "MDIS": {
+    "min": 61,
+    "km": 15.7
+   },
+   "PSB": {
+    "min": 76,
+    "km": 24.2
+   },
+   "Kaplan": {
+    "min": 101,
+    "km": 24.2
+   },
+   "LASALLE": {
+    "min": 76,
+    "km": 25.1
+   }
+  },
+  "242 Westwood Ave, Singapore 648365": {
+   "NUS": {
+    "min": 74,
+    "km": 13.8
+   },
+   "NTU": {
+    "min": 40,
+    "km": 5.3
+   },
+   "SMU": {
+    "min": 70,
+    "km": 23.9
+   },
+   "JCU": {
+    "min": 85,
+    "km": 28.9
+   },
+   "Curtin": {
+    "min": 79,
+    "km": 16.8
+   },
+   "SIM": {
+    "min": 68,
+    "km": 15.2
+   },
+   "MDIS": {
+    "min": 60,
+    "km": 15.6
+   },
+   "PSB": {
+    "min": 75,
+    "km": 24.1
+   },
+   "Kaplan": {
+    "min": 100,
+    "km": 24.2
+   },
+   "LASALLE": {
+    "min": 75,
+    "km": 25.1
+   }
+  },
+  "242E Pasir Panjang Road, Singapore 117494": {
+   "NUS": {
+    "min": 36,
+    "km": 3.1
+   },
+   "NTU": {
+    "min": 69,
+    "km": 19.8
+   },
+   "SMU": {
+    "min": 69,
+    "km": 27.5
+   },
+   "JCU": {
+    "min": 67,
+    "km": 19.0
+   },
+   "Curtin": {
+    "min": 19,
+    "km": 1.7
+   },
+   "SIM": {
+    "min": 47,
+    "km": 8.4
+   },
+   "MDIS": {
+    "min": 40,
+    "km": 6.5
+   },
+   "PSB": {
+    "min": 55,
+    "km": 10.3
+   },
+   "Kaplan": {
+    "min": 52,
+    "km": 12.3
+   },
+   "LASALLE": {
+    "min": 53,
+    "km": 12.0
+   }
+  },
+  "27 Tampines Street 34, Singapore 529235": {
+   "NUS": {
+    "min": 93,
+    "km": 29.3
+   },
+   "NTU": {
+    "min": 112,
+    "km": 43.0
+   },
+   "SMU": {
+    "min": 49,
+    "km": 16.5
+   },
+   "JCU": {
+    "min": 56,
+    "km": 13.6
+   },
+   "Curtin": {
+    "min": 94,
+    "km": 28.2
+   },
+   "SIM": {
+    "min": 90,
+    "km": 26.6
+   },
+   "MDIS": {
+    "min": 79,
+    "km": 25.4
+   },
+   "PSB": {
+    "min": 63,
+    "km": 21.9
+   },
+   "Kaplan": {
+    "min": 51,
+    "km": 16.6
+   },
+   "LASALLE": {
+    "min": 53,
+    "km": 16.8
+   }
+  },
+  "3 Alexandra View, Singapore 158749": {
+   "NUS": {
+    "min": 38,
+    "km": 7.5
+   },
+   "NTU": {
+    "min": 57,
+    "km": 20.2
+   },
+   "SMU": {
+    "min": 28,
+    "km": 6.9
+   },
+   "JCU": {
+    "min": 44,
+    "km": 11.9
+   },
+   "Curtin": {
+    "min": 50,
+    "km": 9.5
+   },
+   "SIM": {
+    "min": 38,
+    "km": 10.2
+   },
+   "MDIS": {
+    "min": 24,
+    "km": 2.6
+   },
+   "PSB": {
+    "min": 33,
+    "km": 7.2
+   },
+   "Kaplan": {
+    "min": 37,
+    "km": 5.6
+   },
+   "LASALLE": {
+    "min": 34,
+    "km": 8.1
+   }
+  },
+  "3 Moulmein Rise, Singapore 308144": {
+   "NUS": {
+    "min": 59,
+    "km": 16.8
+   },
+   "NTU": {
+    "min": 82,
+    "km": 31.6
+   },
+   "SMU": {
+    "min": 26,
+    "km": 5.3
+   },
+   "JCU": {
+    "min": 39,
+    "km": 4.9
+   },
+   "Curtin": {
+    "min": 61,
+    "km": 18.0
+   },
+   "SIM": {
+    "min": 56,
+    "km": 12.1
+   },
+   "MDIS": {
+    "min": 48,
+    "km": 14.0
+   },
+   "PSB": {
+    "min": 33,
+    "km": 6.3
+   },
+   "Kaplan": {
+    "min": 28,
+    "km": 5.5
+   },
+   "LASALLE": {
+    "min": 30,
+    "km": 5.6
+   }
+  },
+  "3 Tanah Merah Kechil Road, Singapore 466664": {
+   "NUS": {
+    "min": 74,
+    "km": 25.6
+   },
+   "NTU": {
+    "min": 93,
+    "km": 38.3
+   },
+   "SMU": {
+    "min": 44,
+    "km": 13.0
+   },
+   "JCU": {
+    "min": 43,
+    "km": 9.0
+   },
+   "Curtin": {
+    "min": 85,
+    "km": 30.1
+   },
+   "SIM": {
+    "min": 73,
+    "km": 28.3
+   },
+   "MDIS": {
+    "min": 60,
+    "km": 20.7
+   },
+   "PSB": {
+    "min": 47,
+    "km": 13.2
+   },
+   "Kaplan": {
+    "min": 46,
+    "km": 12.4
+   },
+   "LASALLE": {
+    "min": 42,
+    "km": 12.2
+   }
+  },
+  "31 Bishan Street 11, Singapore 579819": {
+   "NUS": {
+    "min": 51,
+    "km": 13.4
+   },
+   "NTU": {
+    "min": 78,
+    "km": 26.9
+   },
+   "SMU": {
+    "min": 37,
+    "km": 9.2
+   },
+   "JCU": {
+    "min": 60,
+    "km": 10.3
+   },
+   "Curtin": {
+    "min": 53,
+    "km": 14.6
+   },
+   "SIM": {
+    "min": 67,
+    "km": 17.2
+   },
+   "MDIS": {
+    "min": 58,
+    "km": 10.0
+   },
+   "PSB": {
+    "min": 46,
+    "km": 14.4
+   },
+   "Kaplan": {
+    "min": 38,
+    "km": 9.3
+   },
+   "LASALLE": {
+    "min": 40,
+    "km": 9.4
+   }
+  },
+  "320 Guilemard Rd, Singapore 399746": {
+   "NUS": {
+    "min": 67,
+    "km": 22.0
+   },
+   "NTU": {
+    "min": 89,
+    "km": 31.5
+   },
+   "SMU": {
+    "min": 28,
+    "km": 6.2
+   },
+   "JCU": {
+    "min": 32,
+    "km": 2.3
+   },
+   "Curtin": {
+    "min": 58,
+    "km": 17.8
+   },
+   "SIM": {
+    "min": 69,
+    "km": 21.4
+   },
+   "MDIS": {
+    "min": 56,
+    "km": 13.9
+   },
+   "PSB": {
+    "min": 25,
+    "km": 5.1
+   },
+   "Kaplan": {
+    "min": 37,
+    "km": 6.8
+   },
+   "LASALLE": {
+    "min": 36,
+    "km": 5.5
+   }
+  },
+  "34 Tanah Merah Kechil Road, Singapore 465560": {
+   "NUS": {
+    "min": 72,
+    "km": 25.5
+   },
+   "NTU": {
+    "min": 91,
+    "km": 38.2
+   },
+   "SMU": {
+    "min": 42,
+    "km": 12.9
+   },
+   "JCU": {
+    "min": 41,
+    "km": 8.9
+   },
+   "Curtin": {
+    "min": 83,
+    "km": 30.0
+   },
+   "SIM": {
+    "min": 72,
+    "km": 28.1
+   },
+   "MDIS": {
+    "min": 58,
+    "km": 20.6
+   },
+   "PSB": {
+    "min": 45,
+    "km": 13.1
+   },
+   "Kaplan": {
+    "min": 44,
+    "km": 12.3
+   },
+   "LASALLE": {
+    "min": 41,
+    "km": 12.1
+   }
+  },
+  "353 Pasir Panjang Road, Singapore 118695": {
+   "NUS": {
+    "min": 31,
+    "km": 3.0
+   },
+   "NTU": {
+    "min": 69,
+    "km": 17.4
+   },
+   "SMU": {
+    "min": 68,
+    "km": 14.5
+   },
+   "JCU": {
+    "min": 89,
+    "km": 18.1
+   },
+   "Curtin": {
+    "min": 8,
+    "km": 0.6
+   },
+   "SIM": {
+    "min": 37,
+    "km": 5.5
+   },
+   "MDIS": {
+    "min": 43,
+    "km": 8.1
+   },
+   "PSB": {
+    "min": 58,
+    "km": 11.9
+   },
+   "Kaplan": {
+    "min": 59,
+    "km": 13.1
+   },
+   "LASALLE": {
+    "min": 59,
+    "km": 13.1
+   }
+  },
+  "36 West Coast Rd, Singapore 127343": {
+   "NUS": {
+    "min": 29,
+    "km": 2.3
+   },
+   "NTU": {
+    "min": 71,
+    "km": 16.9
+   },
+   "SMU": {
+    "min": 75,
+    "km": 15.8
+   },
+   "JCU": {
+    "min": 96,
+    "km": 19.5
+   },
+   "Curtin": {
+    "min": 22,
+    "km": 2.1
+   },
+   "SIM": {
+    "min": 36,
+    "km": 5.8
+   },
+   "MDIS": {
+    "min": 50,
+    "km": 9.5
+   },
+   "PSB": {
+    "min": 66,
+    "km": 13.0
+   },
+   "Kaplan": {
+    "min": 65,
+    "km": 14.5
+   },
+   "LASALLE": {
+    "min": 65,
+    "km": 14.4
+   }
+  },
+  "39 Jurong East Avenue 1, Singapore 609776": {
+   "NUS": {
+    "min": 43,
+    "km": 8.6
+   },
+   "NTU": {
+    "min": 45,
+    "km": 8.6
+   },
+   "SMU": {
+    "min": 48,
+    "km": 19.0
+   },
+   "JCU": {
+    "min": 63,
+    "km": 24.0
+   },
+   "Curtin": {
+    "min": 49,
+    "km": 10.5
+   },
+   "SIM": {
+    "min": 38,
+    "km": 8.6
+   },
+   "MDIS": {
+    "min": 39,
+    "km": 10.7
+   },
+   "PSB": {
+    "min": 53,
+    "km": 19.2
+   },
+   "Kaplan": {
+    "min": 57,
+    "km": 20.4
+   },
+   "LASALLE": {
+    "min": 54,
+    "km": 20.2
+   }
+  },
+  "406C Pasir Panjang Road, Singapore 117453": {
+   "NUS": {
+    "min": 28,
+    "km": 2.3
+   },
+   "NTU": {
+    "min": 68,
+    "km": 16.7
+   },
+   "SMU": {
+    "min": 73,
+    "km": 15.2
+   },
+   "JCU": {
+    "min": 93,
+    "km": 18.9
+   },
+   "Curtin": {
+    "min": 16,
+    "km": 1.4
+   },
+   "SIM": {
+    "min": 35,
+    "km": 5.7
+   },
+   "MDIS": {
+    "min": 47,
+    "km": 8.8
+   },
+   "PSB": {
+    "min": 62,
+    "km": 12.6
+   },
+   "Kaplan": {
+    "min": 63,
+    "km": 14.0
+   },
+   "LASALLE": {
+    "min": 63,
+    "km": 14.0
+   }
+  },
+  "406G Pasir Panjang Road, Singapore 117453": {
+   "NUS": {
+    "min": 28,
+    "km": 2.3
+   },
+   "NTU": {
+    "min": 68,
+    "km": 16.7
+   },
+   "SMU": {
+    "min": 73,
+    "km": 15.2
+   },
+   "JCU": {
+    "min": 93,
+    "km": 18.9
+   },
+   "Curtin": {
+    "min": 16,
+    "km": 1.4
+   },
+   "SIM": {
+    "min": 35,
+    "km": 5.7
+   },
+   "MDIS": {
+    "min": 47,
+    "km": 8.8
+   },
+   "PSB": {
+    "min": 62,
+    "km": 12.6
+   },
+   "Kaplan": {
+    "min": 63,
+    "km": 14.0
+   },
+   "LASALLE": {
+    "min": 63,
+    "km": 14.0
+   }
+  },
+  "41 Yunnan Drive 2, Singapore 637941": {
+   "NUS": {
+    "min": 60,
+    "km": 16.6
+   },
+   "NTU": {
+    "min": 31,
+    "km": 4.6
+   },
+   "SMU": {
+    "min": 61,
+    "km": 23.3
+   },
+   "JCU": {
+    "min": 76,
+    "km": 28.3
+   },
+   "Curtin": {
+    "min": 62,
+    "km": 14.8
+   },
+   "SIM": {
+    "min": 51,
+    "km": 13.0
+   },
+   "MDIS": {
+    "min": 52,
+    "km": 15.0
+   },
+   "PSB": {
+    "min": 66,
+    "km": 23.6
+   },
+   "Kaplan": {
+    "min": 70,
+    "km": 24.8
+   },
+   "LASALLE": {
+    "min": 67,
+    "km": 24.5
+   }
+  },
+  "458 Corporation Road T5, Singapore 649814": {
+   "NUS": {
+    "min": 62,
+    "km": 11.7
+   },
+   "NTU": {
+    "min": 47,
+    "km": 7.5
+   },
+   "SMU": {
+    "min": 59,
+    "km": 20.6
+   },
+   "JCU": {
+    "min": 74,
+    "km": 25.6
+   },
+   "Curtin": {
+    "min": 69,
+    "km": 13.9
+   },
+   "SIM": {
+    "min": 59,
+    "km": 14.2
+   },
+   "MDIS": {
+    "min": 49,
+    "km": 12.3
+   },
+   "PSB": {
+    "min": 64,
+    "km": 20.8
+   },
+   "Kaplan": {
+    "min": 68,
+    "km": 22.0
+   },
+   "LASALLE": {
+    "min": 65,
+    "km": 21.7
+   }
+  },
+  "462 Corporation Road, Singapore 649816": {
+   "NUS": {
+    "min": 61,
+    "km": 11.6
+   },
+   "NTU": {
+    "min": 46,
+    "km": 7.4
+   },
+   "SMU": {
+    "min": 58,
+    "km": 20.5
+   },
+   "JCU": {
+    "min": 73,
+    "km": 25.5
+   },
+   "Curtin": {
+    "min": 68,
+    "km": 13.8
+   },
+   "SIM": {
+    "min": 58,
+    "km": 14.2
+   },
+   "MDIS": {
+    "min": 49,
+    "km": 12.2
+   },
+   "PSB": {
+    "min": 63,
+    "km": 20.7
+   },
+   "Kaplan": {
+    "min": 67,
+    "km": 21.9
+   },
+   "LASALLE": {
+    "min": 64,
+    "km": 21.7
+   }
+  },
+  "47 Normanton Park, Singapore 119028": {
+   "NUS": {
+    "min": 49,
+    "km": 5.9
+   },
+   "NTU": {
+    "min": 83,
+    "km": 20.9
+   },
+   "SMU": {
+    "min": 61,
+    "km": 10.2
+   },
+   "JCU": {
+    "min": 79,
+    "km": 14.7
+   },
+   "Curtin": {
+    "min": 51,
+    "km": 6.0
+   },
+   "SIM": {
+    "min": 55,
+    "km": 9.7
+   },
+   "MDIS": {
+    "min": 41,
+    "km": 3.5
+   },
+   "PSB": {
+    "min": 68,
+    "km": 12.1
+   },
+   "Kaplan": {
+    "min": 63,
+    "km": 10.8
+   },
+   "LASALLE": {
+    "min": 65,
+    "km": 11.1
+   }
+  },
+  "5 Tanah Merah Kechil Road, Singapore 466665": {
+   "NUS": {
+    "min": 72,
+    "km": 25.4
+   },
+   "NTU": {
+    "min": 90,
+    "km": 38.1
+   },
+   "SMU": {
+    "min": 41,
+    "km": 12.8
+   },
+   "JCU": {
+    "min": 40,
+    "km": 8.8
+   },
+   "Curtin": {
+    "min": 82,
+    "km": 29.9
+   },
+   "SIM": {
+    "min": 71,
+    "km": 28.1
+   },
+   "MDIS": {
+    "min": 57,
+    "km": 20.5
+   },
+   "PSB": {
+    "min": 45,
+    "km": 13.0
+   },
+   "Kaplan": {
+    "min": 43,
+    "km": 12.2
+   },
+   "LASALLE": {
+    "min": 40,
+    "km": 12.0
+   }
+  },
+  "503 Pasir Panjang Rd, Singapore 117505": {
+   "NUS": {
+    "min": 26,
+    "km": 2.1
+   },
+   "NTU": {
+    "min": 67,
+    "km": 16.6
+   },
+   "SMU": {
+    "min": 71,
+    "km": 15.0
+   },
+   "JCU": {
+    "min": 93,
+    "km": 19.0
+   },
+   "Curtin": {
+    "min": 16,
+    "km": 1.5
+   },
+   "SIM": {
+    "min": 33,
+    "km": 5.6
+   },
+   "MDIS": {
+    "min": 47,
+    "km": 9.0
+   },
+   "PSB": {
+    "min": 61,
+    "km": 12.7
+   },
+   "Kaplan": {
+    "min": 62,
+    "km": 13.9
+   },
+   "LASALLE": {
+    "min": 62,
+    "km": 13.9
+   }
+  },
+  "503 Pasir Panjang Road, Singapore 117505": {
+   "NUS": {
+    "min": 26,
+    "km": 2.1
+   },
+   "NTU": {
+    "min": 67,
+    "km": 16.6
+   },
+   "SMU": {
+    "min": 71,
+    "km": 15.0
+   },
+   "JCU": {
+    "min": 93,
+    "km": 19.0
+   },
+   "Curtin": {
+    "min": 16,
+    "km": 1.5
+   },
+   "SIM": {
+    "min": 33,
+    "km": 5.6
+   },
+   "MDIS": {
+    "min": 47,
+    "km": 9.0
+   },
+   "PSB": {
+    "min": 61,
+    "km": 12.7
+   },
+   "Kaplan": {
+    "min": 62,
+    "km": 13.9
+   },
+   "LASALLE": {
+    "min": 62,
+    "km": 13.9
+   }
+  },
+  "50A Lakeside Drive, Singapore 648315": {
+   "NUS": {
+    "min": 61,
+    "km": 14.3
+   },
+   "NTU": {
+    "min": 51,
+    "km": 8.0
+   },
+   "SMU": {
+    "min": 63,
+    "km": 21.1
+   },
+   "JCU": {
+    "min": 78,
+    "km": 26.1
+   },
+   "Curtin": {
+    "min": 61,
+    "km": 13.0
+   },
+   "SIM": {
+    "min": 62,
+    "km": 14.4
+   },
+   "MDIS": {
+    "min": 53,
+    "km": 12.8
+   },
+   "PSB": {
+    "min": 68,
+    "km": 21.3
+   },
+   "Kaplan": {
+    "min": 72,
+    "km": 22.5
+   },
+   "LASALLE": {
+    "min": 68,
+    "km": 22.2
+   }
+  },
+  "52 Choa Chu Kang North 7, Singapore 689528": {
+   "NUS": {
+    "min": 61,
+    "km": 18.9
+   },
+   "NTU": {
+    "min": 69,
+    "km": 18.8
+   },
+   "SMU": {
+    "min": 63,
+    "km": 25.6
+   },
+   "JCU": {
+    "min": 78,
+    "km": 30.6
+   },
+   "Curtin": {
+    "min": 64,
+    "km": 17.1
+   },
+   "SIM": {
+    "min": 52,
+    "km": 15.3
+   },
+   "MDIS": {
+    "min": 53,
+    "km": 17.3
+   },
+   "PSB": {
+    "min": 68,
+    "km": 25.9
+   },
+   "Kaplan": {
+    "min": 73,
+    "km": 33.8
+   },
+   "LASALLE": {
+    "min": 68,
+    "km": 19.4
+   }
+  },
+  "54 Lakeside Drive, Singapore 648317": {
+   "NUS": {
+    "min": 47,
+    "km": 13.4
+   },
+   "NTU": {
+    "min": 39,
+    "km": 7.1
+   },
+   "SMU": {
+    "min": 48,
+    "km": 20.2
+   },
+   "JCU": {
+    "min": 64,
+    "km": 25.2
+   },
+   "Curtin": {
+    "min": 59,
+    "km": 13.0
+   },
+   "SIM": {
+    "min": 49,
+    "km": 13.1
+   },
+   "MDIS": {
+    "min": 39,
+    "km": 11.9
+   },
+   "PSB": {
+    "min": 54,
+    "km": 20.5
+   },
+   "Kaplan": {
+    "min": 58,
+    "km": 21.6
+   },
+   "LASALLE": {
+    "min": 54,
+    "km": 21.4
+   }
+  },
+  "55 Normanton Park, Singapore 117283": {
+   "NUS": {
+    "min": 32,
+    "km": 3.6
+   },
+   "NTU": {
+    "min": 76,
+    "km": 19.7
+   },
+   "SMU": {
+    "min": 59,
+    "km": 11.5
+   },
+   "JCU": {
+    "min": 78,
+    "km": 18.9
+   },
+   "Curtin": {
+    "min": 36,
+    "km": 3.1
+   },
+   "SIM": {
+    "min": 51,
+    "km": 10.3
+   },
+   "MDIS": {
+    "min": 43,
+    "km": 3.0
+   },
+   "PSB": {
+    "min": 67,
+    "km": 13.5
+   },
+   "Kaplan": {
+    "min": 62,
+    "km": 12.1
+   },
+   "LASALLE": {
+    "min": 63,
+    "km": 12.4
+   }
+  },
+  "62B Jalan Jurong Kechil Singapore 598584": {
+   "NUS": {
+    "min": 50,
+    "km": 6.2
+   },
+   "NTU": {
+    "min": 76,
+    "km": 19.0
+   },
+   "SMU": {
+    "min": 53,
+    "km": 17.3
+   },
+   "JCU": {
+    "min": 62,
+    "km": 14.6
+   },
+   "Curtin": {
+    "min": 56,
+    "km": 10.3
+   },
+   "SIM": {
+    "min": 27,
+    "km": 2.5
+   },
+   "MDIS": {
+    "min": 45,
+    "km": 9.2
+   },
+   "PSB": {
+    "min": 43,
+    "km": 12.2
+   },
+   "Kaplan": {
+    "min": 38,
+    "km": 10.2
+   },
+   "LASALLE": {
+    "min": 36,
+    "km": 10.4
+   }
+  },
+  "66 Tanah Merah Kechil Avenue, Singapore 465532": {
+   "NUS": {
+    "min": 70,
+    "km": 25.4
+   },
+   "NTU": {
+    "min": 89,
+    "km": 38.1
+   },
+   "SMU": {
+    "min": 40,
+    "km": 12.8
+   },
+   "JCU": {
+    "min": 39,
+    "km": 8.7
+   },
+   "Curtin": {
+    "min": 81,
+    "km": 29.9
+   },
+   "SIM": {
+    "min": 70,
+    "km": 28.0
+   },
+   "MDIS": {
+    "min": 56,
+    "km": 20.5
+   },
+   "PSB": {
+    "min": 43,
+    "km": 13.0
+   },
+   "Kaplan": {
+    "min": 42,
+    "km": 12.2
+   },
+   "LASALLE": {
+    "min": 39,
+    "km": 11.9
+   }
+  },
+  "7 Simei Street 4, Singapore 529864": {
+   "NUS": {
+    "min": 82,
+    "km": 28.4
+   },
+   "NTU": {
+    "min": 101,
+    "km": 41.1
+   },
+   "SMU": {
+    "min": 54,
+    "km": 19.1
+   },
+   "JCU": {
+    "min": 51,
+    "km": 11.8
+   },
+   "Curtin": {
+    "min": 93,
+    "km": 32.9
+   },
+   "SIM": {
+    "min": 81,
+    "km": 31.1
+   },
+   "MDIS": {
+    "min": 68,
+    "km": 23.5
+   },
+   "PSB": {
+    "min": 55,
+    "km": 16.0
+   },
+   "Kaplan": {
+    "min": 56,
+    "km": 19.3
+   },
+   "LASALLE": {
+    "min": 51,
+    "km": 15.0
+   }
+  },
+  "71 Jurong East Street 13, Singapore 609650": {
+   "NUS": {
+    "min": 42,
+    "km": 8.0
+   },
+   "NTU": {
+    "min": 53,
+    "km": 10.7
+   },
+   "SMU": {
+    "min": 54,
+    "km": 18.3
+   },
+   "JCU": {
+    "min": 69,
+    "km": 23.4
+   },
+   "Curtin": {
+    "min": 55,
+    "km": 8.8
+   },
+   "SIM": {
+    "min": 52,
+    "km": 8.8
+   },
+   "MDIS": {
+    "min": 50,
+    "km": 11.9
+   },
+   "PSB": {
+    "min": 59,
+    "km": 18.6
+   },
+   "Kaplan": {
+    "min": 63,
+    "km": 19.8
+   },
+   "LASALLE": {
+    "min": 60,
+    "km": 19.5
+   }
+  },
+  "75 Jurong West Central 3, Singapore 648337": {
+   "NUS": {
+    "min": 45,
+    "km": 14.9
+   },
+   "NTU": {
+    "min": 33,
+    "km": 5.0
+   },
+   "SMU": {
+    "min": 46,
+    "km": 21.7
+   },
+   "JCU": {
+    "min": 61,
+    "km": 26.7
+   },
+   "Curtin": {
+    "min": 47,
+    "km": 13.2
+   },
+   "SIM": {
+    "min": 36,
+    "km": 11.3
+   },
+   "MDIS": {
+    "min": 37,
+    "km": 13.4
+   },
+   "PSB": {
+    "min": 51,
+    "km": 21.9
+   },
+   "Kaplan": {
+    "min": 55,
+    "km": 23.1
+   },
+   "LASALLE": {
+    "min": 52,
+    "km": 22.9
+   }
+  },
+  "8 Geylang East Avenue 2, Singapore 389754": {
+   "NUS": {
+    "min": 60,
+    "km": 20.4
+   },
+   "NTU": {
+    "min": 78,
+    "km": 32.0
+   },
+   "SMU": {
+    "min": 25,
+    "km": 7.2
+   },
+   "JCU": {
+    "min": 27,
+    "km": 2.6
+   },
+   "Curtin": {
+    "min": 62,
+    "km": 21.6
+   },
+   "SIM": {
+    "min": 63,
+    "km": 17.8
+   },
+   "MDIS": {
+    "min": 45,
+    "km": 14.4
+   },
+   "PSB": {
+    "min": 27,
+    "km": 6.7
+   },
+   "Kaplan": {
+    "min": 34,
+    "km": 7.8
+   },
+   "LASALLE": {
+    "min": 28,
+    "km": 5.9
+   }
+  },
+  "8 Lor 29 Geylang, Singapore 388064": {
+   "NUS": {
+    "min": 61,
+    "km": 18.4
+   },
+   "NTU": {
+    "min": 80,
+    "km": 31.1
+   },
+   "SMU": {
+    "min": 34,
+    "km": 7.8
+   },
+   "JCU": {
+    "min": 22,
+    "km": 1.6
+   },
+   "Curtin": {
+    "min": 64,
+    "km": 18.3
+   },
+   "SIM": {
+    "min": 61,
+    "km": 21.0
+   },
+   "MDIS": {
+    "min": 47,
+    "km": 13.5
+   },
+   "PSB": {
+    "min": 35,
+    "km": 7.4
+   },
+   "Kaplan": {
+    "min": 36,
+    "km": 5.5
+   },
+   "LASALLE": {
+    "min": 32,
+    "km": 5.2
+   }
+  },
+  "85 Jurong West Central 3, Singapore 648342": {
+   "NUS": {
+    "min": 60,
+    "km": 13.1
+   },
+   "NTU": {
+    "min": 30,
+    "km": 3.9
+   },
+   "SMU": {
+    "min": 51,
+    "km": 22.1
+   },
+   "JCU": {
+    "min": 67,
+    "km": 27.1
+   },
+   "Curtin": {
+    "min": 63,
+    "km": 14.6
+   },
+   "SIM": {
+    "min": 53,
+    "km": 14.9
+   },
+   "MDIS": {
+    "min": 42,
+    "km": 13.8
+   },
+   "PSB": {
+    "min": 56,
+    "km": 22.3
+   },
+   "Kaplan": {
+    "min": 60,
+    "km": 23.5
+   },
+   "LASALLE": {
+    "min": 57,
+    "km": 23.3
+   }
+  },
+  "9 Everitt Rd N, Singapore 428522": {
+   "NUS": {
+    "min": 65,
+    "km": 20.7
+   },
+   "NTU": {
+    "min": 84,
+    "km": 33.3
+   },
+   "SMU": {
+    "min": 34,
+    "km": 8.1
+   },
+   "JCU": {
+    "min": 33,
+    "km": 4.0
+   },
+   "Curtin": {
+    "min": 58,
+    "km": 20.1
+   },
+   "SIM": {
+    "min": 68,
+    "km": 19.0
+   },
+   "MDIS": {
+    "min": 50,
+    "km": 15.8
+   },
+   "PSB": {
+    "min": 38,
+    "km": 8.2
+   },
+   "Kaplan": {
+    "min": 40,
+    "km": 7.5
+   },
+   "LASALLE": {
+    "min": 37,
+    "km": 7.3
+   }
+  },
+  "968 Dunearn Road, Singapore 589489": {
+   "NUS": {
+    "min": 41,
+    "km": 5.7
+   },
+   "NTU": {
+    "min": 65,
+    "km": 17.0
+   },
+   "SMU": {
+    "min": 53,
+    "km": 16.3
+   },
+   "JCU": {
+    "min": 59,
+    "km": 13.6
+   },
+   "Curtin": {
+    "min": 52,
+    "km": 8.6
+   },
+   "SIM": {
+    "min": 20,
+    "km": 1.3
+   },
+   "MDIS": {
+    "min": 41,
+    "km": 7.8
+   },
+   "PSB": {
+    "min": 44,
+    "km": 11.3
+   },
+   "Kaplan": {
+    "min": 39,
+    "km": 9.2
+   },
+   "LASALLE": {
+    "min": 36,
+    "km": 9.4
+   }
+  },
+  "993 Upper Bukit Timah Road, Singapore 589631": {
+   "NUS": {
+    "min": 44,
+    "km": 6.8
+   },
+   "NTU": {
+    "min": 77,
+    "km": 18.6
+   },
+   "SMU": {
+    "min": 52,
+    "km": 16.2
+   },
+   "JCU": {
+    "min": 60,
+    "km": 13.1
+   },
+   "Curtin": {
+    "min": 55,
+    "km": 8.2
+   },
+   "SIM": {
+    "min": 27,
+    "km": 2.6
+   },
+   "MDIS": {
+    "min": 44,
+    "km": 7.4
+   },
+   "PSB": {
+    "min": 43,
+    "km": 11.2
+   },
+   "Kaplan": {
+    "min": 38,
+    "km": 9.1
+   },
+   "LASALLE": {
+    "min": 35,
+    "km": 9.3
+   }
   }
  },
- "computed_at": "2026-04-26T21:19:03.718048"
+ "computed_at": "2026-06-01T14:17:44.526723"
 }

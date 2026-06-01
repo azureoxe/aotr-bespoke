@@ -284,6 +284,15 @@ input::placeholder{color:var(--text-4)}
 .tag.orange{background:#FFEDD5;color:#C2410C}
 .tag.blue{background:#DBEAFE;color:#1D4ED8}
 .tag.new{background:#be123c;color:#fff;font-weight:600}
+/* 房东颜色标记的房源状态 */
+.tag.st{font-weight:600}
+.tag.st-booked{background:#f59e0b;color:#fff}
+.tag.st-soft{background:#fed7aa;color:#9a3412}
+.tag.st-renew{background:#db2777;color:#fff}
+.tag.st-newunit{background:#06b6d4;color:#fff}
+.tag.st-pending{background:#6b7280;color:#fff}
+.tag.st-expired{background:#dc2626;color:#fff}
+.tag.st-leaseshort{background:#fde68a;color:#92400e}
 .tag.mi-highlight{
   background:var(--brand-soft);color:var(--brand-text);
   border:1px solid var(--brand-border);font-weight:600;
@@ -662,6 +671,20 @@ a.photo-link svg{width:12px;height:12px}
               <option value="N">否</option>
             </select>
           </div>
+          <div class="filter-group">
+            <label for="status_filter">房源状态</label>
+            <select id="status_filter" style="width:110px">
+              <option value="">全部</option>
+              <option value="__available__">仅可推</option>
+              <option value="已订">已订</option>
+              <option value="软订">软订</option>
+              <option value="续租中">续租中</option>
+              <option value="新单元">新单元</option>
+              <option value="待上架">待上架</option>
+              <option value="主租约<3月">主租约&lt;3月</option>
+              <option value="主租约到期">主租约到期</option>
+            </select>
+          </div>
         </div>
       </div>
       <button class="btn" onclick="resetFilters()">
@@ -858,6 +881,7 @@ function filter() {
   const autoclose    = document.getElementById('autoclose').value;
   const femaleOnly   = document.getElementById('female_only').value;
   const includeVacant= document.getElementById('include_vacant').value === '1';
+  const statusFilter = document.getElementById('status_filter').value;
   const miFrom       = document.getElementById('mi_from').value;
   const miTo         = document.getElementById('mi_to').value;
   const fromDate     = miFrom ? new Date(miFrom) : null;
@@ -892,6 +916,15 @@ function filter() {
     if (NEW_WITHIN > 0) {
       const ds = daysSinceInput(u.input_date);
       if (ds === null || ds > NEW_WITHIN - 1) return false;
+    }
+
+    // 房源状态筛选（房东颜色标记）
+    if (statusFilter) {
+      if (statusFilter === '__available__') {
+        if (['已订','软订','续租中','主租约到期'].indexOf(u.status) >= 0) return false;
+      } else if (u.status !== statusFilter) {
+        return false;
+      }
     }
 
     if (fromDate || toDate) {
@@ -1173,6 +1206,7 @@ function renderCards(list) {
           ? '<div class="closing">议价 $' + u.closing_rent.toLocaleString() + '</div>' : '') +
       '</div>' +
       '<div class="info-row">' +
+        statusTag(u.status) +
         (newDays !== null && newDays <= 6 ? '<span class="tag new">' + newLabel + '</span>' : '') +
         '<span class="tag">' + esc(u.beds) + '</span>' +
         commuteTag(u) +
@@ -1323,6 +1357,17 @@ function daysSinceInput(s) {
   return Math.floor((today - d) / 86400000);
 }
 
+// 房东颜色标记的状态 → 卡片标签
+const STATUS_CLASS = {
+  '已订':'st-booked', '软订':'st-soft', '续租中':'st-renew',
+  '新单元':'st-newunit', '待上架':'st-pending',
+  '主租约到期':'st-expired', '主租约<3月':'st-leaseshort'
+};
+function statusTag(status) {
+  if (!status || !STATUS_CLASS[status]) return '';
+  return '<span class="tag st ' + STATUS_CLASS[status] + '">' + esc(status) + '</span>';
+}
+
 function setNewWithin(btn, days) {
   NEW_WITHIN = days;
   document.querySelectorAll('#nl-btns .nl-btn').forEach(b => b.classList.remove('active'));
@@ -1369,7 +1414,7 @@ function resetFilters() {
   document.getElementById('search').value = '';
   document.getElementById('min_rent').value = '';
   document.getElementById('max_rent').value = '';
-  ['region','rtype','rt_specific','beds','autoclose','female_only'].forEach(id => document.getElementById(id).value = '');
+  ['region','rtype','rt_specific','beds','autoclose','female_only','status_filter'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('school').value = '';
   document.getElementById('max_commute').value = '0';
   SCHOOL_KEY = '';
@@ -1388,7 +1433,7 @@ function resetFilters() {
   filter();
 }
 
-['search','region','rtype','rt_specific','beds','min_rent','max_rent','autoclose','female_only','include_vacant'].forEach(id => {
+['search','region','rtype','rt_specific','beds','min_rent','max_rent','autoclose','female_only','status_filter','include_vacant'].forEach(id => {
   const el = document.getElementById(id);
   el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => {
     filter();
@@ -1448,7 +1493,7 @@ document.addEventListener('click', (e) => {
 });
 // 在按钮上显示已激活的高级筛选数（红色小圆点）
 function updateMoreBtnBadge() {
-  const advanced = ['rt_specific','beds','autoclose','female_only'];
+  const advanced = ['rt_specific','beds','autoclose','female_only','status_filter'];
   const count = advanced.filter(id => document.getElementById(id).value).length;
   const btn = document.getElementById('more-btn');
   let badge = btn.querySelector('.more-badge');
