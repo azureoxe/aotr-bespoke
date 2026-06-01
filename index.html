@@ -185,6 +185,18 @@ input::placeholder{color:var(--text-4)}
 .qd-btn:hover{background:var(--brand-soft-2)}
 .qd-btn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
 
+/* 新上房源筛选按钮组 */
+.nl-wrap{display:flex;align-items:center;gap:6px;margin-left:auto}
+.nl-btns{display:flex;gap:3px;align-items:center}
+.nl-btn{
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--text-2);border-radius:5px;
+  padding:5px 10px;font-size:12px;font-weight:500;cursor:pointer;
+  font-family:inherit;transition:all 120ms;white-space:nowrap;
+}
+.nl-btn:hover{background:var(--bg);border-color:var(--border-2)}
+.nl-btn.active{background:#be123c;color:#fff;border-color:#be123c}
+
 /* ===== Content ===== */
 .content{padding:20px 24px}
 
@@ -271,6 +283,7 @@ input::placeholder{color:var(--text-4)}
 .tag.red{background:#FEE2E2;color:#B91C1C}
 .tag.orange{background:#FFEDD5;color:#C2410C}
 .tag.blue{background:#DBEAFE;color:#1D4ED8}
+.tag.new{background:#be123c;color:#fff;font-weight:600}
 .tag.mi-highlight{
   background:var(--brand-soft);color:var(--brand-text);
   border:1px solid var(--brand-border);font-weight:600;
@@ -526,6 +539,10 @@ a.photo-link svg{width:12px;height:12px}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
       刷新
     </button>
+    <a class="refresh-btn" href="https://docs.google.com/spreadsheets/d/1KDkQfPmfcFsAR3ukuor4DwJMFTu1PSGrM532lMsow8g/edit" target="_blank" rel="noopener" aria-label="查看源表">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      源表
+    </a>
   </div>
 </header>
 
@@ -655,15 +672,25 @@ a.photo-link svg{width:12px;height:12px}
 
   </div>
 
-  <!-- 快速日期 -->
+  <!-- 快速日期 + 新上房源 -->
   <div class="quick-dates">
     <span class="label">快速日期</span>
-    <button class="qd-btn" onclick="setQuickDate('2026-05-01','2026-05-31',this)">5月</button>
     <button class="qd-btn active" onclick="setQuickDate('2026-06-01','2026-06-30',this)">6月</button>
-    <button class="qd-btn" onclick="setQuickDate('2026-07-01','2026-07-31',this)">7月</button>
-    <button class="qd-btn" onclick="setQuickDate('2026-06-01','2026-07-31',this)">6–7月</button>
+    <button class="qd-btn" onclick="setQuickDate('2026-07-15','2026-07-31',this)">7月Intake</button>
+    <button class="qd-btn" onclick="setQuickDate('2026-08-01','2026-08-15',this)">8月Intake</button>
     <button class="qd-btn" onclick="setQuickDate('2026-08-01','2026-08-31',this)">8月</button>
     <button class="qd-btn" onclick="clearDateFilter()">不限日期</button>
+
+    <!-- 新上房源（按录入时间，靠右） -->
+    <div class="nl-wrap">
+      <span class="label">新上房源</span>
+      <div class="nl-btns" id="nl-btns">
+        <button type="button" class="nl-btn active" onclick="setNewWithin(this,0)">不限</button>
+        <button type="button" class="nl-btn" onclick="setNewWithin(this,1)">近1天</button>
+        <button type="button" class="nl-btn" onclick="setNewWithin(this,3)">近3天</button>
+        <button type="button" class="nl-btn" onclick="setNewWithin(this,7)">近7天</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -683,6 +710,7 @@ a.photo-link svg{width:12px;height:12px}
         <button class="sort-btn" onclick="setSort(this,'ask_asc')">租金 ↑</button>
         <button class="sort-btn" onclick="setSort(this,'ask_desc')">租金 ↓</button>
         <button class="sort-btn" onclick="setSort(this,'mi')">入住日期</button>
+        <button class="sort-btn" onclick="setSort(this,'input_desc')">最新上架</button>
         <button class="sort-btn" onclick="setSort(this,'vd_desc')">空置天数 ↓</button>
         <button class="sort-btn" id="sort-commute" onclick="setSort(this,'commute')" style="display:none">通勤 ↑</button>
       </div>
@@ -727,6 +755,7 @@ let COMMUTE = {schools: [], matrix: {}};
 let MRT_WALK = {};
 let SCHOOL_KEY = '';     // 当前选中学校
 let MAX_COMMUTE = 0;     // 通勤上限筛选（分钟，0=不限）
+let NEW_WITHIN = 0;      // 新上房源筛选（天，0=不限，按录入时间 input_date）
 let sortMode = 'id';
 let currentView = 'list';
 let currentPage = 1;
@@ -859,6 +888,12 @@ function filter() {
       if (!c || c.min > MAX_COMMUTE) return false;
     }
 
+    // 新上房源筛选（按录入时间；无录入日期的老房源在限定模式下排除）
+    if (NEW_WITHIN > 0) {
+      const ds = daysSinceInput(u.input_date);
+      if (ds === null || ds > NEW_WITHIN - 1) return false;
+    }
+
     if (fromDate || toDate) {
       const mi = parseMoveIn(u.move_in);
       if (!mi) {
@@ -884,6 +919,11 @@ function filter() {
     if (sortMode === 'ask_asc')  return a.asking_rent - b.asking_rent;
     if (sortMode === 'ask_desc') return b.asking_rent - a.asking_rent;
     if (sortMode === 'vd_desc')  return b.vacant_days - a.vacant_days;
+    if (sortMode === 'input_desc') {
+      const ta = a.input_date ? a.input_date : '0000-00-00';
+      const tb = b.input_date ? b.input_date : '0000-00-00';
+      return tb < ta ? -1 : tb > ta ? 1 : 0;   // 录入日期降序（最新在前），空日期沉底
+    }
     if (sortMode === 'mi') {
       const da = parseMoveIn(a.move_in) || new Date('9999-12-31');
       const db = parseMoveIn(b.move_in) || new Date('9999-12-31');
@@ -1117,6 +1157,8 @@ function renderCards(list) {
     const isPartner   = u.notes.includes('Partner');
     const femaleOnly  = u.notes.includes('FEMALE');
     const miHighlight = isDateFiltered && miDate ? ' mi-highlight' : '';
+    const newDays     = daysSinceInput(u.input_date);
+    const newLabel    = newDays === null ? '' : (newDays <= 0 ? '今日新上' : newDays + '天前新上');
 
     return '<div class="card">' +
       '<div class="card-top">' +
@@ -1131,6 +1173,7 @@ function renderCards(list) {
           ? '<div class="closing">议价 $' + u.closing_rent.toLocaleString() + '</div>' : '') +
       '</div>' +
       '<div class="info-row">' +
+        (newDays !== null && newDays <= 6 ? '<span class="tag new">' + newLabel + '</span>' : '') +
         '<span class="tag">' + esc(u.beds) + '</span>' +
         commuteTag(u) +
         (miDate ? '<span class="tag' + miHighlight + '">入住 ' + miDate + '</span>' : '') +
@@ -1271,6 +1314,22 @@ function parseMoveIn(s) {
   return null;
 }
 
+// 距今天数（按录入日期 input_date，YYYY-MM-DD）；无/非法日期返回 null
+function daysSinceInput(s) {
+  if (!s || !/^\d{4}-\d{2}-\d{2}/.test(s)) return null;
+  const d = new Date(s.slice(0,10) + 'T00:00:00');
+  if (isNaN(d)) return null;
+  const today = new Date(); today.setHours(0,0,0,0);
+  return Math.floor((today - d) / 86400000);
+}
+
+function setNewWithin(btn, days) {
+  NEW_WITHIN = days;
+  document.querySelectorAll('#nl-btns .nl-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filter();
+}
+
 function rtClass(rt) {
   if (rt.startsWith('CR')) return 'rt-CR';
   if (rt.startsWith('MB')) return 'rt-MB';
@@ -1320,6 +1379,8 @@ function resetFilters() {
   document.getElementById('include_vacant').value = '1';
   document.getElementById('mi_from').value = '';
   document.getElementById('mi_to').value   = '';
+  NEW_WITHIN = 0;
+  document.querySelectorAll('#nl-btns .nl-btn').forEach((b,i) => b.classList.toggle('active', i === 0));
   document.querySelectorAll('.qd-btn').forEach(b => b.classList.remove('active'));
   sortMode = 'id';
   document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
