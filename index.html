@@ -967,7 +967,7 @@ a.photo-link svg{width:12px;height:12px}
           <div class="rule-card"><strong>维护费 / 月</strong>：CR/PRE/PRS/STND/Econ $60 · MBR $70 · Studio $80(1空调) / $110(2空调) · 风扇房 $35</div>
           <div class="rule-card">行政费 SGD 76.30 · 清洁费 SGD 32.70（客户实付，一次性）</div>
           <div class="rule-card">押金：租期 ≤12 月 = 1 个月 · 13–24 月 = 2 个月 · 25–36 月 = 3 个月</div>
-          <div class="rule-card">印花税：(月租 + 月维护费 + 一次性费用/月) × 0.4% × 月数；一次性费用按未含 GST 填（行政 $70 / 清洁 $30），收 TA 后 14 天内缴</div>
+          <div class="rule-card">印花税（IRAS 2026-04-20 口径）：(月租 + 月维护费 + 一次性费用/月) × 0.4% × 月数；一次性费用按未含 GST 填（行政 $70 / 清洁 $30，<strong>不是</strong> 76.30 / 32.70），收 TA 后 14 天内缴。<a href="https://bhop.bespokehabitat.com/stamp-duty-calculator" target="_blank" rel="noopener">官方印花税计算器（强制使用）</a></div>
         </div>
       </details>
       <details>
@@ -1763,6 +1763,7 @@ const URL_TA         = 'https://form.jotform.com/240184288636463';   // TA Jotfo
 const URL_DECL       = 'https://form.jotform.com/251684817501459';   // 订房声明表（无 IPA）
 const URL_TA_SAMPLE  = 'ta-sample-bespoke.pdf';            // TA 范本（Bespoke Habitat，出 TA 步参考；仅生产同目录托管，github 备份无此文件）
 const URL_NEWUNIT    = 'new-unit-disclaimer-bespoke.pdf';  // 新单元免责声明信（青色房源额外签）
+const URL_STAMP_DUTY = 'https://bhop.bespokehabitat.com/stamp-duty-calculator';  // 官方印花税计算器（IRAS 2026-04-20 口径，强制使用）
 
 // 出 TA 步：按有无 IPA 分流（步内分叉，三条付款流程共用）
 const TA_BRANCHES = {
@@ -1791,7 +1792,7 @@ const PAY_FLOWS = {
     { t: '收预订费（支付宝 / 微信）', desc: 'Bespoke 员工在对接群里发支付二维码，把二维码转发给客户扫码支付。客户支付成功后截图收据发到群里给我们核对。', notes: ['二维码只有 2 分钟时效，过期作废——过期就让 Bespoke 员工重新生成再转发。', '支付宝 / 微信需自行加 3% 手续费（计算器的支付宝 / 微信版已含）。', '收据截图必须「展开」显示完整订单号，否则无法核对入账。'], next: '已收款' },
     { t: '填支付宝 / 微信支付记录表', desc: '把付款明细填进表单，供应商据此核对、放款给合作方。', link: URL_ALIPAY, linkLabel: '打开 Alipay / 微信支付记录表', next: '已填支付记录表' },
     { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
-    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', isLast: true }
+    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
   ],
   paynow: [
     { t: '生成 Reference Code', desc: '客户付款前，先填 Reference Code Jotform；提交后在对应 Google Sheet 的 A 列（Reference Code）取到该客户的 Code。', link: URL_REF_FORM, linkLabel: '打开 Reference Code Jotform', next: '已生成 Code' },
@@ -1799,7 +1800,7 @@ const PAY_FLOWS = {
     { t: '客户用 PayNow 付款', desc: '客户用 PayNow 付款到 BH PROPERTY 账户，并把 Reference Code 填进转账备注（Transfer Description：UEN / Bill Reference No.）。收款账户信息见金额计算器内附的账户详情。', next: '客户已付款' },
     { t: '收款截图 + 发团队', desc: '让客户把付款成功收据截图，发到群里给我们核对。', next: '已收款' },
     { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
-    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', isLast: true }
+    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
   ],
   bank: [
     { t: '生成 Reference Code', desc: '客户付款前，先填 Reference Code Jotform；提交后在对应 Google Sheet 的 A 列（Reference Code）取到该客户的 Code。', link: URL_REF_FORM, linkLabel: '打开 Reference Code Jotform', next: '已生成 Code' },
@@ -1807,7 +1808,7 @@ const PAY_FLOWS = {
     { t: '客户银行转账', desc: '客户银行转账到 BH PROPERTY 账户，并把 Reference Code 写进银行转账备注。收款账户信息见金额计算器内附的账户详情。', next: '客户已付款' },
     { t: '收预订费收据', desc: '让客户把银行转账收据截图，发到群里给我们核对。', next: '已收款' },
     { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
-    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', isLast: true }
+    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
   ]
 };
 
