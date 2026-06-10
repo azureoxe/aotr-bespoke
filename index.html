@@ -506,6 +506,167 @@ a.photo-link svg{width:12px;height:12px}
 #pager .pg-btn:disabled{opacity:.4;cursor:not-allowed}
 #pager .pg-ellipsis{color:var(--text-4);padding:0 4px;font-size:12px}
 
+/* ===== Apply Wizard (申请流程向导) ===== */
+.apply-modal{max-width:480px}
+.apply-sub{font-size:11px;color:var(--text-3);margin-top:2px;font-weight:400}
+
+.apply-meta{
+  padding:12px 18px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.apply-lead{display:flex;align-items:center;gap:6px;flex:1;min-width:160px}
+.apply-lead label{font-size:11px;color:var(--text-3);font-weight:500;white-space:nowrap}
+.apply-lead input{height:28px;flex:1;font-size:12px}
+.apply-progress-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.apply-progress-bar{width:80px;height:6px;border-radius:3px;background:var(--border-soft);overflow:hidden}
+.apply-progress-fill{height:100%;background:var(--brand);transition:width 250ms;border-radius:3px}
+.apply-progress-text{font-size:11px;font-weight:700;color:var(--text-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.apply-progress-text.done{color:#166534}
+
+.apply-steps{padding:12px 18px;display:flex;flex-direction:column;gap:0}
+.apply-step{
+  display:flex;gap:10px;padding:9px 0;position:relative;
+  border-bottom:1px solid var(--border-soft);
+}
+.apply-step:last-child{border-bottom:none}
+.apply-check{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  border:2px solid var(--border-2);background:var(--surface);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all 150ms;margin-top:1px;
+}
+.apply-check:hover{border-color:var(--brand)}
+.apply-check svg{width:12px;height:12px;color:#fff;opacity:0}
+.apply-step.checked .apply-check{background:#22C55E;border-color:#22C55E}
+.apply-step.checked .apply-check svg{opacity:1}
+.apply-step.current .apply-check{border-color:var(--brand);box-shadow:0 0 0 3px rgba(3,105,161,.12)}
+
+.apply-step-main{flex:1;min-width:0}
+.apply-step-title{font-size:13px;font-weight:600;color:var(--text);line-height:1.4}
+.apply-step.checked .apply-step-title{color:var(--text-4);text-decoration:line-through}
+.apply-step-cur-tag{
+  display:inline-block;font-size:10px;font-weight:700;color:#fff;
+  background:var(--brand);border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:middle;
+}
+.apply-step-desc{font-size:11px;color:var(--text-3);line-height:1.5;margin-top:3px}
+.apply-step-link{
+  display:inline-flex;align-items:center;gap:4px;margin-top:5px;
+  font-size:11px;font-weight:600;color:var(--brand);text-decoration:none;
+  border:1px solid var(--brand-border);border-radius:5px;padding:3px 9px;
+  background:var(--brand-soft);transition:all 120ms;
+}
+.apply-step-link:hover{background:var(--brand-soft-2)}
+.apply-step-link svg{width:10px;height:10px}
+
+.apply-ref{border-top:1px solid var(--border);background:var(--bg)}
+.apply-ref details{border-bottom:1px solid var(--border-soft)}
+.apply-ref details:last-child{border-bottom:none}
+.apply-ref summary{
+  padding:10px 18px;cursor:pointer;font-size:12px;font-weight:600;color:var(--text-2);
+  list-style:none;display:flex;align-items:center;gap:6px;user-select:none;
+}
+.apply-ref summary::-webkit-details-marker{display:none}
+.apply-ref summary:hover{color:var(--brand)}
+.apply-ref summary::before{content:'▸';color:var(--text-4);font-size:10px;transition:transform 200ms}
+.apply-ref details[open] summary::before{transform:rotate(90deg)}
+.apply-ref-body{padding:0 18px 12px;font-size:12px;line-height:1.6;color:var(--text-2)}
+.apply-ref-body .rule-card{margin-bottom:5px}
+.apply-reset{
+  background:none;border:none;color:var(--text-4);font-size:11px;cursor:pointer;
+  font-family:inherit;text-decoration:underline;padding:0;
+}
+.apply-reset:hover{color:var(--text-2)}
+
+/* ===== Wizard (向导式) ===== */
+.wiz-dots{display:flex;align-items:center;padding:14px 20px 6px}
+.wiz-dot{
+  width:24px;height:24px;border-radius:50%;flex-shrink:0;
+  border:2px solid var(--border-2);background:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:var(--text-4);cursor:pointer;
+  transition:all 150ms;
+}
+.wiz-dot:hover{border-color:var(--brand)}
+.wiz-dot svg{width:12px;height:12px}
+.wiz-dot.done{background:#22C55E;border-color:#22C55E;color:#fff}
+.wiz-dot.cur{border-color:var(--brand);color:var(--brand);box-shadow:0 0 0 3px rgba(3,105,161,.12)}
+.wiz-line{flex:1;height:2px;background:var(--border-2);margin:0 2px;transition:background 150ms}
+.wiz-line.done{background:#22C55E}
+.wiz-line-ghost{background:repeating-linear-gradient(90deg,var(--border-2) 0 4px,transparent 4px 8px)}
+.wiz-dot-ghost{border-style:dashed;color:var(--text-4);background:var(--bg);cursor:default;font-size:15px;line-height:1}
+.wiz-dot-ghost:hover{border-color:var(--border-2)}
+
+.wiz-body{padding:6px 20px 14px;overflow-y:auto;flex:1}
+.wiz-step-no{font-size:11px;font-weight:600;color:var(--brand);letter-spacing:.3px;margin-bottom:4px}
+.wiz-step-title{font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.3px;margin-bottom:8px}
+.wiz-step-desc{font-size:13px;line-height:1.65;color:var(--text-2);margin-bottom:12px}
+
+.wiz-copy-box{
+  margin-bottom:10px;border:1px solid var(--border);border-radius:8px;
+  overflow:hidden;background:var(--bg);
+}
+.wiz-copy-head{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 8px 7px 11px;border-bottom:1px solid var(--border-soft);
+  font-size:11px;font-weight:600;color:var(--text-3);
+}
+.wiz-copy-text{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:11.5px;line-height:1.6;color:var(--text);
+  background:var(--bg);border:none;border-radius:0;
+  padding:11px;margin:0;white-space:pre-wrap;word-break:break-word;
+  max-height:220px;overflow-y:auto;
+}
+.wiz-copy-btn{
+  margin-left:auto;flex-shrink:0;
+  display:inline-flex;align-items:center;gap:5px;
+  border:1px solid var(--brand);background:var(--brand);color:#fff;
+  border-radius:6px;padding:4px 9px;font-size:11px;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:all 120ms;
+}
+.wiz-copy-btn:hover{background:var(--brand-hover);border-color:var(--brand-hover)}
+.wiz-copy-btn svg{width:12px;height:12px}
+
+/* 分流 */
+.wiz-branch-prompt{font-size:12px;font-weight:600;color:var(--text-2);margin:4px 0 8px}
+.wiz-branch-tabs{display:flex;gap:8px;margin-bottom:12px}
+.wiz-branch-tab{
+  flex:1;border:1px solid var(--border-2);background:var(--surface);
+  color:var(--text-2);border-radius:7px;padding:9px 10px;
+  font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;
+  transition:all 130ms;
+}
+.wiz-branch-tab:hover{border-color:var(--brand);color:var(--brand)}
+.wiz-branch-tab.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.wiz-branch-hint{
+  font-size:12px;color:var(--text-4);text-align:center;
+  padding:14px;border:1px dashed var(--border-2);border-radius:8px;
+}
+.wiz-branch-body{
+  border-left:2px solid var(--brand-border);padding-left:12px;margin-top:2px;
+}
+.wiz-branch-tabs-3 .wiz-branch-tab{font-size:12px;padding:8px 6px}
+.wiz-pay-tag{
+  display:inline-block;font-size:11px;font-weight:700;
+  color:var(--brand-text);background:var(--brand-soft-2);
+  border:1px solid var(--brand-border);border-radius:5px;
+  padding:3px 9px;margin-bottom:10px;
+}
+
+.wiz-notes{margin-top:4px;display:flex;flex-direction:column;gap:6px}
+.wiz-note{
+  background:#FFF7ED;border:1px solid #FED7AA;border-radius:7px;
+  padding:8px 10px;font-size:11.5px;line-height:1.55;color:#9A3412;
+}
+.wiz-note::before{content:'注意 · ';font-weight:700}
+
+.wiz-nav{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 20px;border-top:1px solid var(--border);
+}
+.wiz-nav .btn{height:38px;font-size:13px;font-weight:600}
+.wiz-nav .btn.primary{padding:0 18px}
+.wiz-nav .btn:disabled{opacity:.4;cursor:not-allowed}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{
     animation-duration:.01ms!important;
@@ -552,6 +713,10 @@ a.photo-link svg{width:12px;height:12px}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       源表
     </a>
+    <button class="refresh-btn" onclick="openWizard()" aria-label="申请流程">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      申请流程
+    </button>
   </div>
 </header>
 
@@ -766,6 +931,58 @@ a.photo-link svg{width:12px;height:12px}
     </div>
   </div>
 </div>
+
+<!-- ===== 申请流程追踪器 ===== -->
+<div id="apply-modal" class="modal-overlay" style="display:none" onclick="closeApply(event)">
+  <div class="modal apply-modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div>
+        <h3 id="apply-title">申请流程</h3>
+        <div class="apply-sub" id="apply-sub"></div>
+      </div>
+      <button class="modal-close" onclick="closeApply()" aria-label="关闭">×</button>
+    </div>
+    <div class="apply-meta">
+      <div class="apply-lead">
+        <label for="apply-lead-input">商机 ID</label>
+        <input type="text" id="apply-lead-input" placeholder="输入商机ID 保存/找回这单进度">
+      </div>
+      <div class="apply-progress-wrap">
+        <div class="apply-progress-bar"><div class="apply-progress-fill" id="apply-fill"></div></div>
+        <span class="apply-progress-text" id="apply-ptext">0/7</span>
+      </div>
+    </div>
+    <label class="apply-newunit" style="display:flex;align-items:center;gap:6px;padding:0 20px 6px;font-size:13px;color:#475569;cursor:pointer"><input type="checkbox" id="apply-newunit-chk" onchange="wizToggleNewUnit(this.checked)"> 新单元（青色房源）— 出 TA 时需额外签新房免责声明</label>
+    <div class="wiz-dots" id="wiz-dots"></div>
+    <div class="wiz-body" id="wiz-body"></div>
+    <div class="wiz-nav">
+      <button class="btn" id="wiz-prev" onclick="wizPrev()">← 上一步</button>
+      <span style="flex:1"></span>
+      <button class="btn primary" id="wiz-next" onclick="wizNext()">下一步 →</button>
+    </div>
+    <div class="apply-ref">
+      <details>
+        <summary>费用速查</summary>
+        <div class="apply-ref-body">
+          <div class="rule-card"><strong>维护费 / 月</strong>：CR/PRE/PRS/STND/Econ $60 · MBR $70 · Studio $80(1空调) / $110(2空调) · 风扇房 $35</div>
+          <div class="rule-card">行政费 SGD 76.30 · 清洁费 SGD 32.70（客户实付，一次性）</div>
+          <div class="rule-card">押金：租期 ≤12 月 = 1 个月 · 13–24 月 = 2 个月 · 25–36 月 = 3 个月</div>
+          <div class="rule-card">印花税：(月租 + 月维护费 + 一次性费用/月) × 0.4% × 月数；一次性费用按未含 GST 填（行政 $70 / 清洁 $30），收 TA 后 14 天内缴</div>
+        </div>
+      </details>
+      <details>
+        <summary>遇到这些情况怎么办</summary>
+        <div class="apply-ref-body">
+          <div class="rule-card warn-c"><strong>无 IPA / 准证</strong>：无法出 TA，IPA 若未批押金不退。Offer 须写明状态并标 CONFIRM，核对原件。</div>
+          <div class="rule-card warn-c"><strong>用 Offer Letter 申请、暂无 STP/Visa</strong>：付押金前必须告知 3 项风险（日后缩租房东可拒绝 / 押金可能没收 / 销售须自行协助另找住宿）。</div>
+          <div class="rule-card"><strong>未成年（&lt;18 岁）</strong>：须 21 岁以上持有效准证的监护人同住，且须提前获 Cherlyn 批准。</div>
+          <div class="rule-card"><strong>客户反悔</strong>（2025-04-23 起）：无论是否已签 TA，押金全额不退。</div>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
 
 <script>
 const API_URL = 'https://script.google.com/macros/s/AKfycbxZiDMWyA9fkpVOAaXuCczGeZXmpid9EYgKHyRRdecsdpkw8pZIhRZNesq5kcYTV_cT/exec';
@@ -1514,6 +1731,356 @@ function updateMoreBtnBadge() {
   el.addEventListener('change', filter);
   el.addEventListener('input', filter);
 });
+
+// ========== 申请流程追踪器 ==========
+const OFFER_TEMPLATE =
+"Offer from lead: Do note that this is just an offer, till booking fee is received, the room is not deemed closed.\n" +
+"NOTE: Partners pls be careful of accepting double booking for the room as this may cause Tenants' / Agents' backlash and reject your rooms / marketing your rooms in future.\n" +
+"Your ACCEPTED offer will remain valid for 24 hours for the booking fee to be transferred. You should only accept a NEW offer if you do not receive the booking fee within 24 hours from the first offer.\n" +
+"\n" +
+"Waiting for accommodation:\n" +
+"Name:\n" +
+"Project:\n" +
+"Room:\n" +
+"Move in date:\n" +
+"Lease period:\n" +
+"Gender:\n" +
+"Type of Pass:\n" +
+"IPA / Pass validity period (If NO IPA NO TA Cannot Check in, SD non-refundable once paid as long as tenant backs out NO MATTER the reason — please state CONFIRM):\n" +
+"Rent:\n" +
+"Maintenance Fee:\n" +
+"Your intended asking price: SGD (As per AOTR Column D)\n" +
+"Your intended closing price: SGD (As per AOTR Column F)\n" +
+"Current tenant move out date (if applicable) / vacant days:\n" +
+"Age:\n" +
+"Commission lead by agent, payable by partner. Commission amount: $";
+
+// 表单 / 工具链接
+const URL_OFFER_CALC = 'https://docs.google.com/spreadsheets/d/1JJyfYWYD0ll9skWv36GqvZyyE8JjiNZfjBdYkr7U1N4/edit';
+const URL_REF_FORM   = 'https://form.jotform.com/251147644469464';   // Reference Code Jotform（PayNow / 银行转账）
+const URL_ALIPAY     = 'https://form.jotform.com/240313864526455';   // 支付宝 / 微信支付记录表
+const URL_TA         = 'https://form.jotform.com/240184288636463';   // TA Jotform
+const URL_DECL       = 'https://form.jotform.com/251684817501459';   // 订房声明表（无 IPA）
+const URL_TA_SAMPLE  = 'ta-sample-bespoke.pdf';            // TA 范本（Bespoke Habitat，出 TA 步参考；仅生产同目录托管，github 备份无此文件）
+const URL_NEWUNIT    = 'new-unit-disclaimer-bespoke.pdf';  // 新单元免责声明信（青色房源额外签）
+
+// 出 TA 步：按有无 IPA 分流（步内分叉，三条付款流程共用）
+const TA_BRANCHES = {
+  prompt: '客户目前的证件状态？',
+  options: [
+    { key: 'withIPA', label: '已有 IPA / 准证' },
+    { key: 'noIPA', label: '暂无 IPA' }
+  ],
+  data: {
+    withIPA: {
+      info: '直接填 TA 表，供应商据此出具正式租约（TA）。出 TA 后核对银行账户、金额、入住日期、租期。',
+      link: URL_TA, linkLabel: '打开 TA Jotform'
+    },
+    noIPA: {
+      info: '先填订房声明表锁房，系统自动发确认邮件作凭证；待客户取得 IPA 后再补填 TA 表，否则无法出 TA。',
+      link: URL_DECL, linkLabel: '打开订房声明表 Declaration',
+      link2: URL_TA, link2Label: '（客户取得 IPA 后）补填 TA Jotform',
+      notes: ['即使已填声明表，客户收到 IPA 后仍必须填 TA 表，否则无法出 TA。']
+    }
+  }
+};
+
+// 三种付款方式各自的后续步骤（接在公共前 3 步之后；依据官方 Payment SOP）
+const PAY_FLOWS = {
+  alipay: [
+    { t: '收预订费（支付宝 / 微信）', desc: 'Bespoke 员工在对接群里发支付二维码，把二维码转发给客户扫码支付。客户支付成功后截图收据发到群里给我们核对。', notes: ['二维码只有 2 分钟时效，过期作废——过期就让 Bespoke 员工重新生成再转发。', '支付宝 / 微信需自行加 3% 手续费（计算器的支付宝 / 微信版已含）。', '收据截图必须「展开」显示完整订单号，否则无法核对入账。'], next: '已收款' },
+    { t: '填支付宝 / 微信支付记录表', desc: '把付款明细填进表单，供应商据此核对、放款给合作方。', link: URL_ALIPAY, linkLabel: '打开 Alipay / 微信支付记录表', next: '已填支付记录表' },
+    { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
+    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', isLast: true }
+  ],
+  paynow: [
+    { t: '生成 Reference Code', desc: '客户付款前，先填 Reference Code Jotform；提交后在对应 Google Sheet 的 A 列（Reference Code）取到该客户的 Code。', link: URL_REF_FORM, linkLabel: '打开 Reference Code Jotform', next: '已生成 Code' },
+    { t: '把 Code 发给客户', desc: '把 Google Sheet A 列取到的 Reference Code 发给客户。', next: '已发 Code 给客户' },
+    { t: '客户用 PayNow 付款', desc: '客户用 PayNow 付款到 BH PROPERTY 账户，并把 Reference Code 填进转账备注（Transfer Description：UEN / Bill Reference No.）。收款账户信息见金额计算器内附的账户详情。', next: '客户已付款' },
+    { t: '收款截图 + 发团队', desc: '让客户把付款成功收据截图，发到群里给我们核对。', next: '已收款' },
+    { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
+    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', isLast: true }
+  ],
+  bank: [
+    { t: '生成 Reference Code', desc: '客户付款前，先填 Reference Code Jotform；提交后在对应 Google Sheet 的 A 列（Reference Code）取到该客户的 Code。', link: URL_REF_FORM, linkLabel: '打开 Reference Code Jotform', next: '已生成 Code' },
+    { t: '把 Code 发给客户', desc: '把 Google Sheet A 列取到的 Reference Code 发给客户。', next: '已发 Code 给客户' },
+    { t: '客户银行转账', desc: '客户银行转账到 BH PROPERTY 账户，并把 Reference Code 写进银行转账备注。收款账户信息见金额计算器内附的账户详情。', next: '客户已付款' },
+    { t: '收预订费收据', desc: '让客户把银行转账收据截图，发到群里给我们核对。', next: '已收款' },
+    { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
+    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', isLast: true }
+  ]
+};
+
+// 公共前 3 步（选付款方式前，三种方式一样）
+const COMMON_PRE = [
+  {
+    t: '发 Offer',
+    desc: '核对：护照 + IPA / 准证在整个租期内有效（看原件）、年龄 18–65、房源状态可订。核对无误后，复制下面的 Offer 模板，填好在 Offers 群报备。',
+    copies: [
+      { label: 'Offer 模板（复制到 Offers 群）', text: OFFER_TEMPLATE }
+    ],
+    notes: [
+      '无 IPA：「IPA / Pass validity」一栏必须写明状态并标 CONFIRM（押金一经支付不退，含 IPA 未获批）。',
+      '用 Offer Letter、暂无 Student Pass / Visa：付押金前讲清 3 项风险（缩租房东可拒绝 / 押金可能没收 / 销售须自行协助另找住宿）。'
+    ],
+    next: '已发出 Offer'
+  },
+  {
+    t: '等 Partner 接受',
+    desc: '等合作方（Partner）在 Offers 群回复 Offer 结果。',
+    branches: {
+      prompt: 'Partner 的回复？',
+      options: [
+        { key: 'accept', label: '房东已接受' },
+        { key: 'decline', label: '房东 decline' }
+      ],
+      data: {
+        accept: {
+          info: 'Offer 接受后 24 小时内有效，提醒客户在时效内支付定金（= 1 个月房租，后转为押金），否则房东可接受新的 Offer。',
+          notes: ['申请一旦递交、房东审批通过后又放弃，房东可能不再受理后续申请——确认客户确定要订再报。']
+        },
+        decline: {
+          info: '房东未接受这套 Offer。两条补救，处理好后回第 1 步重新发 Offer：',
+          notes: ['换房源申请：另选合适房源，回到第 1 步重新走 Offer 流程。',
+                  '加价提高成功率：与客户确认可否上调预算 / 租金，再重新报 Offer。',
+                  'decline 不进入付款流程，处理好后从第 1 步重来。'],
+          deadEnd: true
+        }
+      }
+    },
+    next: '房东已接受'
+  },
+  {
+    t: '客户预订 · 选付款方式',
+    desc: '客户决定预订付款时，先用 China Sales 金额计算器算出总额，截图发客户（支付宝 / 微信版计算器已含 3% 手续费）。再确认客户用哪种方式付款——三种方式后续流程不同：',
+    link: URL_OFFER_CALC, linkLabel: '打开 China Sales 金额计算器',
+    notes: ['定金 = 1 个月房租，支付后转为押金；自 2025-04-23 起：无论是否已签 TA，客户反悔押金全额不退——收款前明确告知客户。'],
+    payBranch: {
+      prompt: '客户用哪种方式付款？（选了进入对应流程）',
+      options: [
+        { key: 'alipay', label: '支付宝 / 微信' },
+        { key: 'paynow', label: 'PayNow' },
+        { key: 'bank', label: '银行转账' }
+      ]
+    },
+    next: '进入付款流程'
+  }
+];
+
+// 当前完整步骤序列 = 公共前 3 步 +（选定付款方式后）该方式的流程
+function buildSteps() {
+  if (currentPay && PAY_FLOWS[currentPay]) return COMMON_PRE.concat(PAY_FLOWS[currentPay]);
+  return COMMON_PRE;
+}
+
+let applyLeadId = '';     // 当前商机 ID（存档钥匙）
+let currentStep = 0;      // 当前在第几步（0-based）
+let currentBranch = '';   // 步内分流选择（如第 6 步 withIPA / noIPA），每次导航重置
+let currentPay = '';      // 付款方式（第 3 步选，贯穿第 4 / 5 步，不随导航重置）
+let isNewUnit = false;    // 新单元（青色房源）：出 TA 步多签新房免责声明
+
+function applyKeyFor(id) { return 'aotr_apply_' + id; }
+function loadApplyState(key) {
+  try { return JSON.parse(localStorage.getItem(key)) || null; }
+  catch (e) { return null; }
+}
+function saveApplyState(key, state) {
+  try { localStorage.setItem(key, JSON.stringify(state)); } catch (e) {}
+}
+function persistApply() {
+  if (!applyLeadId) return;  // 没填商机 ID 不落盘（临时态）
+  saveApplyState(applyKeyFor(applyLeadId), { step: currentStep, pay: currentPay, nu: isNewUnit });
+}
+
+function linkSvg() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+}
+
+function openWizard() {
+  applyLeadId = '';
+  currentStep = 0;
+  currentBranch = '';
+  currentPay = '';
+  isNewUnit = false;
+  document.getElementById('apply-lead-input').value = '';
+  document.getElementById('apply-newunit-chk').checked = false;
+  renderWizard();
+  document.getElementById('apply-modal').style.display = 'flex';
+}
+
+function renderWizard() {
+  const STEPS = buildSteps();
+  const total = STEPS.length;
+  if (currentStep < 0) currentStep = 0;
+  if (currentStep > total - 1) currentStep = total - 1;
+  const s = STEPS[currentStep];
+
+  // 步骤指示器
+  let dots = '';
+  for (let i = 0; i < total; i++) {
+    const cls = i < currentStep ? 'done' : (i === currentStep ? 'cur' : '');
+    dots += '<div class="wiz-dot ' + cls + '" onclick="wizGoto(' + i + ')" title="第 ' + (i + 1) + ' 步">' +
+      (i < currentStep
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+        : (i + 1)) +
+      '</div>';
+    if (i < total - 1) dots += '<div class="wiz-line ' + (i < currentStep ? 'done' : '') + '"></div>';
+  }
+  // 还没选付款方式时，加个虚线幽灵点，提示后面会按付款方式展开更多步骤
+  if (!currentPay) {
+    dots += '<div class="wiz-line wiz-line-ghost"></div>' +
+            '<div class="wiz-dot wiz-dot-ghost" title="选付款方式后展开完整流程">…</div>';
+  }
+  document.getElementById('wiz-dots').innerHTML = dots;
+
+  // 当前步主体
+  const stepNo = currentPay
+    ? ('第 ' + (currentStep + 1) + ' / ' + total + ' 步')
+    : ('第 ' + (currentStep + 1) + ' 步（后续按付款方式展开）');
+  let body = '<div class="wiz-step-no">' + stepNo + '</div>' +
+    '<div class="wiz-step-title">' + esc(s.t) + '</div>' +
+    '<div class="wiz-step-desc">' + esc(s.desc) + '</div>';
+
+  let branchIncomplete = false;
+  if (s.payBranch) {
+    // 付款方式分叉：选了进入对应流程（步数不同）
+    body += renderCopies(s.copies);
+    if (s.link) body += linkBtn(s.link, s.linkLabel);
+    body += renderNotes(s.notes);
+    body += '<div class="wiz-branch-prompt">' + esc(s.payBranch.prompt) + '</div>';
+    body += '<div class="wiz-branch-tabs wiz-branch-tabs-3">' + s.payBranch.options.map(o =>
+      '<button class="wiz-branch-tab' + (currentPay === o.key ? ' active' : '') +
+      '" onclick="wizSelectPay(\'' + o.key + '\')">' + esc(o.label) + '</button>'
+    ).join('') + '</div>';
+    if (!currentPay) {
+      body += '<div class="wiz-branch-hint">↑ 先选择客户的付款方式，再进入下一步</div>';
+      branchIncomplete = true;
+    } else {
+      const opt = s.payBranch.options.find(o => o.key === currentPay);
+      const fl = PAY_FLOWS[currentPay] || [];
+      body += '<div class="wiz-branch-hint">已选「' + esc(opt ? opt.label : '') + '」流程，共 ' + fl.length + ' 步，点下一步开始。</div>';
+    }
+  } else if (s.branches) {
+    // 步内分流：先让销售选证件状态，再显示对应指引
+    body += '<div class="wiz-branch-prompt">' + esc(s.branches.prompt) + '</div>';
+    body += '<div class="wiz-branch-tabs">' + s.branches.options.map(o =>
+      '<button class="wiz-branch-tab' + (currentBranch === o.key ? ' active' : '') +
+      '" onclick="wizSelectBranch(\'' + o.key + '\')">' + esc(o.label) + '</button>'
+    ).join('') + '</div>';
+    const b = currentBranch ? s.branches.data[currentBranch] : null;
+    if (b) {
+      body += '<div class="wiz-branch-body">';
+      if (b.info) body += '<div class="wiz-step-desc">' + esc(b.info) + '</div>';
+      body += renderCopies(b.copies);
+      if (b.link)  body += linkBtn(b.link, b.linkLabel);
+      if (b.link2) body += linkBtn(b.link2, b.link2Label);
+      body += renderNotes(b.notes);
+      body += '</div>';
+      if (b.deadEnd) branchIncomplete = true;   // 如 decline：不能继续，回第 1 步重发 Offer
+    } else {
+      body += '<div class="wiz-branch-hint">↑ 先做出选择，再看对应指引</div>';
+      branchIncomplete = true;
+    }
+  } else {
+    body += renderCopies(s.copies);
+    if (s.link)  body += linkBtn(s.link, s.linkLabel);
+    body += renderNotes(s.notes);
+  }
+  // 出 TA 步：附 TA 范本参考；勾了「新单元」再附新房免责声明签署
+  if (s.taStep) {
+    body += linkBtn(URL_TA_SAMPLE, '查看 TA 范本（Bespoke Habitat）');
+    if (isNewUnit) {
+      body += '<div class="wiz-notes"><div class="wiz-note">新单元（青色房源）：除 TA 外，必须让客户额外签「新房免责声明信」（确认接受新装修 / 家具 / 甲醛气味，不投诉、不退押金、不换房），签好回传对接群。</div></div>';
+      body += linkBtn(URL_NEWUNIT, '打开新单元免责声明信');
+    }
+  }
+  document.getElementById('wiz-body').innerHTML = body;
+
+  // 底部导航
+  document.getElementById('wiz-prev').disabled = currentStep === 0;
+  const nextBtn = document.getElementById('wiz-next');
+  if (s.isLast) {
+    nextBtn.textContent = '完成，关闭';
+    nextBtn.onclick = function () { closeApply(); };
+    nextBtn.disabled = false;
+  } else {
+    nextBtn.textContent = (s.next || '下一步') + ' →';
+    nextBtn.onclick = wizNext;
+    nextBtn.disabled = branchIncomplete;
+  }
+
+  // 进度（未选付款方式时留出后续余量，避免第 3 步就显示满 + 标 "+"）
+  const denom = currentPay ? (total - 1) : total;
+  document.getElementById('apply-fill').style.width = Math.round(currentStep / denom * 100) + '%';
+  const pt = document.getElementById('apply-ptext');
+  pt.textContent = (currentStep + 1) + '/' + total + (currentPay ? '' : '+');
+  pt.classList.toggle('done', !!s.isLast);
+}
+
+function renderCopies(copies) {
+  if (!copies || !copies.length) return '';
+  return copies.map(c =>
+    '<div class="wiz-copy-box">' +
+      '<div class="wiz-copy-head">' + esc(c.label) +
+        '<button class="wiz-copy-btn" onclick="wizCopyEl(this)">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
+        '<span class="wiz-copy-lbl">复制</span></button>' +
+      '</div>' +
+      '<pre class="wiz-copy-text">' + esc(c.text) + '</pre>' +
+    '</div>'
+  ).join('');
+}
+
+function renderNotes(notes) {
+  if (!notes || !notes.length) return '';
+  return '<div class="wiz-notes">' + notes.map(n => '<div class="wiz-note">' + esc(n) + '</div>').join('') + '</div>';
+}
+
+function linkBtn(href, label) {
+  return '<a class="apply-step-link" href="' + href + '" target="_blank" rel="noopener">' + linkSvg() + esc(label) + '</a>';
+}
+
+function wizNext() { const n = buildSteps().length; if (currentStep < n - 1) currentStep++; currentBranch = ''; persistApply(); renderWizard(); }
+function wizPrev() { if (currentStep > 0) currentStep--; currentBranch = ''; persistApply(); renderWizard(); }
+function wizGoto(i) { currentStep = i; currentBranch = ''; persistApply(); renderWizard(); }
+function wizSelectBranch(key) { currentBranch = key; renderWizard(); }
+function wizSelectPay(key) { currentPay = key; persistApply(); renderWizard(); }
+function wizToggleNewUnit(v) { isNewUnit = v; persistApply(); renderWizard(); }
+
+async function wizCopyEl(btn) {
+  const box = btn.closest('.wiz-copy-box');
+  if (!box) return;
+  const txt = box.querySelector('.wiz-copy-text').textContent;
+  try { await navigator.clipboard.writeText(txt); } catch (e) {}
+  const lbl = btn.querySelector('.wiz-copy-lbl');
+  if (lbl) { const old = lbl.textContent; lbl.textContent = '✓ 已复制'; setTimeout(() => { lbl.textContent = old; }, 1500); }
+}
+
+// 输入商机 ID：有存档则跳到该单进度，无则以此 ID 新建
+document.getElementById('apply-lead-input').addEventListener('input', e => {
+  applyLeadId = e.target.value.trim();
+  if (!applyLeadId) return;
+  const saved = loadApplyState(applyKeyFor(applyLeadId));
+  if (saved && typeof saved.step === 'number') {
+    currentStep = saved.step;
+    currentPay = saved.pay || '';
+    isNewUnit = !!saved.nu;
+    document.getElementById('apply-newunit-chk').checked = isNewUnit;
+  } else {
+    currentPay = '';
+    isNewUnit = false;
+    document.getElementById('apply-newunit-chk').checked = false;
+    persistApply();  // 以此商机 ID 新建存档
+  }
+  currentBranch = '';
+  renderWizard();
+});
+
+function closeApply(event) {
+  if (event && event.target.id !== 'apply-modal' && event.type === 'click' && event.target.closest('.modal')) return;
+  document.getElementById('apply-modal').style.display = 'none';
+}
+
 
 loadData();
 </script>
