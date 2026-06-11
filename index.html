@@ -953,6 +953,23 @@ a.photo-link svg{width:12px;height:12px}
       </div>
     </div>
     <label class="apply-newunit" style="display:flex;align-items:center;gap:6px;padding:0 20px 6px;font-size:13px;color:#475569;cursor:pointer"><input type="checkbox" id="apply-newunit-chk" onchange="wizToggleNewUnit(this.checked)"> 新单元（青色房源）— 出 TA 时需额外签新房免责声明</label>
+    <details class="apply-clientinfo" style="margin:0 20px 8px;font-size:13px">
+      <summary style="cursor:pointer;color:#475569">客户信息（填一次，自动带入 TA 表单）</summary>
+      <style>.apply-clientinfo input{padding:5px 8px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;width:100%;box-sizing:border-box}</style>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
+        <input data-ci="name" oninput="ciInput(this)" placeholder="客户姓名（护照/NRIC）">
+        <input data-ci="email" oninput="ciInput(this)" placeholder="客户邮箱">
+        <input data-ci="wechat" oninput="ciInput(this)" placeholder="客户微信 ID">
+        <input data-ci="project" oninput="ciInput(this)" placeholder="项目 / 公寓名">
+        <input data-ci="blk" oninput="ciInput(this)" placeholder="栋号 Blk">
+        <input data-ci="unit" oninput="ciInput(this)" placeholder="单元号 Unit">
+        <input data-ci="room" oninput="ciInput(this)" placeholder="房间 Room">
+        <input data-ci="rent" oninput="ciInput(this)" placeholder="月租 Rent">
+        <input data-ci="lease" oninput="ciInput(this)" placeholder="租期（月，如 12）">
+        <input data-ci="amount" oninput="ciInput(this)" placeholder="本次收款金额">
+      </div>
+      <div style="margin-top:6px;color:#94a3b8;font-size:12px">填好后，「出 TA」步打开 TA 表单会自动带入这些信息，核对即可提交（护照等文件仍需手动上传）。</div>
+    </details>
     <div class="wiz-dots" id="wiz-dots"></div>
     <div class="wiz-body" id="wiz-body"></div>
     <div class="wiz-nav">
@@ -1765,6 +1782,20 @@ const URL_TA_SAMPLE  = 'ta-sample-bespoke.pdf';            // TA 范本（Bespok
 const URL_NEWUNIT    = 'new-unit-disclaimer-bespoke.pdf';  // 新单元免责声明信（青色房源额外签）
 const URL_STAMP_DUTY = 'https://bhop.bespokehabitat.com/stamp-duty-calculator';  // 官方印花税计算器（IRAS 2026-04-20 口径，强制使用）
 
+// 表单预填（试点：TA 表）。客户信息填一次 → 拼成 Jotform 预填链接（前端按 URL 参数填充，已实测生效）。
+// TA_PREFILL：本地 canonical 字段 → TA 表的 Jotform unique name（q##_ 之后那段）。
+const TA_PREFILL = { name:'nameAs', email:'email6', wechat:'wechatId', project:'projectName',
+  blk:'typeA54', unit:'unitNo', room:'room', rent:'rentAmount', lease:'leasePeriod', amount:'amountCollected' };
+function prefillUrl(base, map) {
+  const qs = Object.entries(map).map(([ck, param]) => {
+    const v = (clientInfo[ck] || '').trim();
+    return v ? encodeURIComponent(param) + '=' + encodeURIComponent(v) : null;
+  }).filter(Boolean).join('&');
+  return qs ? base + '?' + qs : base;
+}
+// 把静态 TA 链接换成带客户信息的预填链接；其它链接原样返回。Bespoke 改字段名只会让对应项空着，不报错。
+function resolveLink(href) { return href === URL_TA ? prefillUrl(URL_TA, TA_PREFILL) : href; }
+
 // 出 TA 步：按有无 IPA 分流（步内分叉，三条付款流程共用）
 const TA_BRANCHES = {
   prompt: '客户目前的证件状态？',
@@ -1902,6 +1933,7 @@ let currentStep = 0;      // 当前在第几步（0-based）
 let currentBranch = '';   // 步内分流选择（如第 6 步 withIPA / noIPA），每次导航重置
 let currentPay = '';      // 付款方式（第 3 步选，贯穿第 4 / 5 步，不随导航重置）
 let isNewUnit = false;    // 新单元（青色房源）：出 TA 步多签新房免责声明
+let clientInfo = {};      // 客户信息（填一次，预填进 TA 表单），随商机存档
 
 function applyKeyFor(id) { return 'aotr_apply_' + id; }
 function loadApplyState(key) {
@@ -1913,7 +1945,7 @@ function saveApplyState(key, state) {
 }
 function persistApply() {
   if (!applyLeadId) return;  // 没填商机 ID 不落盘（临时态）
-  saveApplyState(applyKeyFor(applyLeadId), { step: currentStep, pay: currentPay, nu: isNewUnit });
+  saveApplyState(applyKeyFor(applyLeadId), { step: currentStep, pay: currentPay, nu: isNewUnit, ci: clientInfo });
 }
 
 function linkSvg() {
@@ -1926,8 +1958,10 @@ function openWizard() {
   currentBranch = '';
   currentPay = '';
   isNewUnit = false;
+  clientInfo = {};
   document.getElementById('apply-lead-input').value = '';
   document.getElementById('apply-newunit-chk').checked = false;
+  syncClientInputs();
   renderWizard();
   document.getElementById('apply-modal').style.display = 'flex';
 }
@@ -1997,8 +2031,8 @@ function renderWizard() {
       body += '<div class="wiz-branch-body">';
       if (b.info) body += '<div class="wiz-step-desc">' + esc(b.info) + '</div>';
       body += renderCopies(b.copies);
-      if (b.link)  body += linkBtn(b.link, b.linkLabel);
-      if (b.link2) body += linkBtn(b.link2, b.link2Label);
+      if (b.link)  body += linkBtn(resolveLink(b.link), b.linkLabel);
+      if (b.link2) body += linkBtn(resolveLink(b.link2), b.link2Label);
       body += renderNotes(b.notes);
       body += '</div>';
       if (b.deadEnd) branchIncomplete = true;   // 如 decline：不能继续，回第 1 步重发 Offer
@@ -2072,6 +2106,8 @@ function wizGoto(i) { currentStep = i; currentBranch = ''; persistApply(); rende
 function wizSelectBranch(key) { currentBranch = key; renderWizard(); }
 function wizSelectPay(key) { currentPay = key; persistApply(); renderWizard(); }
 function wizToggleNewUnit(v) { isNewUnit = v; persistApply(); renderWizard(); }
+function ciInput(el) { clientInfo[el.getAttribute('data-ci')] = el.value; persistApply(); renderWizard(); }
+function syncClientInputs() { document.querySelectorAll('[data-ci]').forEach(el => { el.value = clientInfo[el.getAttribute('data-ci')] || ''; }); }
 
 async function wizCopyEl(btn) {
   const box = btn.closest('.wiz-copy-box');
@@ -2091,11 +2127,15 @@ document.getElementById('apply-lead-input').addEventListener('input', e => {
     currentStep = saved.step;
     currentPay = saved.pay || '';
     isNewUnit = !!saved.nu;
+    clientInfo = saved.ci || {};
     document.getElementById('apply-newunit-chk').checked = isNewUnit;
+    syncClientInputs();
   } else {
     currentPay = '';
     isNewUnit = false;
+    clientInfo = {};
     document.getElementById('apply-newunit-chk').checked = false;
+    syncClientInputs();
     persistApply();  // 以此商机 ID 新建存档
   }
   currentBranch = '';
