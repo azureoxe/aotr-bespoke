@@ -956,21 +956,31 @@ a.photo-link svg{width:12px;height:12px}
       </div>
     </div>
     <details class="apply-clientinfo" style="margin:0 20px 8px;font-size:13px">
-      <summary style="cursor:pointer;color:#475569">客户信息（绑定本单编号，填一次自动带入 TA 表单）</summary>
+      <summary style="cursor:pointer;color:#475569">客户信息（绑定本单编号，填一次自动带入全部表单）</summary>
       <style>.apply-clientinfo input{padding:5px 8px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;width:100%;box-sizing:border-box}</style>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
-        <input data-ci="name" oninput="ciInput(this)" placeholder="客户姓名（护照/NRIC）">
+        <div style="grid-column:1/-1;font-weight:600;color:#64748b;font-size:12px">客户</div>
+        <input data-ci="name" oninput="ciInput(this)" placeholder="客户姓名（护照英文名）">
         <input data-ci="email" oninput="ciInput(this)" placeholder="客户邮箱">
         <input data-ci="wechat" oninput="ciInput(this)" placeholder="客户微信 ID">
+        <input data-ci="pax" oninput="ciInput(this)" placeholder="人数（1 / 2）">
+        <div style="grid-column:1/-1;font-weight:600;color:#64748b;font-size:12px;margin-top:4px">房源</div>
         <input data-ci="project" oninput="ciInput(this)" placeholder="项目 / 公寓名">
         <input data-ci="blk" oninput="ciInput(this)" placeholder="栋号 Blk">
         <input data-ci="unit" oninput="ciInput(this)" placeholder="单元号 Unit">
         <input data-ci="room" oninput="ciInput(this)" placeholder="房间 Room">
+        <div style="grid-column:1/-1;font-weight:600;color:#64748b;font-size:12px;margin-top:4px">交易</div>
         <input data-ci="rent" oninput="ciInput(this)" placeholder="月租 Rent">
         <input data-ci="lease" oninput="ciInput(this)" placeholder="租期（月，如 12）">
         <input data-ci="amount" oninput="ciInput(this)" placeholder="本次收款金额">
+        <div style="grid-column:1/-1;font-weight:600;color:#64748b;font-size:12px;margin-top:4px">第二租客（如有）</div>
+        <input data-ci="t2name" oninput="ciInput(this)" placeholder="第二租客姓名">
+        <input data-ci="t2email" oninput="ciInput(this)" placeholder="第二租客邮箱">
+        <div style="grid-column:1/-1;font-weight:600;color:#64748b;font-size:12px;margin-top:4px">代理（你自己，记一次以后自动带）</div>
+        <input data-ci="agentName" oninput="ciInput(this)" placeholder="代理姓名">
+        <input data-ci="agentEmail" oninput="ciInput(this)" placeholder="代理邮箱">
       </div>
-      <div style="margin-top:6px;color:#94a3b8;font-size:12px">填好后，「出 TA」步打开 TA 表单会自动带入这些信息，核对即可提交（护照等文件仍需手动上传）。</div>
+      <div style="margin-top:6px;color:#94a3b8;font-size:12px">填好后，向导里打开任意表单（TA / 订房声明 / Reference Code / 支付宝记录）都会自动带入对应字段，核对即可提交（护照等文件仍需手动上传）。</div>
     </details>
     <div class="wiz-dots" id="wiz-dots"></div>
     <div class="wiz-body" id="wiz-body"></div>
@@ -1784,10 +1794,21 @@ const URL_TA_SAMPLE  = 'ta-sample-bespoke.pdf';            // TA 范本（Bespok
 const URL_NEWUNIT    = 'new-unit-disclaimer-bespoke.pdf';  // 新单元免责声明信（青色房源额外签）
 const URL_STAMP_DUTY = 'https://bhop.bespokehabitat.com/stamp-duty-calculator';  // 官方印花税计算器（IRAS 2026-04-20 口径，强制使用）
 
-// 表单预填（试点：TA 表）。客户信息填一次 → 拼成 Jotform 预填链接（前端按 URL 参数填充，已实测生效）。
-// TA_PREFILL：本地 canonical 字段 → TA 表的 Jotform unique name（q##_ 之后那段）。
-const TA_PREFILL = { name:'nameAs', email:'email6', wechat:'wechatId', project:'projectName',
-  blk:'typeA54', unit:'unitNo', room:'room', rent:'rentAmount', lease:'leasePeriod', amount:'amountCollected' };
+// 表单预填：客户信息填一次 → 拼成各 Jotform 的预填链接（前端按 URL 参数填充，4 表全实测生效）。
+// 每个表一张「canonical 字段 → 该表 Jotform unique name（q##_ 之后那段）」映射。
+// ⚠️ 同一概念在不同表 unique name 可能不同（如客户名：TA/REF/DECL=nameAs，支付宝=fullName；
+//    收款金额：TA/DECL=amountCollected，REF=collectionAmount，支付宝=paymentAmount），所以按表分别映射。
+const TA_PREFILL = { name:'nameAs', email:'email6', wechat:'wechatId', project:'projectName', blk:'typeA54',
+  unit:'unitNo', room:'room', rent:'rentAmount', lease:'leasePeriod', amount:'amountCollected', pax:'howMany',
+  t2name:'nameAs71', t2email:'emailFor', agentName:'nameOf48', agentEmail:'emailOf' };
+const REF_PREFILL = { name:'nameAs', email:'email6', project:'projectName', blk:'typeA54', unit:'unitNo',
+  room:'room', rent:'rentAmount', lease:'leasePeriod', amount:'collectionAmount', pax:'howMany' };
+const ALIPAY_PREFILL = { name:'fullName', email:'email', project:'condoName', unit:'unitNo', room:'room',
+  amount:'paymentAmount', agentName:'submittedBy', agentEmail:'emailOf' };
+const DECL_PREFILL = { name:'nameAs', email:'email6', wechat:'wechatId', project:'projectcondoName', blk:'typeA54',
+  unit:'unitNo', room:'room', rent:'rentAmount', lease:'leasePeriod', amount:'amountCollected', pax:'howMany',
+  t2name:'nameAs71', t2email:'emailFor', agentName:'nameOf48', agentEmail:'emailOf' };
+const FORM_PREFILL = { [URL_TA]:TA_PREFILL, [URL_REF_FORM]:REF_PREFILL, [URL_ALIPAY]:ALIPAY_PREFILL, [URL_DECL]:DECL_PREFILL };
 function prefillUrl(base, map) {
   const qs = Object.entries(map).map(([ck, param]) => {
     const v = (clientInfo[ck] || '').trim();
@@ -1795,8 +1816,9 @@ function prefillUrl(base, map) {
   }).filter(Boolean).join('&');
   return qs ? base + '?' + qs : base;
 }
-// 把静态 TA 链接换成带客户信息的预填链接；其它链接原样返回。Bespoke 改字段名只会让对应项空着，不报错。
-function resolveLink(href) { return href === URL_TA ? prefillUrl(URL_TA, TA_PREFILL) : href; }
+// 表单链接换成带客户信息的预填链接；非表单（计算器/PDF）原样返回。
+// Bespoke 改字段名只会让对应项空着（静默降级），销售手填兜底，不报错。
+function resolveLink(href) { const m = FORM_PREFILL[href]; return m ? prefillUrl(href, m) : href; }
 
 // 出 TA 步：按有无 IPA 分流（步内分叉，三条付款流程共用）
 const TA_BRANCHES = {
@@ -1946,6 +1968,10 @@ async function copyApplyId() {
   const v = document.getElementById('apply-lead-input').value;
   try { await navigator.clipboard.writeText(v); } catch (e) {}
 }
+// 代理（销售自己）信息全局记一次，跨所有单子自动带入，不用每单重填
+const AGENT_KEY = 'aotr_agent';
+function loadAgent() { try { return JSON.parse(localStorage.getItem(AGENT_KEY)) || {}; } catch (e) { return {}; } }
+function saveAgent() { try { localStorage.setItem(AGENT_KEY, JSON.stringify({ agentName: clientInfo.agentName || '', agentEmail: clientInfo.agentEmail || '' })); } catch (e) {} }
 function applyKeyFor(id) { return 'aotr_apply_' + id; }
 function loadApplyState(key) {
   try { return JSON.parse(localStorage.getItem(key)) || null; }
@@ -1969,7 +1995,7 @@ function openWizard() {
   currentBranch = '';
   currentPay = '';
   isNewUnit = false;
-  clientInfo = {};
+  clientInfo = loadAgent();                                    // 新单先带上代理（销售自己）信息
   applyLeadId = genApplyId();                                  // 自动生成本单编号
   document.getElementById('apply-lead-input').value = applyLeadId;
   syncClientInputs();
@@ -2015,8 +2041,8 @@ function renderWizard() {
   if (s.payBranch) {
     // 付款方式分叉：选了进入对应流程（步数不同）
     body += renderCopies(s.copies);
-    if (s.link) body += linkBtn(s.link, s.linkLabel);
-    if (s.link2) body += linkBtn(s.link2, s.link2Label);
+    if (s.link) body += linkBtn(resolveLink(s.link), s.linkLabel);
+    if (s.link2) body += linkBtn(resolveLink(s.link2), s.link2Label);
     body += renderNotes(s.notes);
     body += '<div class="wiz-branch-prompt">' + esc(s.payBranch.prompt) + '</div>';
     body += '<div class="wiz-branch-tabs wiz-branch-tabs-3">' + s.payBranch.options.map(o =>
@@ -2054,8 +2080,8 @@ function renderWizard() {
     }
   } else {
     body += renderCopies(s.copies);
-    if (s.link)  body += linkBtn(s.link, s.linkLabel);
-    if (s.link2) body += linkBtn(s.link2, s.link2Label);
+    if (s.link)  body += linkBtn(resolveLink(s.link), s.linkLabel);
+    if (s.link2) body += linkBtn(resolveLink(s.link2), s.link2Label);
     body += renderNotes(s.notes);
   }
   // 交押金前：给客户看 TA 范本 + 确认是否新单元（要签新房免责声明）
@@ -2123,7 +2149,7 @@ function wizGoto(i) { currentStep = i; currentBranch = ''; persistApply(); rende
 function wizSelectBranch(key) { currentBranch = key; renderWizard(); }
 function wizSelectPay(key) { currentPay = key; persistApply(); renderWizard(); }
 function wizToggleNewUnit(v) { isNewUnit = v; persistApply(); renderWizard(); }
-function ciInput(el) { clientInfo[el.getAttribute('data-ci')] = el.value; persistApply(); renderWizard(); }
+function ciInput(el) { const k = el.getAttribute('data-ci'); clientInfo[k] = el.value; if (k === 'agentName' || k === 'agentEmail') saveAgent(); persistApply(); renderWizard(); }
 function syncClientInputs() { document.querySelectorAll('[data-ci]').forEach(el => { el.value = clientInfo[el.getAttribute('data-ci')] || ''; }); }
 
 async function wizCopyEl(btn) {
@@ -2144,12 +2170,12 @@ document.getElementById('apply-lead-input').addEventListener('input', e => {
     currentStep = saved.step;
     currentPay = saved.pay || '';
     isNewUnit = !!saved.nu;
-    clientInfo = saved.ci || {};
+    clientInfo = Object.assign(loadAgent(), saved.ci || {});   // 代理信息兜底，存档值优先
     syncClientInputs();
   } else {
     currentPay = '';
     isNewUnit = false;
-    clientInfo = {};
+    clientInfo = loadAgent();
     syncClientInputs();
     persistApply();  // 以此编号新建存档
   }
