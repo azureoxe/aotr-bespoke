@@ -967,7 +967,7 @@ a.photo-link svg{width:12px;height:12px}
           <div class="rule-card"><strong>维护费 / 月</strong>：CR/PRE/PRS/STND/Econ $60 · MBR $70 · Studio $80(1空调) / $110(2空调) · 风扇房 $35</div>
           <div class="rule-card">行政费 SGD 76.30 · 清洁费 SGD 32.70（客户实付，一次性）</div>
           <div class="rule-card">押金：租期 ≤12 月 = 1 个月 · 13–24 月 = 2 个月 · 25–36 月 = 3 个月</div>
-          <div class="rule-card">印花税（IRAS 2026-04-20 口径）：(月租 + 月维护费 + 一次性费用/月) × 0.4% × 月数；一次性费用按未含 GST 填（行政 $70 / 清洁 $30，<strong>不是</strong> 76.30 / 32.70），收 TA 后 14 天内缴。<a href="https://bhop.bespokehabitat.com/stamp-duty-calculator" target="_blank" rel="noopener">官方印花税计算器（强制使用）</a></div>
+          <div class="rule-card">印花税（IRAS 2026-04-20 口径）：(月租 + 月维护费 + 一次性费用/月) × 0.4% × 月数；一次性费用按未含 GST 填（行政 $70 / 清洁 $30，<strong>不是</strong> 76.30 / 32.70）。<strong>我们算好金额告诉客户，客户连同其他款项一起付给 Bespoke（不是客户自己缴 IRAS）。</strong><a href="https://bhop.bespokehabitat.com/stamp-duty-calculator" target="_blank" rel="noopener">官方印花税计算器（强制使用）</a></div>
         </div>
       </details>
       <details>
@@ -1795,11 +1795,11 @@ const PAY_PLAN_BRANCHES = {
   ],
   data: {
     full: {
-      info: '本次收齐：押金（1 个月房租）+ 预付 1 个月房租 + 杂费。收齐后无尾款。'
+      info: '本次收齐：押金（1 个月房租）+ 预付 1 个月房租 + 杂费 + 印花税。收齐后无尾款。'
     },
     deposit: {
       info: '本次只收押金（1 个月房租）锁房。',
-      notes: ['剩余的预付 1 个月房租 + 杂费必须在入住前到账——记下尾款金额和截止时间，别漏收。']
+      notes: ['剩余的预付 1 个月房租 + 杂费 + 印花税必须在入住前到账——记下尾款金额和截止时间，别漏收。']
     }
   }
 };
@@ -1812,7 +1812,7 @@ const PAY_FLOWS = {
     { t: '收预订费（支付宝 / 微信）', desc: 'Bespoke 员工在对接群里发支付二维码，把二维码转发给客户扫码支付。客户支付成功后截图收据发到群里给我们核对。', notes: ['二维码只有 2 分钟时效，过期作废——过期就让 Bespoke 员工重新生成再转发。', '支付宝 / 微信需自行加 3% 手续费（计算器的支付宝 / 微信版已含）。', '收据截图必须「展开」显示完整订单号，否则无法核对入账。'], next: '已收款' },
     { t: '填支付宝 / 微信支付记录表', desc: '把付款明细填进表单，供应商据此核对、放款给合作方。', link: URL_ALIPAY, linkLabel: '打开 Alipay / 微信支付记录表', next: '已填支付记录表' },
     { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
-    { t: '完成', desc: '主流程完成。若客户本次只付了押金（先付押金方案），务必在入住前收齐剩余预付租金 + 杂费。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
+    { t: '完成', desc: '主流程完成。若客户本次只付了押金（先付押金方案），务必在入住前收齐剩余预付租金 + 杂费 + 印花税。再提醒客户：入住前备好航班行程、提前 2 周办门禁卡。', isLast: true }
   ],
   paynow: [
     STEP_PAY_PLAN,
@@ -1821,7 +1821,7 @@ const PAY_FLOWS = {
     { t: '客户用 PayNow 付款', desc: '客户用 PayNow 付款到 BH PROPERTY 账户，并把 Reference Code 填进转账备注（Transfer Description：UEN / Bill Reference No.）。收款账户信息见金额计算器内附的账户详情。', next: '客户已付款' },
     { t: '收款截图 + 发团队', desc: '让客户把付款成功收据截图，发到群里给我们核对。', next: '已收款' },
     { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
-    { t: '完成', desc: '主流程完成。若客户本次只付了押金（先付押金方案），务必在入住前收齐剩余预付租金 + 杂费。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
+    { t: '完成', desc: '主流程完成。若客户本次只付了押金（先付押金方案），务必在入住前收齐剩余预付租金 + 杂费 + 印花税。再提醒客户：入住前备好航班行程、提前 2 周办门禁卡。', isLast: true }
   ],
   bank: [
     STEP_PAY_PLAN,
@@ -1830,7 +1830,7 @@ const PAY_FLOWS = {
     { t: '客户银行转账', desc: '客户银行转账到 BH PROPERTY 账户，并把 Reference Code 写进银行转账备注。收款账户信息见金额计算器内附的账户详情。', next: '客户已付款' },
     { t: '收预订费收据', desc: '让客户把银行转账收据截图，发到群里给我们核对。', next: '已收款' },
     { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
-    { t: '完成', desc: '主流程完成。若客户本次只付了押金（先付押金方案），务必在入住前收齐剩余预付租金 + 杂费。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
+    { t: '完成', desc: '主流程完成。若客户本次只付了押金（先付押金方案），务必在入住前收齐剩余预付租金 + 杂费 + 印花税。再提醒客户：入住前备好航班行程、提前 2 周办门禁卡。', isLast: true }
   ]
 };
 
@@ -1875,8 +1875,9 @@ const COMMON_PRE = [
   },
   {
     t: '客户预订 · 选付款方式',
-    desc: '客户决定预订付款时，先用 China Sales 金额计算器算出总额，截图发客户（支付宝 / 微信版计算器已含 3% 手续费）。再确认客户用哪种方式付款——三种方式后续流程不同：',
+    desc: '客户决定预订付款时，用 China Sales 金额计算器算出总额、并用印花税计算器算出印花税，把应付总额（含印花税）截图告知客户（支付宝 / 微信版计算器已含 3% 手续费）。印花税也由我们收取、客户连同款项一起付给 Bespoke。再确认客户用哪种方式付款——三种方式后续流程不同：',
     link: URL_OFFER_CALC, linkLabel: '打开 China Sales 金额计算器',
+    link2: URL_STAMP_DUTY, link2Label: '打开官方印花税计算器（IRAS 口径，强制使用）',
     notes: ['定金 = 1 个月房租，支付后转为押金；自 2025-04-23 起：无论是否已签 TA，客户反悔押金全额不退——收款前明确告知客户。'],
     payBranch: {
       prompt: '客户用哪种方式付款？（选了进入对应流程）',
@@ -1969,6 +1970,7 @@ function renderWizard() {
     // 付款方式分叉：选了进入对应流程（步数不同）
     body += renderCopies(s.copies);
     if (s.link) body += linkBtn(s.link, s.linkLabel);
+    if (s.link2) body += linkBtn(s.link2, s.link2Label);
     body += renderNotes(s.notes);
     body += '<div class="wiz-branch-prompt">' + esc(s.payBranch.prompt) + '</div>';
     body += '<div class="wiz-branch-tabs wiz-branch-tabs-3">' + s.payBranch.options.map(o =>
@@ -2007,6 +2009,7 @@ function renderWizard() {
   } else {
     body += renderCopies(s.copies);
     if (s.link)  body += linkBtn(s.link, s.linkLabel);
+    if (s.link2) body += linkBtn(s.link2, s.link2Label);
     body += renderNotes(s.notes);
   }
   // 出 TA 步：附 TA 范本参考；勾了「新单元」再附新房免责声明签署
