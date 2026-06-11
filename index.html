@@ -1786,29 +1786,51 @@ const TA_BRANCHES = {
   }
 };
 
+// 支付方案：本次收多少（一次付清 / 先付押金）。收款前先定，三条付款流程共用。
+const PAY_PLAN_BRANCHES = {
+  prompt: '客户这次按哪种方案付？',
+  options: [
+    { key: 'full', label: '一次付清' },
+    { key: 'deposit', label: '先付押金' }
+  ],
+  data: {
+    full: {
+      info: '本次收齐：押金（1 个月房租）+ 预付 1 个月房租 + 杂费。收齐后无尾款。'
+    },
+    deposit: {
+      info: '本次只收押金（1 个月房租）锁房。',
+      notes: ['剩余的预付 1 个月房租 + 杂费必须在入住前到账——记下尾款金额和截止时间，别漏收。']
+    }
+  }
+};
+const STEP_PAY_PLAN = { t: '确定本次收款金额（支付方案）', desc: '用 China Sales 计算器算好总额后，跟客户确认本次按哪种方案收：', branches: PAY_PLAN_BRANCHES, next: '已确定支付方案' };
+
 // 三种付款方式各自的后续步骤（接在公共前 3 步之后；依据官方 Payment SOP）
 const PAY_FLOWS = {
   alipay: [
+    STEP_PAY_PLAN,
     { t: '收预订费（支付宝 / 微信）', desc: 'Bespoke 员工在对接群里发支付二维码，把二维码转发给客户扫码支付。客户支付成功后截图收据发到群里给我们核对。', notes: ['二维码只有 2 分钟时效，过期作废——过期就让 Bespoke 员工重新生成再转发。', '支付宝 / 微信需自行加 3% 手续费（计算器的支付宝 / 微信版已含）。', '收据截图必须「展开」显示完整订单号，否则无法核对入账。'], next: '已收款' },
     { t: '填支付宝 / 微信支付记录表', desc: '把付款明细填进表单，供应商据此核对、放款给合作方。', link: URL_ALIPAY, linkLabel: '打开 Alipay / 微信支付记录表', next: '已填支付记录表' },
     { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
-    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
+    { t: '完成', desc: '主流程完成。若客户本次只付了押金（先付押金方案），务必在入住前收齐剩余预付租金 + 杂费。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
   ],
   paynow: [
+    STEP_PAY_PLAN,
     { t: '生成 Reference Code', desc: '客户付款前，先填 Reference Code Jotform；提交后在对应 Google Sheet 的 A 列（Reference Code）取到该客户的 Code。', link: URL_REF_FORM, linkLabel: '打开 Reference Code Jotform', next: '已生成 Code' },
     { t: '把 Code 发给客户', desc: '把 Google Sheet A 列取到的 Reference Code 发给客户。', next: '已发 Code 给客户' },
     { t: '客户用 PayNow 付款', desc: '客户用 PayNow 付款到 BH PROPERTY 账户，并把 Reference Code 填进转账备注（Transfer Description：UEN / Bill Reference No.）。收款账户信息见金额计算器内附的账户详情。', next: '客户已付款' },
     { t: '收款截图 + 发团队', desc: '让客户把付款成功收据截图，发到群里给我们核对。', next: '已收款' },
     { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
-    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
+    { t: '完成', desc: '主流程完成。若客户本次只付了押金（先付押金方案），务必在入住前收齐剩余预付租金 + 杂费。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
   ],
   bank: [
+    STEP_PAY_PLAN,
     { t: '生成 Reference Code', desc: '客户付款前，先填 Reference Code Jotform；提交后在对应 Google Sheet 的 A 列（Reference Code）取到该客户的 Code。', link: URL_REF_FORM, linkLabel: '打开 Reference Code Jotform', next: '已生成 Code' },
     { t: '把 Code 发给客户', desc: '把 Google Sheet A 列取到的 Reference Code 发给客户。', next: '已发 Code 给客户' },
     { t: '客户银行转账', desc: '客户银行转账到 BH PROPERTY 账户，并把 Reference Code 写进银行转账备注。收款账户信息见金额计算器内附的账户详情。', next: '客户已付款' },
     { t: '收预订费收据', desc: '让客户把银行转账收据截图，发到群里给我们核对。', next: '已收款' },
     { t: '填 TA Jotform · 出 TA', desc: '按客户有无 IPA / 有效准证，填对应的表：', branches: TA_BRANCHES, taStep: true, next: '已出 TA' },
-    { t: '完成', desc: '主流程完成。预订付款 = 押金（1 个月房租）+ 预付 1 个月房租 + 杂费；剩余杂费与预付租金必须在入住前到账。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
+    { t: '完成', desc: '主流程完成。若客户本次只付了押金（先付押金方案），务必在入住前收齐剩余预付租金 + 杂费。再提醒客户：收到 TA 后 14 天内用官方计算器缴印花税（逾期罚款）；入住前备好航班行程、提前 2 周办门禁卡。', link: URL_STAMP_DUTY, linkLabel: '打开官方印花税计算器（IRAS 口径，强制使用）', isLast: true }
   ]
 };
 
